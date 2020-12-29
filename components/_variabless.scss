@@ -1,0 +1,6 @@
+@use '@material/typography';
+
+$box-shadow-index: 1;
+
+$list-item-icon-font-size: typography.pxToRem(21px);
+$list-item-text: typography.pxToRem(13.3px);

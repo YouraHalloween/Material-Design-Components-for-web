@@ -1,0 +1,42 @@
+@use "@material/snackbar";
+@use '@material/theme/theme-color';
+@use '@material/typography';
+
+$snackbar-min-width: 200px;
+$snackbar-label-font-size: typography.pxToRem(13.5px);
+
+.mdc-snackbar {
+    // @include snackbar.elevation(1);
+    position: absolute;
+    @include snackbar.fill-color(theme-color.prop-value(background-secondary));
+    @include snackbar.min-width($snackbar-min-width);
+    &.mdc-snackbar--trailing {
+        justify-content: flex-end;
+    }
+    &.mdc-snackbar--action-baseline {
+        .mdc-snackbar__actions {
+            align-self: baseline;
+            margin-top: 6px;
+        }
+    }
+    .mdc-snackbar__surface {
+        .mdc-snackbar__label {
+            font-size: $snackbar-label-font-size;
+            div {
+                margin: 5px 0;
+                &:first-child {
+                    margin-top: 0;
+                }
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: snackbar.$mobile-breakpoint) {
+    .mdc-snackbar {
+        @include snackbar.viewport-margin(snackbar.$viewport-margin-wide);
+    }
+}

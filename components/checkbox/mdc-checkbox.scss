@@ -1,0 +1,9 @@
+@use '@material/theme/theme-color';
+
+.mdc-checkbox {
+    &.mdc-checkbox--disabled {
+        + label {
+            color: theme-color.prop-value(text-disabled-on-background);
+        }
+    }
+}

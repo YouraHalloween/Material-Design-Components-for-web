@@ -1,0 +1,111 @@
+@use '@material/textfield';
+@use '@material/icon-button';
+@use '@material/theme';
+@use '@material/ripple/ripple-theme';
+
+$text-field-height: 52px;
+$text-field-padding: 14px;
+
+.mdc-text-field {
+    @include textfield.fill-color(theme.$background);
+    @include textfield.height($text-field-height);
+    padding: 0 $text-field-padding;
+    + .mdc-text-field-helper-line {
+        justify-content: left;
+        padding: 0 $text-field-padding;
+        // margin-top: -1px;
+    }
+    .mdc-icon-button {
+        @include icon-button.density(-2);
+    }
+    //Сделать цвет hover = focus
+    &.mdc-text-field--filled {
+        // @include ripple.states-opacities(
+        //         (hover: .3, focus: .3, press: .3),
+        //         $has-nested-focusable-element: false,
+        //         $ripple-target: textfield.$ripple-target
+        //     );
+        @include ripple-theme.states-hover-opacity(
+            ripple-theme.states-opacity(textfield.$ink-color, hover),
+            $ripple-target: textfield.$ripple-target
+        );
+        @include ripple-theme.states-focus-opacity(
+            ripple-theme.states-opacity(textfield.$ink-color, hover),
+            $ripple-target: textfield.$ripple-target
+        );
+    }
+}
+
+.mdc-outer-label {
+    padding: 0 $text-field-padding;
+}
+
+/* TEXTFIELD LABEL */
+
+.mdc-text-field--filled {
+    .mdc-floating-label {
+        left: $text-field-padding;
+    }
+    .mdc-floating-label--float-above {
+        transform: translateY(-106%) scale(0.8);
+    }
+}
+
+/* TEXTFIELD ICONS */
+
+.mdc-text-field__group-icon {
+    align-self: center;
+    display: inline-flex;
+    margin: 0 3px;
+    .mdc-text-field__icon {
+        margin: 0 3px;
+    }
+}
+
+.mdc-text-field--with-trailing-icon {
+    padding-left: $text-field-padding;
+    padding-right: 0;
+}
+
+.mdc-text-field--with-leading-icon {
+    padding-right: $text-field-padding;
+    padding-left: 0;
+    &.mdc-text-field--filled {
+        // GOTO here you have to calc
+        .mdc-floating-label {
+            left: 52px;
+        }
+    }
+}
+
+.mdc-text-field__icon--leading,
+.mdc-text-field__icon--trailing {
+    padding: 8px;
+}
+
+.mdc-text-field__icon--leading {
+    margin: 0 6px;
+}
+
+.mdc-text-field__icon--trailing {
+    margin: 0 6px;
+}
+
+/* TEXTFIELD PREFIX SUFFIX */
+
+.mdc-text-field__affix--prefix {
+    padding-right: 4px;
+}
+
+.mdc-text-field__affix--suffix {
+    padding-left: 4px;
+}
+
+/* CHECKBOX */
+
+.mdc-checkbox {
+    + label {
+        line-height: 0;
+        cursor: pointer;
+    }
+}

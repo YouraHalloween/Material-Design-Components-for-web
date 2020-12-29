@@ -1,0 +1,9 @@
+@use '@material/theme/theme-color';
+
+.mdc-radio {
+    &.mdc-radio--disabled {
+        + label {
+            color: theme-color.prop-value(text-disabled-on-background);
+        }
+    }
+}

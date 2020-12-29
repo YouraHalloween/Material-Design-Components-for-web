@@ -1,0 +1,37 @@
+@use '@material/button';
+@use '@material/elevation';
+@use '@material/theme/theme-color';
+
+$button-gray-fill: rgba(theme-color.prop-value(on-surface), 0.06);
+$button-gray-color: theme-color.prop-value(text-primary-on-light);
+$button-gray-color-disabled: rgba(theme-color.prop-value(on-surface), 0.3);
+$button-gray-fill-disabled: rgba(theme-color.prop-value(on-surface), 0.03);
+$button-shadow: (0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.2));
+
+.mdc-button--raised {
+    &.mdc-button--gray {
+        @include button.container-fill-color($button-gray-fill);
+        @include button.ink-color($button-gray-color);
+    }
+    @include elevation.shadow(none);    
+    transition: box-shadow 100ms, 0.17s ease-out width;
+    
+    &:hover,
+    &:focus {
+        @include elevation.shadow($button-shadow);
+    }
+    
+    &:active {
+        @include elevation.shadow(none);
+    }
+    
+    &:disabled {
+        @include elevation.shadow(none);
+        background-color: $button-gray-fill-disabled;
+        color: $button-gray-color-disabled;        
+    }
+    .mdc-spinner {
+        margin-left: 8px;
+        transition-timing-function: ease-in-out;        
+    }
+}

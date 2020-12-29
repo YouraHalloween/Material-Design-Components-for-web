@@ -1,0 +1,54 @@
+@use '@material/drawer';
+@use '@material/typography';
+@use './../variabless';
+
+.mdc-drawer {
+    @include drawer.item-shape-radius(0 medium medium 0);
+    border: 0;
+    .mdc-drawer__header {
+        height: 60px;
+        padding-bottom: 0;
+        .mdc-drawer__title {
+            font-size: typography.pxToRem(16.4px);
+            @include typography.overflow-ellipsis();
+            color: var(--mdc-theme-text-logo);
+            &.mdc-drawer__title-with-icon {
+                display: flex;
+                align-items: center;
+                height: 100%;
+                .mdc-drawer__title-name {
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                }
+                .mdc-drawer__title-icon {
+                    font-size: typography.pxToRem(28px);
+                    margin: -1px 5px 0 0;
+                }
+            }
+        }
+    }
+    .mdc-list {
+        > div {
+            display: none;
+            &.active {
+                display: block;
+            }
+        }
+        .mdc-list-item {
+            margin-left: 0;
+            margin-right: 0;
+            padding: 0 26px;
+            height: 44px;
+            .mdc-list-item__graphic {
+                font-size: variabless.$list-item-icon-font-size;
+                margin-right: 12px;
+            }
+        }
+        .mdc-list-group__subheader {
+            color: var(--mdc-theme-text-secondary-on-background);
+            font-size: variabless.$list-item-text;
+            margin-bottom: 8px;
+        }
+    }
+}

@@ -1,0 +1,12 @@
+@use '@material/top-app-bar';
+
+.mdc-top-app-bar {
+    @include top-app-bar.fill-color(background);
+    @include top-app-bar.ink-color(text-primary-on-background);
+    @include top-app-bar.icon-ink-color(text-primary-on-background);
+    .mdc-top-app-bar__row {
+        .mdc-top-app-bar__section {
+            padding: 0 12px;
+        }
+    }
+}

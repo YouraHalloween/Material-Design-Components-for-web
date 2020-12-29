@@ -1,0 +1,19 @@
+@use "@material/list";
+@use '@material/theme/theme-color';
+@use '@material/typography';
+
+$list-group-label: typography.pxToRem(13.3px);
+
+.mdc-list-group {
+    @include list.group-subheader-ink-color(theme-color.prop-value(text-secondary-on-background));
+    .mdc-list-group__subheader {
+        font-size: $list-group-label;
+        line-height: 1.3rem;
+    }
+}
+
+.mdc-list-item__meta {
+    .material-icons {
+        color: theme-color.prop-value(text-secondary-on-background);
+    }
+}

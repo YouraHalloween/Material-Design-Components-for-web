@@ -1,0 +1,5 @@
+@use '@material/icon-button';
+
+.mdc-icon-button {
+    @include icon-button.density(-1);
+}

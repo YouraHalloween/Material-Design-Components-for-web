@@ -1,0 +1,6 @@
+@use '@material/shape';
+
+.mdc-linear-progress {
+    height: 2px;
+    // @include shape.radius(2px);
+}

@@ -1,0 +1,23 @@
+@use 'sass:map';
+@use '@material/theme/theme-color';
+
+$alt-theme-color: (
+    primary:#1770c7,
+    secondary: #1770c7, //#1976d2
+    background: #fff,
+    background-secondary: #1c2132,
+    text-logo: #be147a
+);
+
+//Так нельзя добавить дополнительный цвет, поэтому через страдания
+// @use '@material/theme' with ()
+//Только так ->
+theme-color.$property-values: map.merge(theme-color.$property-values, $alt-theme-color);
+
+@use '@material/typography' with (
+    $font-family: unquote("Nunito, Roboto, sans-serif"),
+);
+
+@use '@material/top-app-bar' with (
+    $row-height: 70px,
+);
