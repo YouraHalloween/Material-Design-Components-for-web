@@ -1,7 +1,10 @@
+import './app.scss';
+
+
 
 // import { MDCButton_Syg } from "./../components/button/component";
 // import { MDCTextField } from "@material/textfield";
-import { MDCTextField_Syg } from "./../components/textfield/component";
+import { MDCTextField_Syg } from "../components/textfield/component";
 // import { MDCRipple } from '@material/ripple';
 // import { MDCSegmentedButton } from '@material/segmented-button';
 // import { MDCSnackbar } from '@material/snackbar';

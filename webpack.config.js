@@ -27,16 +27,16 @@ const Env = (function () {
     };
 
     Env.prototype.sourceMap = function () {
-        return this.isProd() ? 'hidden-source-map' : 'eval-source-map';        
+        return this.isProd() ? 'hidden-source-map' : 'eval-source-map';
     };
 
     Env.prototype.entry = function () {
-        let entry = {
-            app: './src/app.js',
-        };
-        if (!this.isProd()) {
-            entry['test'] = './src/app-test.js';
-        } 
+        let entry = {};
+        if (this.isProd()) {
+            entry['app'] = './src/app.js';
+        } else {
+            entry['dev'] = './src/app-dev.js';
+        }
         return entry;
     };
 
@@ -59,8 +59,8 @@ module.exports = ({}, param) => {
         {
             loader: 'css-loader',
             options: {
-                sourceMap: false
-            }
+                sourceMap: false,
+            },
         },
         {
             loader: 'postcss-loader',
@@ -90,13 +90,13 @@ module.exports = ({}, param) => {
     ];
 
     return {
-        name: 'MDC Template',
+        name: 'MDCTemplate',
         mode: env.mode,
         entry: env.entry(),
         output: {
             path: path.resolve(__dirname, 'dist'),
             filename: env.getFileName('js'),
-            library: '[name]',
+            library: 'app',
             // libraryTarget: 'umd',
             // globalObject: 'this',
         },
