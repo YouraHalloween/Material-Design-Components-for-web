@@ -8,6 +8,7 @@
         "dev": "webpack --mode=development",
         "build": "webpack --mode=production",
         "build:remote": "webpack --mode=production --env=remote",
+        "dev:remote": "webpack --mode=development --env=remote",
         "start": "webpack serve"
     },
     "keywords": [],

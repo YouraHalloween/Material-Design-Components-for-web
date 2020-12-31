@@ -32,7 +32,7 @@ const Env = (function () {
 
     Env.prototype.entry = function () {
         let entry = {};
-        if (this.isProd()) {
+        if (this.isProd() || this.remote) {
             entry['app'] = './src/app.js';
         } else {
             entry['dev'] = './src/app-dev.js';

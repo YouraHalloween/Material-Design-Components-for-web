@@ -13,25 +13,25 @@ $button-shadow: (0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.2));
         @include button.container-fill-color($button-gray-fill);
         @include button.ink-color($button-gray-color);
     }
-    @include elevation.shadow(none);    
+    @include elevation.shadow(none);
     transition: box-shadow 100ms, 0.17s ease-out width;
-    
+
     &:hover,
     &:focus {
         @include elevation.shadow($button-shadow);
     }
-    
+
     &:active {
         @include elevation.shadow(none);
     }
-    
+
     &:disabled {
         @include elevation.shadow(none);
         background-color: $button-gray-fill-disabled;
-        color: $button-gray-color-disabled;        
+        color: $button-gray-color-disabled;
     }
     .mdc-spinner {
         margin-left: 8px;
-        transition-timing-function: ease-in-out;        
+        transition-timing-function: ease-in-out;
     }
 }
