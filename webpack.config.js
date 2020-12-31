@@ -27,7 +27,7 @@ const Env = (function () {
     };
 
     Env.prototype.sourceMap = function () {
-        return this.isProd() ? 'hidden-source-map' : 'eval-source-map';
+        return this.isProd() ? 'hidden-source-map' : 'eval-source-map';        
     };
 
     Env.prototype.entry = function () {
@@ -44,7 +44,7 @@ const Env = (function () {
 })();
 
 module.exports = ({}, param) => {
-    const env = new Env(param, true);
+    const env = new Env(param, false);
 
     const scssLoaders = [
         {
@@ -56,7 +56,12 @@ module.exports = ({}, param) => {
         {
             loader: 'extract-loader',
         },
-        'css-loader',
+        {
+            loader: 'css-loader',
+            options: {
+                sourceMap: false
+            }
+        },
         {
             loader: 'postcss-loader',
             options: {
@@ -94,6 +99,9 @@ module.exports = ({}, param) => {
             library: '[name]',
             // libraryTarget: 'umd',
             // globalObject: 'this',
+        },
+        performance: {
+            hints: false,
         },
         devtool: env.sourceMap(),
         optimization: {

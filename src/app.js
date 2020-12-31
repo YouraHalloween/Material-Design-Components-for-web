@@ -1,6 +1,6 @@
 import './app.scss';
 
-import { CollectionControl } from './components/collection-control/component.js';
+import { CollectionControl } from './../components/collection-control/component.js';
 
 var controls = new CollectionControl();
 
