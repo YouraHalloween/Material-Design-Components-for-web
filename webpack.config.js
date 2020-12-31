@@ -2,7 +2,7 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const Env = (function () {
-    const REMOTE_PATH = '../../dispute/backend/assets/external/MaterialDesign/';
+    const REMOTE_PATH = '../../dispute/backend/assets/external/material-components/';
     const CONTENT_HASH = '[contenthash]';
     // const NAME = '[name]';
     const NAME = 'material-components-web';
