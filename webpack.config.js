@@ -30,6 +30,16 @@ const Env = (function () {
         return this.isProd() ? 'hidden-source-map' : 'eval-source-map';
     };
 
+    Env.prototype.entry = function () {
+        let entry = {
+            app: './src/app.js',
+        };
+        if (!this.isProd()) {
+            entry['test'] = './src/app-test.js';
+        } 
+        return entry;
+    };
+
     return Env;
 })();
 
@@ -77,7 +87,7 @@ module.exports = ({}, param) => {
     return {
         name: 'MDC Template',
         mode: env.mode,
-        entry: { app: './src/app.js' },
+        entry: env.entry(),
         output: {
             path: path.resolve(__dirname, 'dist'),
             filename: env.getFileName('js'),

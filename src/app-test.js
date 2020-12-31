@@ -1,7 +1,7 @@
 
-// import { MDCButton_Syg } from "./components/button/component";
+// import { MDCButton_Syg } from "./../components/button/component";
 // import { MDCTextField } from "@material/textfield";
-import { MDCTextField_Syg } from "./components/textfield/component";
+import { MDCTextField_Syg } from "./../components/textfield/component";
 // import { MDCRipple } from '@material/ripple';
 // import { MDCSegmentedButton } from '@material/segmented-button';
 // import { MDCSnackbar } from '@material/snackbar';
@@ -12,7 +12,7 @@ import { MDCTextField_Syg } from "./components/textfield/component";
 // import { MDCRadio } from '@material/radio';
 // import { MDCFormField } from '@material/form-field';
 // import { MDCIconButtonToggle} from '@material/icon-button';
-// import { MDCList } from './components/list/component.js';
+// import { MDCList } from './../components/list/component.js';
 // import { MDCDrawer } from '@material/drawer';
 
 

@@ -1,3 +1,4 @@
+import './app.scss';
 
 import { CollectionControl } from './components/collection-control/component.js';
 
