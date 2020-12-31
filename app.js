@@ -5,5 +5,5 @@ var controls = new CollectionControl();
 
 // Export all components.
 export {
-    control
+    controls
 };
