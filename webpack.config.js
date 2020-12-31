@@ -44,7 +44,9 @@ const Env = (function () {
 })();
 
 module.exports = ({}, param) => {
-    const env = new Env(param, false);
+    const contentHash = false;
+
+    const env = new Env(param, contentHash);
 
     const scssLoaders = [
         {
