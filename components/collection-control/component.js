@@ -1,32 +1,32 @@
 
-import { MDCButton_Syg } from './../button/component';
+import { ButtonSyg } from './../button/component';
 import { MDCCheckbox } from '@material/checkbox';
 import { MDCLinearProgress } from '@material/linear-progress'
 import { MDCRipple } from '@material/ripple';
 import { MDCSnackbar } from '@material/snackbar';
-import { MDCTextField_Syg } from './../textfield/component';
+import { MDCTextFieldSyg } from './../textfield/component';
 import { MDCTopAppBar } from '@material/top-app-bar';
 import { MDCList } from './../list/component.js';
 import { MDCMenu } from './../menu/component.js';
 import { MDCRadio } from '@material/radio';
-import { MDCSpinner } from './../spinner/component.js';
-import { MDCLeftAppBar_Syg } from './../left-app-bar/component.js';
-import { MDCDrawer_Syg } from './../drawer/component.js'
+import { SpinnerSyg } from './../spinner/component.js';
+import { LeftAppBarSyg } from './../left-app-bar/component.js';
+import { MDCDrawerSyg } from './../drawer/component.js'
 
 const _classes = {
     checkbox: MDCCheckbox,
     ripple: MDCRipple,
     snackbar: MDCSnackbar,
-    textField: MDCTextField_Syg,
+    textField: MDCTextFieldSyg,
     topAppBar: MDCTopAppBar,
-    button: MDCButton_Syg,
+    button: ButtonSyg,
     linearProgress: MDCLinearProgress,
     menu: MDCMenu,
     list: MDCList,
     radio: MDCRadio,
-    spinner: MDCSpinner,
-    drawer: MDCDrawer_Syg,
-    leftAppBar: MDCLeftAppBar_Syg
+    spinner: SpinnerSyg,
+    drawer: MDCDrawerSyg,
+    leftAppBar: LeftAppBarSyg
 };
 
 const CollectionControl = (function () {
@@ -78,11 +78,13 @@ const CollectionControl = (function () {
      */
     CollectionControl.prototype.addControl = function (control, className, groupName, id) {
         id = typeof id == 'undefined' ? control.id : id;
+
         setItemProp(id, 'item', control);
         setItemProp(id, 'class', className);
-        if (groupName && groupName.trim() != '') {
+        if (groupName) {
             setItemProp(id, 'group', groupName);
-        }        
+        } 
+               
         return _items[id];
     };
 
@@ -99,11 +101,11 @@ const CollectionControl = (function () {
      * @param {array} ids 
      */
     CollectionControl.prototype.items = function (ids) {
-        let items = [];
+        let result = [];
         ids.forEach(id => {
-            items.push(_items[id]);
+            result.push(_items[id]);
         });
-        return items;
+        return result;
     };
 
     /**
@@ -139,9 +141,9 @@ const CollectionControl = (function () {
      * @param {bool} enabled 
      */
     CollectionControl.prototype.groupEnabled = function (groupName, enabled = true) {
-        let items = this.group(groupName);
-        for (const key in items) {
-            if (items.hasOwnProperty(key)) {
+        let result = this.group(groupName);
+        for (const key in result) {
+            if (result.hasOwnProperty(key)) {
                 this.enabled(key, enabled);
             }
         }

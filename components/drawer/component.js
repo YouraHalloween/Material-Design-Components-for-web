@@ -1,8 +1,7 @@
 import { MDCDrawer } from '@material/drawer';
 
 const MENU_INDEX_VISIBLE_ALL = '--visible-all';
-
-class MDCDrawer_Syg extends MDCDrawer {
+class MDCDrawerSyg extends MDCDrawer {
 
     constructor(...args) {
         super(...args);
@@ -17,9 +16,13 @@ class MDCDrawer_Syg extends MDCDrawer {
     renderActiveGroup(menuIndex) {
         if (menuIndex != MENU_INDEX_VISIBLE_ALL) {
             if (this.groupActive != null) {
-                for (const item of this.groupActive) {
-                    if (item.getAttribute('menu-index') != menuIndex) {
-                        item.classList.remove('active');
+                for (const key in this.groupActive) {
+                    if (this.groupActive.hasOwnProperty(key)) {
+                        if (this.groupActive[key].getAttribute('menu-index') != menuIndex) {
+                            this.groupActive[key].classList.remove('active');
+                        }
+                    } else {
+                        break;
                     }
                 }
             }
@@ -27,12 +30,16 @@ class MDCDrawer_Syg extends MDCDrawer {
         let filtr = menuIndex == MENU_INDEX_VISIBLE_ALL ? `div` : `div[menu-index="${menuIndex}"]`;
         let groups = this.list.root.querySelectorAll(filtr);
         if (groups.length > 0) {
-            for (const item of groups) {
-                item.classList.add('active');
+            for (const key in groups) {
+                if (groups.hasOwnProperty(key)) {
+                    groups[key].classList.add('active');
+                } else {
+                    break;
+                }
             }
         }
         this.groupActive = groups;
     }
 }
 
-export { MDCDrawer_Syg }
+export { MDCDrawerSyg }

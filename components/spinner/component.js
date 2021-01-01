@@ -1,4 +1,4 @@
-const MDCSpinner = (function () {
+const SpinnerSyg = (function () {
 
     let _size = {
         'extra-small': 'mdc-spinner-extra-small',
@@ -9,15 +9,15 @@ const MDCSpinner = (function () {
 
     let _durationHidden = 150;
 
-    MDCSpinner.attachTo = function (root) {
-        return new MDCSpinner(root);
+    SpinnerSyg.attachTo = function (root) {
+        return new SpinnerSyg(root);
     };
 
-    function MDCSpinner(root) {
+    function SpinnerSyg(root) {
         this.root = root;
     }
 
-    Object.defineProperty(MDCSpinner.prototype, "size", {
+    Object.defineProperty(SpinnerSyg.prototype, "size", {
         get: function () {
             for (var key in _size) {
                 var cls = _size[key];
@@ -37,7 +37,7 @@ const MDCSpinner = (function () {
         configurable: true
     });
 
-    Object.defineProperty(MDCSpinner.prototype, "durationHidden", {
+    Object.defineProperty(SpinnerSyg.prototype, "durationHidden", {
         get: function () {
             return _durationHidden;
         },
@@ -48,25 +48,25 @@ const MDCSpinner = (function () {
         configurable: true
     });
 
-    MDCSpinner.prototype.isOpen = function () {
+    SpinnerSyg.prototype.isOpen = function () {
         return this.root.classList.contains('mdc-spinner--open');
     }
 
-    MDCSpinner.prototype.open = function () {
+    SpinnerSyg.prototype.open = function () {
         this.root.classList.add('mdc-spinner--open'); 
         setTimeout(() => {
             this.root.classList.add('animate');
         }, 20);  
     };
 
-    MDCSpinner.prototype.close = function () {
+    SpinnerSyg.prototype.close = function () {
         this.root.classList.remove('animate');
         setTimeout(() => {
             this.root.classList.remove('mdc-spinner--open');
         }, _durationHidden); 
     };
 
-    MDCSpinner.prototype.toggle = function () {
+    SpinnerSyg.prototype.toggle = function () {
         if (this.isOpen()) {
             this.close();
         } else {
@@ -74,7 +74,7 @@ const MDCSpinner = (function () {
         }
     }
 
-    return MDCSpinner;
+    return SpinnerSyg;
 })();
 
-export { MDCSpinner };
+export { SpinnerSyg };

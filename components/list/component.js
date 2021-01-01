@@ -16,8 +16,8 @@ MDCList.prototype.getIndexByValue = function (value) {
     return -1;
 }
 /**
- * Свойство value
- * get - возвращает текущий value
+ * Свойство key
+ * get - возвращает текущий key
  * set - делает item - selected
  */
 Object.defineProperty(MDCList.prototype, "value", {
@@ -45,7 +45,7 @@ Object.defineProperty(MDCList.prototype, "value", {
  * Свойство value
  * get - возвращает текст выделенного меню
  */
-Object.defineProperty(MDCList.prototype, "text", {
+Object.defineProperty(MDCList.prototype, "value", {
     get: function () {
         var index = this.foundation.focusedItemIndex >= 0 ?
             this.foundation.focusedItemIndex : this.selectedIndex;

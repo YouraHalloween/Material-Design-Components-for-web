@@ -1,29 +1,29 @@
 import { MDCRipple } from '@material/ripple';
-import { MDCSpinner } from './../spinner/component';
+import { SpinnerSyg } from './../spinner/component';
 
-const MDCButton_Syg = (function () {
+const ButtonSyg = (function () {
 
     let _startWidth = 0;
     let _spinnerSize = 28;
     let _autoInitSpinner = false;
 
-    MDCButton_Syg.attachTo = function (root) {
-        return new MDCButton_Syg(root);
+    ButtonSyg.attachTo = function (root) {
+        return new ButtonSyg(root);
     };
 
     /**     
-     * @param {MDCSpinner} spinner     
+     * @param {SpinnerSyg} spinner
      */
     function spinnerIsAuto(spinner) {
         return _autoInitSpinner && spinner && spinner.root.getAttribute('aria-visible') == 'auto';
     }
 
-    function MDCButton_Syg(root) {
+    function ButtonSyg(root) {
         this.ripple = new MDCRipple(root);
         this.root = root;
         let _spinner = root.querySelector('.mdc-spinner');
         if (_spinner != null) {
-            this.spinner = new MDCSpinner(_spinner);
+            this.spinner = new SpinnerSyg(_spinner);
             this.spinner.durationHidden = 0;
             this.root.addEventListener('click', () => {
                 _autoInitSpinner = true;
@@ -31,7 +31,7 @@ const MDCButton_Syg = (function () {
         }
     }
 
-    Object.defineProperty(MDCButton_Syg.prototype, "disabled", {
+    Object.defineProperty(ButtonSyg.prototype, "disabled", {
         get: function () {
             return this.root.hasAttribute('disabled');
         },
@@ -62,7 +62,7 @@ const MDCButton_Syg = (function () {
         th.spinner.toggle();
     }
 
-    MDCButton_Syg.prototype.spinnerToggle = function () {
+    ButtonSyg.prototype.spinnerToggle = function () {
         //Стартовая инициализация width
         if (_startWidth == 0) {
             _startWidth = this.root.offsetWidth;
@@ -78,7 +78,7 @@ const MDCButton_Syg = (function () {
         }        
     }
 
-    return MDCButton_Syg;
+    return ButtonSyg;
 })();
 
-export { MDCButton_Syg }
+export { ButtonSyg }

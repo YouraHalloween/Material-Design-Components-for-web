@@ -1,35 +1,40 @@
-const MDCLeftAppBar_Syg = (function () {
+const LeftAppBarSyg = (function () {
     let _eventlick = function () { };
-    let _itemActive = null;
-
-    function MDCLeftAppBar_Syg(root) {
+    function LeftAppBarSyg(root) {
         this.root = root;
-        let _itemActive = this.root.querySelector('.mdc-left-app-bar-item__label.active');
+
+        var itemActive = this.root.querySelector('.mdc-left-app-bar-item__label.active');
         let items = this.root.querySelectorAll('.mdc-left-app-bar-item__label');
-        for (let item of items) {
-            let menuIndex = item.getAttribute('menu-index');
-            item.addEventListener('click', (event) => {
-                if (_itemActive != item) {
-                    item.classList.add('active');
-                    if (_itemActive !== null) {
-                        _itemActive.classList.remove('active');
+
+        for (const key in items) {
+            if (items.hasOwnProperty(key)) {
+                const item = items[key];
+                const menuIndex = item.getAttribute('menu-index');
+                item.addEventListener('click', (event) => {
+                    if (itemActive != item) {
+                        item.classList.add('active');
+                        if (itemActive !== null) {
+                            itemActive.classList.remove('active');
+                        }
+                        itemActive = item;
+                        _eventlick(menuIndex, event);
                     }
-                    _itemActive = item;
-                    _eventlick(menuIndex, event);
-                }
-            });
+                });
+            } else {
+                break;
+            }
         }
     }
 
-    MDCLeftAppBar_Syg.attachTo = function (root) {
-        return new MDCLeftAppBar_Syg(root);
+    LeftAppBarSyg.attachTo = function (root) {
+        return new LeftAppBarSyg(root);
     };
 
-    MDCLeftAppBar_Syg.prototype.listen = function (func) {
-        _eventlick = func;        
+    LeftAppBarSyg.prototype.listen = function (func) {
+        _eventlick = func;
     };
 
-    return MDCLeftAppBar_Syg;
+    return LeftAppBarSyg;
 })();
 
-export { MDCLeftAppBar_Syg };
+export { LeftAppBarSyg };
