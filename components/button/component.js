@@ -5,6 +5,7 @@ const MDCButton_Syg = (function () {
 
     let _startWidth = 0;
     let _spinnerSize = 28;
+    let _autoInitSpinner = false;
 
     MDCButton_Syg.attachTo = function (root) {
         return new MDCButton_Syg(root);
@@ -14,7 +15,7 @@ const MDCButton_Syg = (function () {
      * @param {MDCSpinner} spinner     
      */
     function spinnerIsAuto(spinner) {
-        return spinner && spinner.root.getAttribute('aria-visible') == 'auto';
+        return _autoInitSpinner && spinner && spinner.root.getAttribute('aria-visible') == 'auto';
     }
 
     function MDCButton_Syg(root) {
@@ -24,6 +25,9 @@ const MDCButton_Syg = (function () {
         if (_spinner != null) {
             this.spinner = new MDCSpinner(_spinner);
             this.spinner.durationHidden = 0;
+            this.root.addEventListener('click', () => {
+                _autoInitSpinner = true;
+            });
         }
     }
 
@@ -36,10 +40,11 @@ const MDCButton_Syg = (function () {
                 if (value) {
                     this.root.setAttribute('disabled', true);
                 } else {
-                    this.root.removeAttribute('disabled');
+                    this.root.removeAttribute('disabled');                    
                 }
                 if (spinnerIsAuto(this.spinner)) {
                     this.spinnerToggle();
+                    _autoInitSpinner = value;
                 }
             }
         },
