@@ -20,23 +20,23 @@ MDCTextFieldIcon.prototype._enableListener = {
     }
 };
 
-function funcBind(th, func) {
-    if (typeof func == 'function') {
-        return func.bind(th);
+function funcBind(th, fn) {
+    if (typeof fn == 'function') {
+        return fn.bind(th);
     }
-    return func;
+    return fn;
 }
 
-MDCTextFieldIcon.prototype.click = function (func) {
-    this.root.addEventListener('click', funcBind(this, func));
+MDCTextFieldIcon.prototype.click = function (fn) {
+    this.root.addEventListener('click', funcBind(this, fn));
 };
 
-MDCTextFieldIcon.prototype.mousedown = function (func) {
-    this.root.addEventListener('mousedown', funcBind(this, func));
+MDCTextFieldIcon.prototype.mousedown = function (fn) {
+    this.root.addEventListener('mousedown', funcBind(this, fn));
 };
 
-MDCTextFieldIcon.prototype.mouseup = function (func) {
-    this.root.addEventListener('mouseup', funcBind(this, func));
+MDCTextFieldIcon.prototype.mouseup = function (fn) {
+    this.root.addEventListener('mouseup', funcBind(this, fn));
 };
 /**
  * Установит стандартное действие для кнопки Очистить     
@@ -95,8 +95,7 @@ Object.defineProperty(MDCTextFieldIcon.prototype, "disableRenderBlur", {
         return this.disableRenderBlur_;
     },
     set: function (value) {
-        if (this.disableRenderBlur_ != value) {
-            // var func = this._disableListener.bind(this);                    
+        if (this.disableRenderBlur_ != value) {            
             if (value === true) {
                 this._disableListener.th = this;
                 this._enableListener.th = this;

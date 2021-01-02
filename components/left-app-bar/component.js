@@ -30,8 +30,8 @@ const LeftAppBarSyg = (function () {
         return new LeftAppBarSyg(root);
     };
 
-    LeftAppBarSyg.prototype.listen = function (func) {
-        _eventlick = func;
+    LeftAppBarSyg.prototype.listen = function (fn) {
+        _eventlick = fn;
     };
 
     return LeftAppBarSyg;
