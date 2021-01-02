@@ -1,5 +1,5 @@
 
-import { ButtonSyg } from './../button/component';
+import { TButtonSyg } from './../button/component';
 import { MDCCheckbox } from '@material/checkbox';
 import { MDCLinearProgress } from '@material/linear-progress'
 import { MDCRipple } from '@material/ripple';
@@ -9,8 +9,8 @@ import { MDCTopAppBar } from '@material/top-app-bar';
 import { MDCList } from './../list/component.js';
 import { MDCMenu } from './../menu/component.js';
 import { MDCRadio } from '@material/radio';
-import { SpinnerSyg } from './../spinner/component.js';
-import { LeftAppBarSyg } from './../left-app-bar/component.js';
+import { TSpinnerSyg } from './../spinner/component.js';
+import { TLeftAppBarSyg } from './../left-app-bar/component.js';
 import { MDCDrawerSyg } from './../drawer/component.js'
 
 const _classes = {
@@ -19,14 +19,14 @@ const _classes = {
     snackbar: MDCSnackbar,
     textField: MDCTextFieldSyg,
     topAppBar: MDCTopAppBar,
-    button: ButtonSyg,
+    button: TButtonSyg,
     linearProgress: MDCLinearProgress,
     menu: MDCMenu,
     list: MDCList,
     radio: MDCRadio,
-    spinner: SpinnerSyg,
+    spinner: TSpinnerSyg,
     drawer: MDCDrawerSyg,
-    leftAppBar: LeftAppBarSyg
+    leftAppBar: TLeftAppBarSyg
 };
 
 const CollectionControl = (function () {

@@ -1,6 +1,6 @@
-const LeftAppBarSyg = (function () {
+const TLeftAppBarSyg = (function () {
     let _eventlick = function () { };
-    function LeftAppBarSyg(root) {
+    function TLeftAppBarSyg(root) {
         this.root = root;
 
         var itemActive = this.root.querySelector('.mdc-left-app-bar-item__label.active');
@@ -26,15 +26,15 @@ const LeftAppBarSyg = (function () {
         }
     }
 
-    LeftAppBarSyg.attachTo = function (root) {
-        return new LeftAppBarSyg(root);
+    TLeftAppBarSyg.attachTo = function (root) {
+        return new TLeftAppBarSyg(root);
     };
 
-    LeftAppBarSyg.prototype.listen = function (fn) {
+    TLeftAppBarSyg.prototype.listen = function (fn) {
         _eventlick = fn;
     };
 
-    return LeftAppBarSyg;
+    return TLeftAppBarSyg;
 })();
 
-export { LeftAppBarSyg };
+export { TLeftAppBarSyg };

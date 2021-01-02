@@ -1,4 +1,4 @@
-const SpinnerSyg = (function () {
+const TSpinnerSyg = (function () {
 
     let _size = {
         'extra-small': 'mdc-spinner-extra-small',
@@ -9,15 +9,15 @@ const SpinnerSyg = (function () {
 
     let _durationHidden = 150;
 
-    SpinnerSyg.attachTo = function (root) {
-        return new SpinnerSyg(root);
+    TSpinnerSyg.attachTo = function (root) {
+        return new TSpinnerSyg(root);
     };
 
-    function SpinnerSyg(root) {
+    function TSpinnerSyg(root) {
         this.root = root;
     }
 
-    Object.defineProperty(SpinnerSyg.prototype, "size", {
+    Object.defineProperty(TSpinnerSyg.prototype, "size", {
         get: function () {
             for (var key in _size) {
                 var cls = _size[key];
@@ -37,7 +37,7 @@ const SpinnerSyg = (function () {
         configurable: true
     });
 
-    Object.defineProperty(SpinnerSyg.prototype, "durationHidden", {
+    Object.defineProperty(TSpinnerSyg.prototype, "durationHidden", {
         get: function () {
             return _durationHidden;
         },
@@ -48,25 +48,25 @@ const SpinnerSyg = (function () {
         configurable: true
     });
 
-    SpinnerSyg.prototype.isOpen = function () {
+    TSpinnerSyg.prototype.isOpen = function () {
         return this.root.classList.contains('mdc-spinner--open');
     }
 
-    SpinnerSyg.prototype.open = function () {
+    TSpinnerSyg.prototype.open = function () {
         this.root.classList.add('mdc-spinner--open'); 
         setTimeout(() => {
             this.root.classList.add('animate');
         }, 20);  
     };
 
-    SpinnerSyg.prototype.close = function () {
+    TSpinnerSyg.prototype.close = function () {
         this.root.classList.remove('animate');
         setTimeout(() => {
             this.root.classList.remove('mdc-spinner--open');
         }, _durationHidden); 
     };
 
-    SpinnerSyg.prototype.toggle = function () {
+    TSpinnerSyg.prototype.toggle = function () {
         if (this.isOpen()) {
             this.close();
         } else {
@@ -74,7 +74,7 @@ const SpinnerSyg = (function () {
         }
     }
 
-    return SpinnerSyg;
+    return TSpinnerSyg;
 })();
 
-export { SpinnerSyg };
+export { TSpinnerSyg };

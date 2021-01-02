@@ -1,29 +1,29 @@
 import { MDCRipple } from '@material/ripple';
-import { SpinnerSyg } from './../spinner/component';
+import { TSpinnerSyg } from './../spinner/component';
 
-const ButtonSyg = (function () {
+const TButtonSyg = (function () {
 
     let _startWidth = 0;
     let _spinnerSize = 28;
     let _autoInitSpinner = false;
 
-    ButtonSyg.attachTo = function (root) {
-        return new ButtonSyg(root);
+    TButtonSyg.attachTo = function (root) {
+        return new TButtonSyg(root);
     };
 
     /**     
-     * @param {SpinnerSyg} spinner
+     * @param {TSpinnerSyg} spinner
      */
     function spinnerIsAuto(spinner) {
         return _autoInitSpinner && spinner && spinner.root.getAttribute('aria-visible') == 'auto';
     }
 
-    function ButtonSyg(root) {
+    function TButtonSyg(root) {
         this.ripple = new MDCRipple(root);
         this.root = root;
         let _spinner = root.querySelector('.mdc-spinner');
         if (_spinner != null) {
-            this.spinner = new SpinnerSyg(_spinner);
+            this.spinner = new TSpinnerSyg(_spinner);
             this.spinner.durationHidden = 0;
             this.root.addEventListener('click', () => {
                 _autoInitSpinner = true;
@@ -31,7 +31,7 @@ const ButtonSyg = (function () {
         }
     }
 
-    Object.defineProperty(ButtonSyg.prototype, "disabled", {
+    Object.defineProperty(TButtonSyg.prototype, "disabled", {
         get: function () {
             return this.root.hasAttribute('disabled');
         },
@@ -62,7 +62,7 @@ const ButtonSyg = (function () {
         th.spinner.toggle();
     }
 
-    ButtonSyg.prototype.spinnerToggle = function () {
+    TButtonSyg.prototype.spinnerToggle = function () {
         //Стартовая инициализация width
         if (_startWidth == 0) {
             _startWidth = this.root.offsetWidth;
@@ -78,7 +78,7 @@ const ButtonSyg = (function () {
         }        
     }
 
-    return ButtonSyg;
+    return TButtonSyg;
 })();
 
-export { ButtonSyg }
+export { TButtonSyg }

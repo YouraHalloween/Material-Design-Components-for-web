@@ -1,10 +1,9 @@
-import './app.scss';
 
 
 
 // import { MDCButton_Syg } from "./../components/button/component";
 // import { MDCTextField } from "@material/textfield";
-import { MDCTextField_Syg } from "../components/textfield/component";
+import { MDCTextFieldSyg } from "../components/textfield/component";
 // import { MDCRipple } from '@material/ripple';
 // import { MDCSegmentedButton } from '@material/segmented-button';
 // import { MDCSnackbar } from '@material/snackbar';
@@ -41,7 +40,7 @@ function init(classCss, classComponent, func) {
 // init('.mdc-linear-progress', MDCLinearProgress);
 // init('.mdc-button', MDCButton_Syg);
 // init(".mdc-text-field", MDCTextField);
-init(".mdc-text-field", MDCTextField_Syg);
+init(".mdc-text-field", MDCTextFieldSyg);
 // init('.mdc-segmented-button', MDCSegmentedButton);
 // init('.mdc-snackbar', MDCSnackbar);
 
@@ -55,3 +54,4 @@ $('#add-to-favorites').click(function () {
 //     cntr[0].labelText = 'asdasdsdfjsldjflskdjflks jlk jlksjlk jsdlkjsdlkj h kh kjh kjh kjhj hkj hk  kh kh kj hkj hk jhk h kj';
 //     // cntr[0].close('dismiss');
 // })
+
