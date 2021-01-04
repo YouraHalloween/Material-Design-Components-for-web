@@ -1,5 +1,5 @@
 
-import { TButtonSyg } from './../button/component';
+import { TButtonSyg } from './../button/component.js';
 import { MDCCheckbox } from '@material/checkbox';
 import { MDCLinearProgress } from '@material/linear-progress'
 import { MDCRipple } from '@material/ripple';

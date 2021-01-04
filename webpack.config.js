@@ -1,6 +1,5 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const { endianness } = require('os');
 
 const Env = (function () {
     const REMOTE_PATH = '../../dispute/backend/assets/external/material-components/';
@@ -12,7 +11,7 @@ const Env = (function () {
      * @param {boolean} useHashName 
      */
     function Env(param, useHashName = false) {
-        this.mode = param.mode ? param.mode : 'development';
+        this.mode = param.mode || 'development';
         this.remote = param.env.remote;
         this.useHashName = useHashName;
     }
@@ -38,27 +37,37 @@ const Env = (function () {
     };
 
     Env.prototype.sourceMap = function () {
-        return this.isProd() ? 'hidden-source-map' : 'eval-source-map';
+        return this.isProd() ? false : 'eval-source-map';
     };
 
-    Env.prototype.path = function () {
-        return path.resolve(__dirname, 'dist');
+    Env.path = function (dir) {
+        return path.resolve(__dirname, dir);
     };
 
     return Env;
 })();
 
-const DefaultConfig = (env, config) => {
-    return {
-        mode: env.mode,
-        performance: {
-            hints: false,
-        },
-        devtool: env.sourceMap(),
-        optimization: {
-            minimize: env.isProd(),
-        },
-        ...config
+const DefaultConfig = {
+    resolve(extensions) {
+        return {
+            modules: [Env.path('src'), Env.path('components'), 'node_modules'],
+            extensions
+        }
+    },
+    config(env, config) {
+        return {
+            //Точка входа из папки src
+            context: Env.path('src'),
+            mode: env.mode,
+            performance: {
+                hints: false,
+            },
+            devtool: env.sourceMap(),
+            optimization: {
+                minimize: env.isProd(),
+            },
+            ...config
+        }
     }
 }
 
@@ -106,13 +115,14 @@ const SCSSConfig = (env) => {
         },
     ];
 
-    let result = DefaultConfig(env, {
+    return DefaultConfig.config(env, {
         name: 'scss-template',
-        entry: { name: './src/app.scss' },
+        entry: { name: 'app.scss' },
         output: {
-            path: env.path(),
+            path: Env.path('dist'),
             filename: env.getFileName('css.js'),
         },
+        resolve: DefaultConfig.resolve(['.scss']),
         module: {
             rules: [
                 {
@@ -123,16 +133,14 @@ const SCSSConfig = (env) => {
         },
         plugins: [new CleanWebpackPlugin()],
     });
-
-    return result;
 }
 
 const JSConfig = (env) => {
 
-    let entry = env.isProd() || env.remote ? './src/app.js' : ['./src/app-test.js', './src/app-test.ts'];
+    let entry = env.isProd() || env.remote ? 'app.js' : ['app-test.js', 'app-test.ts'];
 
     let output = {
-        path: path.resolve(__dirname, 'dist'),
+        path: Env.path('dist'),
         filename: env.getFileName('js'),
     };
 
@@ -141,11 +149,11 @@ const JSConfig = (env) => {
         output.libraryTarget = 'umd';
     }
 
-    let result = DefaultConfig(env, {
+    return DefaultConfig.config(env, {
         name: 'ts-js-template',
         entry: entry,
         output: output,
-        resolve: { extensions: ['.ts', '.js'] },
+        resolve: DefaultConfig.resolve(['.ts', '.js']),
         module: {
             rules: [
                 {
@@ -175,10 +183,8 @@ const JSConfig = (env) => {
                     },
                 },
             ]
-        },
+        },        
     });
-
-    return result;
 }
 
 module.exports = ({ }, param) => {
