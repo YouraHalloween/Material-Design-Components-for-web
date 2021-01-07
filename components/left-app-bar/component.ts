@@ -12,7 +12,6 @@ class TLeftAppBarSyg {
     constructor(root: Element) {
         this.root = root;
 
-        // tslint:disable-next-line: no-shadowed-variable
         let itemActive: Element | null = this.root.querySelector(
             '.mdc-left-app-bar-item__label.active'
         );

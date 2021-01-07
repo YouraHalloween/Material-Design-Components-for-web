@@ -8,18 +8,29 @@ class MDCListSyg extends MDCList {
         super(root, ...args);
     }
 
-    private _getValueList<ArrayValues>(fromValues: ArrayValues[]): string | string[] | undefined {
-        const index: MDCListIndex = this.selectedIndex;
-        if (typeof index === 'number') {
-            if (index >= 0 && fromValues.length > index) {                
-                return fromValues[index as number];
+    private _getValueList<ArrayValues>(
+        fromValues: ArrayValues[]
+    ): string | string[] | undefined {
+
+        const getVal = (index: number): string => {
+            if (fromValues[index] instanceof Element) {
+                return (fromValues[index] as HTMLElement).innerText;
+            }
+            return fromValues[index];
+        };
+
+        const selectedIndex: MDCListIndex = this.selectedIndex;
+
+        if (typeof selectedIndex === 'number') {
+            if (selectedIndex >= 0 && fromValues.length > selectedIndex) {
+                return getVal(selectedIndex);
             }
             return undefined;
         } else {
             const result: string[] = [];
-            index.forEach((value) => {
-                if (fromValues.length > value) {
-                    result.push(fromValues[value]);
+            selectedIndex.forEach((index) => {
+                if (fromValues.length > index) {
+                    result.push(getVal(index));
                 }
             });
             return result;
@@ -76,19 +87,6 @@ class MDCListSyg extends MDCList {
      */
     get text(): string | string[] | undefined {
         return this._getValueList(this.listElements);
-
-        const index: MDCListIndex = this.selectedIndex;
-        if (typeof index === 'number') {
-            if (index >= 0 && this._values.length > index) {
-                return this._values[index as number];
-            }
-        }
-        return undefined;
-
-        if (index >= 0) {
-            return this.listElements[index].innerText;
-        }
-        return undefined;
     }
 
     /**
