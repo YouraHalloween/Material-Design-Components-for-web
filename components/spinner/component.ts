@@ -1,79 +1,108 @@
-const TSpinnerSyg = (function () {
-    let _size = {
-        'extra-small': 'mdc-spinner-extra-small',
+interface ISpinenrSize {
+    [index: string]: string;
+}
+class TSpinnerSyg {
+    private _size: ISpinenrSize = {
+        extra_small: 'mdc-spinner-extra-small',
         small: 'mdc-spinner-small',
         medium: 'mdc-spinner-medium',
         large: 'mdc-spinner-large',
     };
+    private _delayVisible: number = 20;
+    private _delayHidden: number = 150;
 
-    let _durationHidden = 150;
+    public root: Element;
 
-    TSpinnerSyg.attachTo = function (root) {
+    /**
+     * attach to class
+     * @param root Node
+     */
+    static attachTo(root: Element) {
         return new TSpinnerSyg(root);
-    };
+    }
 
-    function TSpinnerSyg(root) {
+    constructor(root: Element) {
         this.root = root;
     }
 
-    Object.defineProperty(TSpinnerSyg.prototype, 'size', {
-        get: function () {
-            for (var key in _size) {
-                var cls = _size[key];
-                if (this.root.classList.contains(cls)) {
-                    return key;
-                }
+    /**
+     * Size spinner
+     */
+    get size(): string {
+        // tslint:disable-next-line: forin
+        for (const key in this._size) {
+            const cls: string = this._size[key];
+            if (this.root.classList.contains(cls)) {
+                return key;
             }
-            return null;
-        },
-        set: function (value) {
-            for (var key in _size) {
-                this.root.classList.remove(_size[key]);
-            }
-            this.root.classList.add(_size[value]);
-        },
-        enumerable: true,
-        configurable: true,
-    });
+        }
+        return '';
+    }
+    set size(value: string) {
+        // tslint:disable-next-line: forin
+        for (const key in this._size) {
+            this.root.classList.remove(this._size[key]);
+        }
+        this.root.classList.add(this._size[value]);
+    }
 
-    Object.defineProperty(TSpinnerSyg.prototype, 'durationHidden', {
-        get: function () {
-            return _durationHidden;
-        },
-        set: function (value) {
-            _durationHidden = value;
-        },
-        enumerable: true,
-        configurable: true,
-    });
+    /**
+     * delay after Display: Block, for animation
+     */
+    get delayVisible(): number {
+        return this._delayVisible;
+    }
+    set delayVisible(value: number) {
+        this._delayVisible = value;
+    }
 
-    TSpinnerSyg.prototype.isOpen = function () {
+    /**
+     * Delay after animation, for display: none
+     */
+    get delayHidden(): number {
+        return this._delayHidden;
+    }
+    set delayHidden(value: number) {
+        this._delayHidden = value;
+    }
+
+    /**
+     * is show spinner
+     */
+    isOpen(): boolean {
         return this.root.classList.contains('mdc-spinner--open');
-    };
+    }
 
-    TSpinnerSyg.prototype.open = function () {
+    /**
+     * show spinner
+     */
+    open(): void {
         this.root.classList.add('mdc-spinner--open');
         setTimeout(() => {
             this.root.classList.add('animate');
-        }, 20);
-    };
+        }, this._delayVisible);
+    }
 
-    TSpinnerSyg.prototype.close = function () {
+    /**
+     * unvis spinner
+     */
+    close() {
         this.root.classList.remove('animate');
         setTimeout(() => {
             this.root.classList.remove('mdc-spinner--open');
-        }, _durationHidden);
-    };
+        }, this._delayHidden);
+    }
 
-    TSpinnerSyg.prototype.toggle = function () {
+    /**
+     * show < - > unvis spinner
+     */
+    toggle() {
         if (this.isOpen()) {
             this.close();
         } else {
             this.open();
         }
-    };
-
-    return TSpinnerSyg;
-})();
+    }
+}
 
 export { TSpinnerSyg };

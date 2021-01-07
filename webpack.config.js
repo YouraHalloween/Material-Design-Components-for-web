@@ -37,7 +37,7 @@ const Env = (function () {
     };
 
     Env.prototype.sourceMap = function () {
-        return this.isProd() ? false : 'eval-source-map';
+        return this.isProd() ? false : 'source-map';
     };
 
     Env.path = function (dir) {

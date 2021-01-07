@@ -1,87 +1,93 @@
-// import { MDCRipple } from '@material/ripple';
-// import { TSpinnerSyg } from './../spinner/component';
+import { MDCRipple } from '@material/ripple';
+import { TSpinnerSyg } from './../spinner/component';
 
-// const TButtonSyg = (function () {
-//     let _startWidth = 0;
-//     let _spinnerSize = 28;
-//     let _autoInitSpinner = false;
+class TButtonSyg {
+    private _startWidth: number = 0;
+    private _spinnerSize: number = 28;
+    private _autoInitSpinner: boolean = false;
 
-//     TButtonSyg.attachTo = function (root) {
-//         return new TButtonSyg(root);
-//     };
+    public ripple: MDCRipple;
+    public root: HTMLElement;
+    public spinner?: TSpinnerSyg | null = null;
 
-//     /**
-//      * @param {TSpinnerSyg} spinner
-//      */
-//     function spinnerIsAuto(spinner) {
-//         return (
-//             _autoInitSpinner &&
-//             spinner &&
-//             spinner.root.getAttribute('aria-visible') == 'auto'
-//         );
-//     }
+    static attachTo(root: HTMLElement) {
+        return new TButtonSyg(root);
+    }
 
-//     function TButtonSyg(root) {
-//         this.ripple = new MDCRipple(root);
-//         this.root = root;
-//         let _spinner = root.querySelector('.mdc-spinner');
-//         if (_spinner != null) {
-//             this.spinner = new TSpinnerSyg(_spinner);
-//             this.spinner.durationHidden = 0;
-//             this.root.addEventListener('click', () => {
-//                 _autoInitSpinner = true;
-//             });
-//         }
-//     }
+    constructor(root: HTMLElement) {
+        this.ripple = new MDCRipple(root);
+        this.root = root;
+        const sp: HTMLElement | null = root.querySelector('.mdc-spinner');
+        if (sp != null) {
+            this.spinner = new TSpinnerSyg(sp);
+            this.spinner.delayHidden = 0;
+            this.root.addEventListener('click', () => {
+                this._autoInitSpinner = true;
+            });
+        }
+    }
 
-//     Object.defineProperty(TButtonSyg.prototype, 'disabled', {
-//         get: function () {
-//             return this.root.hasAttribute('disabled');
-//         },
-//         set: function (value) {
-//             if (this.disabled != value) {
-//                 if (value) {
-//                     this.root.setAttribute('disabled', true);
-//                 } else {
-//                     this.root.removeAttribute('disabled');
-//                 }
-//                 if (spinnerIsAuto(this.spinner)) {
-//                     this.spinnerToggle();
-//                     _autoInitSpinner = value;
-//                 }
-//             }
-//         },
-//         enumerable: true,
-//         configurable: true,
-//     });
+    /**
+     * Button disabled or enabled
+     */
+    get disabled(): boolean {
+        return this.root.hasAttribute('disabled');
+    }
 
-//     function startTransition(th) {
-//         if (!th.spinner.isOpen()) {
-//             _startWidth = th.root.offsetWidth;
-//             th.root.style.width = `${_startWidth + _spinnerSize}px`;
-//         } else {
-//             th.root.style.width = `${_startWidth}px`;
-//         }
-//         th.spinner.toggle();
-//     }
+    set disabled(value: boolean) {
+        if (this.disabled !== value) {
+            if (value) {
+                this.root.setAttribute('disabled', 'disabled');
+            } else {
+                this.root.removeAttribute('disabled');
+            }
+            if (this.spinner && this.spinnerIsAuto(this.spinner)) {
+                this.spinnerToggle();
+                this._autoInitSpinner = value;
+            }
+        }
+    }
 
-//     TButtonSyg.prototype.spinnerToggle = function () {
-//         //Стартовая инициализация width
-//         if (_startWidth == 0) {
-//             _startWidth = this.root.offsetWidth;
-//             this.root.style.width = `${_startWidth}px`;
-//             //Из-за того, что width еще не инициализирован, следующий код необходимо запускать в другом процессе
-//             //В таом случае жабаскрипт инициализиурет style.width и запустит transition
-//             //Далее, чтобы лишний раз не эксплуатировать процессы, запускаем с инициализированным width
-//             setTimeout(() => {
-//                 startTransition(this);
-//             }, 0);
-//         } else {
-//             startTransition(this);
-//         }
-//     };
+    private static _startTransition(th: TButtonSyg): void {
+        if (th.spinner) {
+            if (!th.spinner.isOpen()) {
+                th._startWidth = th.root.offsetWidth;
+                th.root.style.width = `${th._startWidth + th._spinnerSize}px`;
+            } else {
+                th.root.style.width = `${th._startWidth}px`;
+            }
+            th.spinner.toggle();
+        }
+    }
 
-//     return TButtonSyg;
-// })();
+    /**
+     * @param {TSpinnerSyg} spinner
+     */
+    public spinnerIsAuto(spinner: TSpinnerSyg): boolean {
+        return (
+            this._autoInitSpinner &&
+            spinner &&
+            spinner.root.getAttribute('aria-visible') === 'auto'
+        );
+    }
 
-// export { TButtonSyg };
+    public spinnerToggle(): void {
+        if (this.spinner) {
+            // Стартовая инициализация width
+            if (this._startWidth === 0) {
+                this._startWidth = this.root.offsetWidth;
+                this.root.style.width = `${this._startWidth}px`;
+                // Из-за того, что width еще не инициализирован, следующий код необходимо запускать в другом процессе
+                // В таом случае жабаскрипт инициализиурет style.width и запустит transition
+                // Далее, чтобы лишний раз не эксплуатировать процессы, запускаем с инициализированным width
+                setTimeout(() => {
+                    TButtonSyg._startTransition(this);
+                }, 0);
+            } else {
+                TButtonSyg._startTransition(this);
+            }
+        }
+    }
+}
+
+export { TButtonSyg };

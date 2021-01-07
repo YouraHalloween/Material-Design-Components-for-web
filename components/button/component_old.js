@@ -1,5 +1,5 @@
 import { MDCRipple } from '@material/ripple';
-import { TSpinnerSyg } from './../spinner/component';
+import { TSpinnerSyg } from '../spinner/component';
 
 const TButtonSyg = (function () {
 
