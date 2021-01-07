@@ -1,4 +1,3 @@
-
 import { MDCList } from '@material/list';
 
 /**
