@@ -1,6 +1,6 @@
 import { MDCTextField } from '@material/textfield';
-import { HelperMessage } from './helper-message/component.js'
-import { MDCTextFieldIcon } from './icon/component.js'
+import { HelperMessage } from './helper-message/component'
+
 class MDCTextFieldSyg extends MDCTextField {    
 
     constructor(...args) {
