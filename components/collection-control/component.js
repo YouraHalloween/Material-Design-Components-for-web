@@ -4,9 +4,9 @@ import { MDCCheckbox } from '@material/checkbox';
 import { MDCLinearProgress } from '@material/linear-progress'
 import { MDCRipple } from '@material/ripple';
 import { MDCSnackbar } from '@material/snackbar';
-import { MDCTextFieldSyg } from './../textfield/component';
+import { MDCTextFieldSyg } from '../textfield/component';
 import { MDCTopAppBar } from '@material/top-app-bar';
-import { MDCList } from './../list/component';
+import { MDCList } from '../list/component';
 import { MDCMenu } from './../menu/component';
 import { MDCRadio } from '@material/radio';
 import { TSpinnerSyg } from './../spinner/component';

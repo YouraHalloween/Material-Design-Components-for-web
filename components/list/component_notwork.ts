@@ -11,30 +11,34 @@
 //     private _getValueList<ArrayValues>(
 //         fromValues: ArrayValues[]
 //     ): string | string[] | undefined {
-
 //         const getVal = (index: number): string => {
 //             if (fromValues[index] instanceof Element) {
 //                 return (fromValues[index] as HTMLElement).innerText;
 //             }
 //             return fromValues[index];
 //         };
+        
+//         const selectedIndex: MDCListIndex = this.selectedIndex
+//             ? this.selectedIndex
+//             : this.foundation.focusedItemIndex;
 
-//         const selectedIndex: MDCListIndex = this.selectedIndex;
-
-//         if (typeof selectedIndex === 'number') {
-//             if (selectedIndex >= 0 && fromValues.length > selectedIndex) {
-//                 return getVal(selectedIndex);
-//             }
-//             return undefined;
-//         } else {
-//             const result: string[] = [];
-//             selectedIndex.forEach((index) => {
-//                 if (fromValues.length > index) {
-//                     result.push(getVal(index));
+//         if (selectedIndex > -1 || selectedIndex instanceof numbers[]) {
+//             if (typeof selectedIndex === 'number') {
+//                 if (selectedIndex >= 0 && fromValues.length > selectedIndex) {
+//                     return getVal(selectedIndex);
 //                 }
-//             });
-//             return result;
+//                 return undefined;
+//             } else {
+//                 const result: string[] = [];
+//                 selectedIndex.forEach((index) => {
+//                     if (fromValues.length > index) {
+//                         result.push(getVal(index));
+//                     }
+//                 });
+//                 return result;
+//             }
 //         }
+//         return undefined;
 //     }
 
 //     /**

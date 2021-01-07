@@ -60,56 +60,59 @@
         </div>
     </div>
 
-    <button class="mdc-button mdc-button--raised mdc-button--gray">
+    <button id='button' class="mdc-button mdc-button--raised mdc-button--gray">
         <div class="mdc-button__ripple"></div>
         <i class="material-icons mdc-button__icon" aria-hidden="true">bookmark</i>
         <span class="mdc-button__label">Text Button plus icon</span>
     </button>
 
-    <aside class="mdc-drawer mdc-drawer--dismissible">
-        <div class="mdc-drawer__content">
-            <nav class="mdc-list">
-                <a class="mdc-list-item mdc-list-item--activated" href="#" aria-current="page">
-                    <span class="mdc-list-item__ripple"></span>
-                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">inbox</i>
-                    <span class="mdc-list-item__text">Inbox</span>
-                </a>
-                <a class="mdc-list-item" href="#">
-                    <span class="mdc-list-item__ripple"></span>
-                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">star</i>
-                    <span class="mdc-list-item__text">Star</span>
-                </a>
-                <a class="mdc-list-item" href="#">
-                    <span class="mdc-list-item__ripple"></span>
-                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">send</i>
-                    <span class="mdc-list-item__text">Sent Mail</span>
-                </a>
-                <a class="mdc-list-item" href="#">
-                    <span class="mdc-list-item__ripple"></span>
-                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">drafts</i>
-                    <span class="mdc-list-item__text">Drafts</span>
-                </a>
-
-                <hr class="mdc-list-divider">
-                <h6 class="mdc-list-group__subheader">Labels</h6>
-                <a class="mdc-list-item" href="#">
-                    <span class="mdc-list-item__ripple"></span>
-                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">bookmark</i>
-                    <span class="mdc-list-item__text">Family</span>
-                </a>
-                <a class="mdc-list-item" href="#">
-                    <span class="mdc-list-item__ripple"></span>
-                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">bookmark</i>
-                    <span class="mdc-list-item__text">Friends</span>
-                </a>
-                <a class="mdc-list-item" href="#">
-                    <span class="mdc-list-item__ripple"></span>
-                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">bookmark</i>
-                    <span class="mdc-list-item__text">Work</span>
-                </a>
-            </nav>
-        </div>
-    </aside>
+    <ul class="mdc-list" role="group" aria-label="List with checkbox items">
+        <li class="mdc-list-item" role="checkbox" aria-checked="false">
+            <span class="mdc-list-item__ripple"></span>
+            <span class="mdc-list-item__graphic">
+                <div class="mdc-checkbox">
+                    <input type="checkbox" class="mdc-checkbox__native-control" id="demo-list-checkbox-item-1" />
+                    <div class="mdc-checkbox__background">
+                        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                            <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                        </svg>
+                        <div class="mdc-checkbox__mixedmark"></div>
+                    </div>
+                </div>
+            </span>
+            <label class="mdc-list-item__text" for="demo-list-checkbox-item-1">Option 1</label>
+        </li>
+        <li class="mdc-list-item" role="checkbox" aria-checked="true" tabindex="0">
+            <span class="mdc-list-item__ripple"></span>
+            <span class="mdc-list-item__graphic">
+                <div class="mdc-checkbox">
+                    <input type="checkbox" class="mdc-checkbox__native-control" id="demo-list-checkbox-item-2" checked />
+                    <div class="mdc-checkbox__background">
+                        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                            <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                        </svg>
+                        <div class="mdc-checkbox__mixedmark"></div>
+                    </div>
+                </div>
+            </span>
+            <label class="mdc-list-item__text" for="demo-list-checkbox-item-2">Option 2</label>
+        </li>
+        <li class="mdc-list-item" role="checkbox" aria-checked="false">
+            <span class="mdc-list-item__ripple"></span>
+            <span class="mdc-list-item__graphic">
+                <div class="mdc-checkbox">
+                    <input type="checkbox" class="mdc-checkbox__native-control" id="demo-list-checkbox-item-3" />
+                    <div class="mdc-checkbox__background">
+                        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                            <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                        </svg>
+                        <div class="mdc-checkbox__mixedmark"></div>
+                    </div>
+                </div>
+            </span>
+            <label class="mdc-list-item__text" for="demo-list-checkbox-item-3">Option 3</label>
+        </li>
+    </ul>
 
 
 
