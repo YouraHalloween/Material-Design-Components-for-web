@@ -1,20 +1,5 @@
 import { MDCList } from '@material/list';
 
-/**
- * Вернуть индекс item по value
- * @param {string} value 
- */
-MDCList.prototype.getIndexByValue = function (value) {
-    var i = this.listElements.length;
-
-    while (i--) {
-        if (this.listElements[i].getAttribute('value') === value) {
-            return i;
-        }
-    }
-    return -1;
-}
-
 MDCList.prototype._getValueListByIndex = function (fromValues) {
 
     const getVal = (index) => {
@@ -66,17 +51,19 @@ Object.defineProperty(MDCList.prototype, "value", {
     },
     set: function (value) {
         if (this.value !== value) {
-            let itemIndex = -1;
-            if (typeof value !== 'undefined') {
-                if (typeof value === 'string') {
-                    itemIndex = this.getIndexByValue(value);
+            let itemIndex = [];
+            if (this._values && typeof value !== 'undefined') {
+                if (typeof value === 'object') {
+                    for (let i = 0; i < value.length; i++) {
+                        for (let j = 0; j < this._values.length; j++) {
+                            if (value[i] === this._values[j]) {
+                                itemIndex.push(j);
+                                break;
+                            }                            
+                        }                        
+                    }                    
                 } else {
-                    value.forEach((val) => {
-                        const currentItemIndex = this.getIndexByValue(val);
-                        if (currentItemIndex > -1) {
-                            itemIndex.push(currentItemIndex);
-                        }
-                    });
+                    itemIndex = this._values.indexOf(value);
                 }
             }
             this.selectedIndex = itemIndex;
@@ -104,7 +91,7 @@ Object.defineProperty(MDCList.prototype, "text", {
  * @param {bool} enabled
  */
 MDCList.prototype.setEnabledByValue = function (value, enabled = true) {
-    var itemIndex = this.getIndexByValue(value);
+    const itemIndex = this._values.indexOf(value);
     if (itemIndex > -1) {
         this.setEnabled(itemIndex, enabled);
     }

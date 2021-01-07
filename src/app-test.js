@@ -25,6 +25,7 @@ function init(classCss, classComponent, func) {
     cntr = [].map.call(document.querySelectorAll(classCss), function (el1) {
         let control = new classComponent(el1);
         control.values = [12,34,56];
+        control.value = [13, 12];
         console.log(control);
         console.log(control.value);
 
