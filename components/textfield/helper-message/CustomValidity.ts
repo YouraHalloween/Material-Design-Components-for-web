@@ -21,14 +21,13 @@ customError – возвращает true, если поле имеет набо
  * - при обращении к свойству this.helperMessage.customError;
  * CustomError использует ошибки браузера при валидации и выводит их
  */
+import { TUnString } from './../../_types';
 
 type TMessage<T> = {
     -readonly [K in keyof T]?: string;
 };
 
 type TMessageValidity = TMessage<ValidityState>;
-
-type TPropertyMessageValidity = TMessageValidity['badInput'];
 
 type TPropertyValidityState = keyof ValidityState;
 
@@ -81,12 +80,12 @@ class CustomValidity {
     /**
      * Вернуть либо кастомный месадж, либо из свойства validationMessage
      */
-    current(): TPropertyMessageValidity {
+    current(): TUnString {
         if (this.isValid()) {
             return '';
         }
 
-        let result: TPropertyMessageValidity;
+        let result: TUnString;
         if (this._message) {
             let prop = this._getPropertyValid();
             if (prop) {
