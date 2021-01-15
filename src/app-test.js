@@ -24,11 +24,15 @@ var cntr = [];
 function init(classCss, classComponent, func) {
     cntr = [].map.call(document.querySelectorAll(classCss), function (el1) {
         let control = new classComponent(el1);
-        control.values = [12,34,56];
-        control.value = [13, 12];
-        console.log(control);
-        console.log(control.value);
+        control.required = true;
+        control.helperMessage.error = 'error';
+        control.helperMessage.info = 'info';        
+        control.helperMessage.ex.tooLong = 'valueMissing';
 
+        control.trailingIcon.clear = true;
+        control.trailingIcon.replaceIcon = 'phone';        
+
+        console.log(control);
         return control;
     });
 }
@@ -36,21 +40,19 @@ function init(classCss, classComponent, func) {
 // init('.mdc-drawer', MDCDrawer);
 // init('.mdc-radio', MDCRadio);
 // init('.mdc-circular-progress', MDCCircularProgress);
-init('.mdc-list', MDCList);
+// init('.mdc-list', MDCList);
 // init('.mdc-icon-button', MDCIconButtonToggle);
 // init('.mdc-menu', MDCMenu);
 // init('.mdc-linear-progress', MDCLinearProgress);
 // init('.mdc-button', MDCButton_Syg);
 // init(".mdc-text-field", MDCTextField);
-// init(".mdc-text-field", MDCTextFieldSyg);
+init(".mdc-text-field", MDCTextFieldSyg);
 // init('.mdc-segmented-button', MDCSegmentedButton);
 // init('.mdc-snackbar', MDCSnackbar);
 
 $('#button').click(function () {
-    
-    console.log(cntr[0].value);
-    // cntr[0].list_.selectedIndex = 0;
-    // cntr[0].foundation.setSelectedIndex(1);
+    cntr[0].helperMessage.error = 'error';
+    cntr[0].helperMessage.info = 'info';
 })
 
 // $('#add-to-favorites-dop').click(function() {

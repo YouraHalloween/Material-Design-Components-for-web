@@ -6,7 +6,7 @@ const HelperMessage = (function () {
     /**
     * @param {MDCTextField} textField
     * @param {bool} initCustomError - создает события от браузера
-    */    
+    */
     function HelperMessage(textField, initCustomError = false) {
         this.textField = textField;
         this._info = this.textField.helperText_.root.innerText;
@@ -14,11 +14,11 @@ const HelperMessage = (function () {
         //Используется внутри компонента для сравнения     
         this._bufferCurrentMessage = undefined;
         this._customError = undefined;
-    
+
         if (initCustomError) {
             this.createCustomError()
         }
-                
+
         /**
          * Выводить сообщения при событии Blur
          * Если используется браузерная валидация textField.useNativeValidation = true
@@ -32,7 +32,7 @@ const HelperMessage = (function () {
     /**     
      * @param {String} text 
      */
-    HelperMessage.prototype._compare = function(text) {
+    HelperMessage.prototype._compare = function (text) {
         return text === this._bufferCurrentMessage;
     }
 
@@ -57,12 +57,6 @@ const HelperMessage = (function () {
         set: function (value) {
             if (this._error !== value) {
                 this._error = value;
-                /**
-                 * Если документ еще не готов, то не нужно выводить ошибку
-                 */
-                if (document.readyState == 'complete') {
-                    this.render();
-                }
             }
         },
         enumerable: true,
@@ -91,7 +85,10 @@ const HelperMessage = (function () {
     Object.defineProperty(HelperMessage.prototype, "message", {
         get: function () {
             var text = '';
-            if (!this.valid) {
+            /**
+            * Если документ еще не готов, то не нужно выводить ошибку
+            */
+            if (!this.valid && document.readyState == 'complete') {
                 if (this._error) {
                     text = this._error
                 }
@@ -112,7 +109,7 @@ const HelperMessage = (function () {
     Object.defineProperty(HelperMessage.prototype, "valid", {
         get: function () {
             return this.textField.valid;
-        },        
+        },
         enumerable: true,
         configurable: true
     })
@@ -126,7 +123,7 @@ const HelperMessage = (function () {
         get: function () {
             return this._validateOnBlur;
         },
-        set: function(value) {
+        set: function (value) {
             if (this._validateOnBlur != value) {
                 this._validateOnBlur = value;
                 if (value) {

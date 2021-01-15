@@ -1,4 +1,5 @@
 type TUnString = string | undefined;
+// type TEventCallBack = (event?: Event) => void;
 
 class Types {
     static defValue(val: any, defaultVal: any) {
@@ -6,4 +7,8 @@ class Types {
     }
 }
 
-export { TUnString, Types };
+export { 
+    TUnString,
+    // TEventCallBack, 
+    Types 
+};

@@ -1,39 +1,82 @@
-import { CustomValidity } from './CustomValidity';
-import { MDCTextField } from '@material/textfield';
+
+import { MDCTextFieldSyg } from './../component';
 import { TUnString, Types } from './../../_types';
+
+/*
+valid – возвращает true, если поле без ошибок и false в противном случае;
+valueMissing – возвращает true, если значение в поле отсутствует, но оно требуется;
+typeMismatch – возвращает true, если значение не соответствует синтаксису, к примеру, не корректно введен адрес электронной почты;
+patternMismatch – возвращает true, если значение не соответствует выражению в атрибуте pattern;
+tooLong – возвращает true, если значение превышает допустимую длину maxlength;.
+tooShort – возвращает true, если значение меньше допустимого минимума minlength;.
+rangeUnderFlow – возвращает true, если значение меньше допустимого min;
+rangeOverflow – возвращает true, если значение больше допустимого max;
+stepMismatch – возвращает true, если значение введено с недопустимым шагом step;
+badInput – возвращает true, если запись не может быть преобразована в значение;
+customError – возвращает true, если поле имеет набор ошибок пользователя.
+*/
+
+/**
+ * this._message имеет такую структуру
+ * {
+ * customError: '',
+ * badInput: '',
+ * stepMismatch: '',
+ * rangeOverflow: '',
+ * rangeUnderFlow: '',
+ * tooLong: '',
+ * tooShort: '',
+ * patternMismatch: '',
+ * typeMismatch: '',
+ * valueMissing: ''
+ * };
+ */
+
+type TMessage<T> = {
+    -readonly [K in keyof T]?: string;
+};
+
+type TMessageValidity = TMessage<ValidityState>;
+
+type TPropertyValidityState = keyof ValidityState;
 
 class HelperMessage {
     private _info?: string;
     private _error?: string;
-    private _customError?: CustomValidity;
+    private _ex: TMessageValidity = {};
     private _bufferCurrentMessage?: string;
     private _handleEventBlur: EventListener;
     private _validateOnBlur: boolean = false;
 
-    public textField: MDCTextField;
+    public textField: MDCTextFieldSyg;
+    public useNativeMessage: boolean = false;
 
     /**
-     * @param {MDCTextField} textField
-     * @param {boolean} initCustomError - создает события от браузера
+     * @param {MDCTextFieldSyg} textField
      */
-    constructor(textField: MDCTextField, initCustomError: boolean = false) {
+    constructor(textField: MDCTextFieldSyg) {
         this.textField = textField;
-        this._info = this.textField.helperText.root.innerText;
-
-        if (initCustomError) {
-            this.createCustomError();
-        }
+        this._info = (this.textField.helperText.root as HTMLElement).innerText;
 
         /**
          * Выводить сообщения при событии Blur
-         * Если используется браузерная валидация textField.useNativeValidation = true
-         * Если textField.useNativeValidation = false, компонентом управляется в ручную с использованием
-         * valid = true | false, HelperMessage.error, HelperMessage.info
          */
         this._handleEventBlur = () => {
             this.render();
         };
-        this.validateOnBlur = this.textField.useNativeValidation;
+        this.validateOnBlur = true;
+    }
+
+    private _getPropertyValid(): TPropertyValidityState | boolean {
+        let item: TPropertyValidityState;
+
+        for (item in this.textField.input.validity) {
+            if (item !== 'valid' && this.textField.input.validity[item]) {
+                return item;
+            }
+        }
+
+        return false;
     }
 
     get info(): TUnString {
@@ -52,21 +95,17 @@ class HelperMessage {
     set error(value: TUnString) {
         if (this._error !== value) {
             this._error = value;
-            /**
-             * Если документ еще не готов, то не нужно выводить ошибку
-             */
-            if (document.readyState == <DocumentReadyState>'complete') {
-                this.render();
-            }
+            this.render();
         }
     }
 
-    get customError(): CustomValidity {
-        return this.createCustomError();
+    get ex(): TMessageValidity {
+        return this._ex;
     }
-    set customError(value: CustomValidity) {
-        if (this._customError != value) {
-            this._customError = value;
+    set ex(value: TMessageValidity) {
+        if (this._ex !== value) {
+            this._ex = value;
+            this.render();
         }
     }
 
@@ -78,11 +117,14 @@ class HelperMessage {
      */
     get message(): TUnString {
         let text: TUnString = '';
-        if (!this.valid) {
+        /**
+         * Если документ еще не готов, то не нужно выводить ошибку
+         */
+        if (!this.valid && document.readyState === 'complete') {
             if (this._error) {
                 text = this._error;
-            } else if (this._customError) {
-                text = this._customError.current();
+            } else if (this._ex && this.useNativeMessage) {
+                text = this.exMessage();
             }
         }
         if ((this.valid || text === '') && this._info) {
@@ -91,13 +133,33 @@ class HelperMessage {
         return text;
     }
 
+    /**
+     * Вернуть либо расширенный месадж, либо из свойства validationMessage
+     */
+    exMessage(): TUnString {
+        if (this.valid) {
+            return '';
+        }
+
+        let result: TUnString;
+        if (this._ex) {
+            const prop = this._getPropertyValid();
+            if (prop) {
+                result = this._ex[prop as TPropertyValidityState];
+            }
+        }
+        if (!result) {
+            result = this.textField.input.validationMessage;
+        }
+        return result;
+    }
+
     get valid(): boolean {
         return this.textField.valid;
     }
     /**
      * Следим за изменением кпомпонента
      * Создается в конструкторе компонента, если изначально заданы условия валидации
-     * Если не заданы, но необходимо отслеживать изменения, то необходимо вызвать принудительно процедуру
      */
     get validateOnBlur() {
         return this._validateOnBlur;
@@ -117,13 +179,6 @@ class HelperMessage {
                 );
             }
         }
-    }
-
-    createCustomError() {
-        if (!this._customError) {
-            this._customError = new CustomValidity(this.textField.input);
-        }
-        return this._customError;
     }
 
     /**
