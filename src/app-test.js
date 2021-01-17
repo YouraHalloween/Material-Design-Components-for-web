@@ -14,7 +14,7 @@ import { MDCTextFieldSyg } from "../components/textfield/component";
 // import { MDCRadio } from '@material/radio';
 // import { MDCFormField } from '@material/form-field';
 // import { MDCIconButtonToggle} from '@material/icon-button';
-import { MDCList } from './../components/list/component.js';
+import { MDCList } from './../components/list/component';
 // import { MDCDrawer } from '@material/drawer';
 
 
@@ -24,13 +24,15 @@ var cntr = [];
 function init(classCss, classComponent, func) {
     cntr = [].map.call(document.querySelectorAll(classCss), function (el1) {
         let control = new classComponent(el1);
-        control.required = true;
-        control.helperMessage.error = 'error';
-        control.helperMessage.info = 'info';        
-        control.helperMessage.ex.tooLong = 'valueMissing';
+        control.keys = [12,54,78];
+        // control.key = 45;
+        // control.required = true;
+        // control.helperMessage.error = 'error';
+        // control.helperMessage.info = 'info';        
+        // control.helperMessage.ex.tooLong = 'valueMissing';
 
-        control.trailingIcon.clear = true;
-        control.trailingIcon.replaceIcon = 'phone';        
+        // control.trailingIcon.clear = true;
+        // control.trailingIcon.replaceIcon = 'phone';        
 
         console.log(control);
         return control;
@@ -40,19 +42,22 @@ function init(classCss, classComponent, func) {
 // init('.mdc-drawer', MDCDrawer);
 // init('.mdc-radio', MDCRadio);
 // init('.mdc-circular-progress', MDCCircularProgress);
-// init('.mdc-list', MDCList);
+init('.mdc-list', MDCList);
 // init('.mdc-icon-button', MDCIconButtonToggle);
 // init('.mdc-menu', MDCMenu);
 // init('.mdc-linear-progress', MDCLinearProgress);
 // init('.mdc-button', MDCButton_Syg);
 // init(".mdc-text-field", MDCTextField);
-init(".mdc-text-field", MDCTextFieldSyg);
+// init(".mdc-text-field", MDCTextFieldSyg);
 // init('.mdc-segmented-button', MDCSegmentedButton);
 // init('.mdc-snackbar', MDCSnackbar);
 
 $('#button').click(function () {
-    cntr[0].helperMessage.error = 'error';
-    cntr[0].helperMessage.info = 'info';
+    console.log(cntr[0].key);
+    // cntr[0].key = 12;
+    // cntr[0].focusedItemIndex = 0;
+    // setTabindexAtIndex
+    // focusItemAtIndex
 })
 
 // $('#add-to-favorites-dop').click(function() {

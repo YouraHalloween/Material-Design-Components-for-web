@@ -1,5 +1,5 @@
 
-import { TUnString } from './../_types';
+import { TStringUn } from './../_types';
 import { MDCTextField } from './crutch';
 import { HelperMessage } from './helper-message/component';
 // import type { MDCTextFieldIcon } from './icon/component';
@@ -14,7 +14,7 @@ import { MDCTextFieldHelperTextFactory } from '@material/textfield/helper-text/c
 import { MDCTextFieldIconFactory } from '@material/textfield/icon/component';
 
 class MDCTextFieldSyg extends MDCTextField {
-    private _key?: TUnString;
+    private _key?: TStringUn;
     private _bufDeactivateFocus: any;
     public helperMessage?: HelperMessage;
 
@@ -51,11 +51,11 @@ class MDCTextFieldSyg extends MDCTextField {
     /**
      * get value component
      */
-    get key(): TUnString {
+    get key(): TStringUn {
         return this._key;
     }
 
-    set key(value: TUnString) {
+    set key(value: TStringUn) {
         this._key = value;
     }
 

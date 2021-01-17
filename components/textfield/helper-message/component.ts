@@ -1,6 +1,6 @@
 
 import { MDCTextFieldSyg } from './../component';
-import { TUnString, Types } from './../../_types';
+import { TStringUn, Types } from './../../_types';
 
 /*
 valid – возвращает true, если поле без ошибок и false в противном случае;
@@ -79,20 +79,20 @@ class HelperMessage {
         return false;
     }
 
-    get info(): TUnString {
+    get info(): TStringUn {
         return this._info;
     }
-    set info(value: TUnString) {
+    set info(value: TStringUn) {
         if (this._info !== value) {
             this._info = value;
             this.render();
         }
     }
 
-    get error(): TUnString {
+    get error(): TStringUn {
         return this._error;
     }
-    set error(value: TUnString) {
+    set error(value: TStringUn) {
         if (this._error !== value) {
             this._error = value;
             this.render();
@@ -115,8 +115,8 @@ class HelperMessage {
      * Если сообщение об ошибке не найдено, выводим какой нибудь Info
      * Если не найдено выводим пусто
      */
-    get message(): TUnString {
-        let text: TUnString = '';
+    get message(): TStringUn {
+        let text: TStringUn = '';
         /**
          * Если документ еще не готов, то не нужно выводить ошибку
          */
@@ -136,12 +136,12 @@ class HelperMessage {
     /**
      * Вернуть либо расширенный месадж, либо из свойства validationMessage
      */
-    exMessage(): TUnString {
+    exMessage(): TStringUn {
         if (this.valid) {
             return '';
         }
 
-        let result: TUnString;
+        let result: TStringUn;
         if (this._ex) {
             const prop = this._getPropertyValid();
             if (prop) {
@@ -184,7 +184,7 @@ class HelperMessage {
     /**
      * @param {String} text
      */
-    render(text?: TUnString): void {
+    render(text?: TStringUn): void {
         if (!text) {
             text = this.message;
         }

@@ -1,108 +1,121 @@
-import { MDCList } from '@material/list';
+import { MDCList } from '@material/list/component';
 import { MDCListIndex } from '@material/list';
+import { TStringUnAr } from './../_types';
 
-class MDCListSyg extends MDCList {
-    private _values: string[] = [];
-
-    constructor(root: Element, ...args: any[]) {
-        super(root, ...args);
+declare module '@material/list/component' {
+    interface MDCList {
+        // private
+        _getKeyList: <Keys>(fromKeys: Array<Keys>) => TStringUnAr;
+        // public
+        keys: string[];
+        key: TStringUnAr;        
+        text: TStringUnAr;
+        focusedItemIndex: number;
+        setEnabledByValue: (key: string, enabled: boolean) => void;
+        setIndex: (index: number) => void;
     }
+}
 
-    private _getValueList<ArrayValues>(
-        fromValues: ArrayValues[]
-    ): string | string[] | undefined {
-        const getVal = (index: number): string => {
-            if (fromValues[index] instanceof Element) {
-                return (fromValues[index] as HTMLElement).innerText;
+MDCList.prototype._getKeyList = function <Keys>(
+    fromKeys: Array<Keys>
+): TStringUnAr {
+    const getVal = (index: number): string => {
+        if (fromKeys[index] instanceof Element) {
+            return ((fromKeys[index] as unknown) as HTMLElement).innerText;
+        }
+        return (fromKeys[index] as unknown) as string;
+    };
+
+    const selectedIndex: MDCListIndex =
+        this.selectedIndex != -1 ? this.selectedIndex : this.focusedItemIndex;
+
+    if (selectedIndex != -1) {
+        if (typeof selectedIndex === 'number') {
+            if (selectedIndex >= 0 && fromKeys.length > selectedIndex) {
+                return getVal(selectedIndex as number);
             }
-            return fromValues[index];
-        };
-        
-        const selectedIndex: MDCListIndex = this.selectedIndex
-            ? this.selectedIndex
-            : this.foundation.focusedItemIndex;
-
-        if (selectedIndex > -1 || selectedIndex instanceof numbers[]) {
-            if (typeof selectedIndex === 'number') {
-                if (selectedIndex >= 0 && fromValues.length > selectedIndex) {
-                    return getVal(selectedIndex);
+            return undefined;
+        } else {
+            const result: string[] = [];
+            selectedIndex.forEach((index) => {
+                if (fromKeys.length > index) {
+                    result.push(getVal(index));
                 }
-                return undefined;
-            } else {
-                const result: string[] = [];
-                selectedIndex.forEach((index) => {
-                    if (fromValues.length > index) {
-                        result.push(getVal(index));
-                    }
-                });
-                return result;
-            }
+            });
+            return result;
         }
-        return undefined;
     }
+    return undefined;
+};
 
-    /**
-     * Вернуть индекс item по value
-     * @param {string} value
-     */
-    getIndexByValue(value: string): number {
-        let i: number = this.listElements.length;
-        while (i--) {
-            if (this._values[i] === value) {
-                return i;
-            }
-        }
-        return -1;
-    }
+Object.defineProperty(MDCList.prototype, 'focusedItemIndex', {
+    get(): number {
+        return this.foundation.focusedItemIndex;
+    },
+    enumerable: true,
+    configurable: true,
+});
 
-    /**
-     * Свойство value
-     * get - возвращает текущий value
-     * set - делает item - selected
-     */
-    get value(): string | string[] | undefined {
-        return this._getValueList(this._values);
-    }
-
-    set value(value: string | string[] | undefined) {
-        if (this.value !== value) {
-            let itemIndex: MDCListIndex = -1;
-            if (typeof value !== 'undefined') {
-                if (typeof value === 'string') {
-                    itemIndex = this.getIndexByValue(value);
-                } else {
-                    value.forEach((val) => {
-                        const currentItemIndex: number = this.getIndexByValue(
-                            val
-                        );
-                        if (currentItemIndex > -1) {
-                            (itemIndex as number[]).push(currentItemIndex);
+/**
+ * Свойство key
+ * get - возвращает текущий key
+ * set - делает item - selected
+ */
+Object.defineProperty(MDCList.prototype, 'key', {
+    get(): TStringUnAr {
+        return this._getKeyList(this.keys);
+    },
+    set(value: TStringUnAr) {
+        if (this.key !== value) {
+            let itemIndex: number[] = [];
+            if (this.keys && typeof value !== 'undefined') {
+                if (Array.isArray(value)) {
+                    for (let i = 0; i < value.length; i++) {
+                        for (let j = 0; j < this.keys.length; j++) {
+                            if (value[i] === this.keys[j]) {
+                                itemIndex.push(j);
+                                break;
+                            }
                         }
-                    });
+                    }
+                } else {
+                    const index: number = this.keys.indexOf(value);
+                    if (index > -1) {
+                        itemIndex = [index];
+                    }
                 }
             }
             this.selectedIndex = itemIndex;
         }
-    }
+    },
+    enumerable: true,
+    configurable: true,
+});
 
-    /**
-     * Property text
-     * get - возвращает текст выделенного меню
-     */
-    get text(): string | string[] | undefined {
-        return this._getValueList(this.listElements);
-    }
+/**
+ * Property text
+ * get - возвращает текст выделенного меню
+ */
+Object.defineProperty(MDCList.prototype, 'text', {
+    get(): TStringUnAr {        
+        return this._getKeyList(this.listElements);
+    },
+    enumerable: true,
+    configurable: true,
+});
 
-    /**
-     * @param {string} value
-     * @param {bool} enabled
-     */
-    setEnabledByValue(value: string, enabled: boolean = true) {
-        const itemIndex: number = this.getIndexByValue(value);
-        if (itemIndex > -1) {
-            this.setEnabled(itemIndex, enabled);
-        }
+/**
+ * @param {string} key
+ * @param {bool} enabled
+ */
+MDCList.prototype.setEnabledByValue = function (
+    key: string,
+    enabled: boolean = true
+): void {
+    const itemIndex: number = this.keys.indexOf(key);
+    if (itemIndex > -1) {
+        this.setEnabled(itemIndex, enabled);
     }
-}
+};
 
-export { MDCListSyg };
+export { MDCList };
