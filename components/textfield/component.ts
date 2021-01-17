@@ -98,10 +98,10 @@ class MDCTextFieldSyg extends MDCTextField {
         );
 
         if (this.leadingIcon) {
-            this.leadingIcon.owner = this;
+            this.leadingIcon.parent = this;
         }
         if (this.trailingIcon) {
-            this.trailingIcon.owner = this;
+            this.trailingIcon.parent = this;
         }
     }
 }
@@ -113,7 +113,7 @@ type TSetEvent = (fn: EventListenerOrEventListenerObject) => void;
 declare module '@material/textfield/icon/component' {
     interface MDCTextFieldIcon {
         // private
-        _owner: MDCTextFieldSyg;
+        _parent: MDCTextFieldSyg;
         _clear: boolean;
         _replaceIcon: string;
         _enabledRenderBlur: boolean;
@@ -128,7 +128,7 @@ declare module '@material/textfield/icon/component' {
         // public
         clear: boolean;
         enabledRenderBlur: boolean;
-        owner: MDCTextFieldSyg;
+        parent: MDCTextFieldSyg;
         click: TSetEvent;
         mousedown: TSetEvent;
         mouseup: TSetEvent;
@@ -154,11 +154,11 @@ MDCTextFieldIcon.prototype.initialize = function (..._args: unknown[]) {
  * И при этом был доступен MDCTextFieldIcon.this
  */
 MDCTextFieldIcon.prototype._disabledRenderDeactivateFocus = function () {
-    this.owner.disabledRenderDeactivateFocus();
+    this.parent.disabledRenderDeactivateFocus();
 };
 
 MDCTextFieldIcon.prototype._enabledRenderDeactivateFocus = function () {
-    this.owner.enabledRenderDeactivateFocus();
+    this.parent.enabledRenderDeactivateFocus();
 };
 
 MDCTextFieldIcon.prototype._addEvent = function (
@@ -187,12 +187,12 @@ MDCTextFieldIcon.prototype.mouseup = function (
     this._addEvent('mouseup', fn);
 };
 
-Object.defineProperty(MDCTextFieldIcon.prototype, 'owner', {
+Object.defineProperty(MDCTextFieldIcon.prototype, 'parent', {
     get(): MDCTextFieldSyg {
-        return this._owner;
+        return this._parent;
     },
     set(value: MDCTextFieldSyg) {
-        this._owner = value;
+        this._parent = value;
     },
     enumerable: true,
     configurable: true,
@@ -211,11 +211,11 @@ Object.defineProperty(MDCTextFieldIcon.prototype, 'clear', {
     set(value: boolean) {
         if (this._clear === false && value === true) {
             this.click(() => {
-                this.owner.value = '';
-                if (this.owner.helperMessage) {
-                    this.owner.helperMessage.render();
+                this.parent.value = '';
+                if (this.parent.helperMessage) {
+                    this.parent.helperMessage.render();
                 }
-                this.owner.focus();
+                this.parent.focus();
             });
         }
         this._clear = value;

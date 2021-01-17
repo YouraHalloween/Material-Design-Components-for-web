@@ -1,8 +1,13 @@
-interface ISpinenrSize {
-    [index: string]: string;
+interface ISpinnerSize {
+    extra_small: string;
+    small: string;
+    medium: string;
+    large: string;
 }
+
+type TSpinnerSizeProperty = keyof ISpinnerSize;
 class TSpinnerSyg {
-    private _size: ISpinenrSize = {
+    private _size: ISpinnerSize = {
         extra_small: 'mdc-spinner-extra-small',
         small: 'mdc-spinner-small',
         medium: 'mdc-spinner-medium',
@@ -28,19 +33,21 @@ class TSpinnerSyg {
     /**
      * Size spinner
      */
-    get size(): string {
+    get size(): TSpinnerSizeProperty {
+        let key: TSpinnerSizeProperty = 'medium';
         // tslint:disable-next-line: forin
-        for (const key in this._size) {
+        for (key in this._size) {
             const cls: string = this._size[key];
             if (this.root.classList.contains(cls)) {
                 return key;
             }
         }
-        return '';
+        return key;
     }
-    set size(value: string) {
+    set size(value: TSpinnerSizeProperty) {
+        let key: TSpinnerSizeProperty;
         // tslint:disable-next-line: forin
-        for (const key in this._size) {
+        for (key in this._size) {
             this.root.classList.remove(this._size[key]);
         }
         this.root.classList.add(this._size[value]);

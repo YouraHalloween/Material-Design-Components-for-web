@@ -18,7 +18,7 @@ class TButtonSyg {
         this.ripple = new MDCRipple(root);
         this.root = root;
         const sp: HTMLElement | null = root.querySelector('.mdc-spinner');
-        if (sp != null) {
+        if (sp !== null) {
             this.spinner = new TSpinnerSyg(sp);
             this.spinner.delayHidden = 0;
             this.root.addEventListener('click', () => {

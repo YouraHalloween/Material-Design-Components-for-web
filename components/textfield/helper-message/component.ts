@@ -48,15 +48,15 @@ class HelperMessage {
     private _handleEventBlur: EventListener;
     private _validateOnBlur: boolean = false;
 
-    public textField: MDCTextFieldSyg;
+    public parent: MDCTextFieldSyg;
     public useNativeMessage: boolean = false;
 
     /**
-     * @param {MDCTextFieldSyg} textField
+     * @param {MDCTextFieldSyg} parent
      */
-    constructor(textField: MDCTextFieldSyg) {
-        this.textField = textField;
-        this._info = (this.textField.helperText.root as HTMLElement).innerText;
+    constructor(parent: MDCTextFieldSyg) {
+        this.parent = parent;
+        this._info = (this.parent.helperText.root as HTMLElement).innerText;
 
         /**
          * Выводить сообщения при событии Blur
@@ -70,8 +70,8 @@ class HelperMessage {
     private _getPropertyValid(): TPropertyValidityState | boolean {
         let item: TPropertyValidityState;
 
-        for (item in this.textField.input.validity) {
-            if (item !== 'valid' && this.textField.input.validity[item]) {
+        for (item in this.parent.input.validity) {
+            if (item !== 'valid' && this.parent.input.validity[item]) {
                 return item;
             }
         }
@@ -149,13 +149,13 @@ class HelperMessage {
             }
         }
         if (!result) {
-            result = this.textField.input.validationMessage;
+            result = this.parent.input.validationMessage;
         }
         return result;
     }
 
     get valid(): boolean {
-        return this.textField.valid;
+        return this.parent.valid;
     }
     /**
      * Следим за изменением кпомпонента
@@ -168,12 +168,12 @@ class HelperMessage {
         if (this._validateOnBlur !== value) {
             this._validateOnBlur = value;
             if (value) {
-                this.textField.input.addEventListener(
+                this.parent.input.addEventListener(
                     'blur',
                     this._handleEventBlur
                 );
             } else {
-                this.textField.input.removeEventListener(
+                this.parent.input.removeEventListener(
                     'blur',
                     this._handleEventBlur
                 );
@@ -190,7 +190,7 @@ class HelperMessage {
         }
         if (text !== this._bufferCurrentMessage) {
             this._bufferCurrentMessage = text;
-            this.textField.helperTextContent = Types.defValue(text, '');
+            this.parent.helperTextContent = Types.defValue(text, '');
         }
     }
 }
