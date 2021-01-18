@@ -18,8 +18,13 @@ import { MDCList } from './../components/list/component';
 // import { MDCDrawer } from '@material/drawer';
 import { CollectionControl } from './../components/collection-control/component';
 
-// let cmp = new CollectionControl();
-// let cmp1 = cmp.add('textfield-sample', 'textField', {'trailingIcon.parent.trailingIcon.replaceIcon': 'phone'});
+let cmp = new CollectionControl();
+
+// let cmp1 = cmp.add('locale-menu', 'menu', { "keys": ["en-EN"] });
+// // let cmp1 = cmp.add('textfield-sample', 'textField', {'trailingIcon.parent.trailingIcon.replaceIcon': 'phone'});
+// cmp1.root.addEventListener('MDCMenu:selected', (event) => {
+//     console.log(cmp1.key)
+// });
 // console.log(cmp1);
 
 var cntr = [];
@@ -59,7 +64,8 @@ function init(classCss, classComponent, func) {
 // init('.mdc-snackbar', MDCSnackbar);
 
 $('#button').click(function () {
-    console.log(cntr[0].key);
+    // console.log(cntr[0].key);
+    cmp1.open = true;
     // cntr[0].key = 12;
     // cntr[0].focusedItemIndex = 0;
     // setTabindexAtIndex

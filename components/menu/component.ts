@@ -6,10 +6,19 @@ declare module '@material/menu/component' {
     interface MDCMenu {
         list: MDCList;
         key: TStringUnAr;
+        keys: string[],
         text: TStringUnAr;
         setEnabledByValue: (key: string, enabled: boolean) => void;
     }
 }
+
+Object.defineProperty(MDCMenu.prototype, 'keys', {
+    set(value: string[]) {
+        return (this.list.keys = value);
+    },
+    enumerable: true,
+    configurable: true,
+});
 
 /**
  * Public property List

@@ -5,6 +5,7 @@ declare module '@material/menu/component' {
     interface MDCMenu {
         list: MDCList;
         key: TStringUnAr;
+        keys: string[];
         text: TStringUnAr;
         setEnabledByValue: (key: string, enabled: boolean) => void;
     }

@@ -5,10 +5,11 @@ import { TStringUnAr } from './../_types';
 declare module '@material/list/component' {
     interface MDCList {
         // private
+        _keys: string[];
         _getKeyList: <Keys>(fromKeys: Array<Keys>) => TStringUnAr;
         // public
         keys: string[];
-        key: TStringUnAr;        
+        key: TStringUnAr;
         text: TStringUnAr;
         focusedItemIndex: number;
         setEnabledByValue: (key: string, enabled: boolean) => void;
@@ -56,6 +57,14 @@ Object.defineProperty(MDCList.prototype, 'focusedItemIndex', {
     configurable: true,
 });
 
+Object.defineProperty(MDCList.prototype, 'keys', {
+    set(value: string[]) {
+        return (this._keys = value);
+    },
+    enumerable: true,
+    configurable: true,
+});
+
 /**
  * Свойство key
  * get - возвращает текущий key
@@ -63,23 +72,23 @@ Object.defineProperty(MDCList.prototype, 'focusedItemIndex', {
  */
 Object.defineProperty(MDCList.prototype, 'key', {
     get(): TStringUnAr {
-        return this._getKeyList(this.keys);
+        return this._getKeyList(this._keys);
     },
     set(value: TStringUnAr) {
         if (this.key !== value) {
             let itemIndex: number[] = [];
-            if (this.keys && typeof value !== 'undefined') {
+            if (this._keys && typeof value !== 'undefined') {
                 if (Array.isArray(value)) {
                     for (let i = 0; i < value.length; i++) {
-                        for (let j = 0; j < this.keys.length; j++) {
-                            if (value[i] === this.keys[j]) {
+                        for (let j = 0; j < this._keys.length; j++) {
+                            if (value[i] === this._keys[j]) {
                                 itemIndex.push(j);
                                 break;
                             }
                         }
                     }
                 } else {
-                    const index: number = this.keys.indexOf(value);
+                    const index: number = this._keys.indexOf(value);
                     if (index > -1) {
                         itemIndex = [index];
                     }
@@ -112,7 +121,7 @@ MDCList.prototype.setEnabledByValue = function (
     key: string,
     enabled: boolean = true
 ): void {
-    const itemIndex: number = this.keys.indexOf(key);
+    const itemIndex: number = this._keys.indexOf(key);
     if (itemIndex > -1) {
         this.setEnabled(itemIndex, enabled);
     }
