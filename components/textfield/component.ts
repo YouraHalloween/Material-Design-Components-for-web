@@ -108,7 +108,7 @@ class MDCTextFieldSyg extends MDCTextField {
 
 import { MDCTextFieldIcon } from '@material/textfield/icon/component';
 
-type TSetEvent = (fn: EventListenerOrEventListenerObject) => void;
+type TSetEvent = (fn: EventListener, context?: any) => void;
 
 declare module '@material/textfield/icon/component' {
     interface MDCTextFieldIcon {
@@ -123,7 +123,8 @@ declare module '@material/textfield/icon/component' {
         _handleEnabledRenderDeactivateFocus: EventListener;
         _addEvent: (
             nameEvent: string,
-            fn: EventListenerOrEventListenerObject
+            fn: EventListener,
+            context?: any
         ) => void;
         // public
         clear: boolean;
@@ -163,28 +164,35 @@ MDCTextFieldIcon.prototype._enabledRenderDeactivateFocus = function () {
 
 MDCTextFieldIcon.prototype._addEvent = function (
     nameEvent: string,
-    fn: EventListenerOrEventListenerObject
+    fn: EventListener,
+    context?: any
 ): void {
-    this.root.addEventListener(nameEvent, fn);
+    if (context) {
+        fn = fn.bind(context);
+    }
+    this.root.addEventListener(nameEvent, fn.bind(this));
     this.enabledRenderBlur = true;
 };
 
 MDCTextFieldIcon.prototype.click = function (
-    fn: EventListenerOrEventListenerObject
-) {
-    this._addEvent('click', fn);
+    fn: EventListener,
+    context?: any
+) {    
+    this._addEvent('click', fn, context);
 };
 
 MDCTextFieldIcon.prototype.mousedown = function (
-    fn: EventListenerOrEventListenerObject
+    fn: EventListener,
+    context?: any
 ) {
-    this._addEvent('mousedown', fn);
+    this._addEvent('mousedown', fn, context);
 };
 
 MDCTextFieldIcon.prototype.mouseup = function (
-    fn: EventListenerOrEventListenerObject
+    fn: EventListener,
+    context?: any
 ) {
-    this._addEvent('mouseup', fn);
+    this._addEvent('mouseup', fn, context);
 };
 
 Object.defineProperty(MDCTextFieldIcon.prototype, 'parent', {

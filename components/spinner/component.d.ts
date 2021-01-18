@@ -1,3 +1,10 @@
+interface ISpinnerSize {
+    extra_small: string;
+    small: string;
+    medium: string;
+    large: string;
+}
+declare type TSpinnerSizeProperty = keyof ISpinnerSize;
 declare class TSpinnerSyg {
     private _size;
     private _delayVisible;
@@ -12,8 +19,8 @@ declare class TSpinnerSyg {
     /**
      * Size spinner
      */
-    get size(): string;
-    set size(value: string);
+    get size(): TSpinnerSizeProperty;
+    set size(value: TSpinnerSizeProperty);
     /**
      * delay after Display: Block, for animation
      */

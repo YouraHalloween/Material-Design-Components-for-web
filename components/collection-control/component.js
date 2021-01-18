@@ -62,7 +62,21 @@ const CollectionControl = (function () {
 
         if (property) {
             for (const key in property) {
-                cntr[key] = property[key];
+                if (key.indexOf('.') > -1) {
+                    // Если для доступа к свойству нужно пройти цепочку объектов
+                    // Например textField.trailingIcon.replaceIcon = 'clear'
+                    const props = key.split('.');
+                    let pr = cntr[props[0]];
+                    for (let index = 1; index < props.length; index++) {
+                        if (index === (props.length - 1)) {                            
+                            pr[props[index]] = property[key]; 
+                        } else {
+                            pr = pr[props[index]];
+                        }                        
+                    }                    
+                } else {
+                    cntr[key] = property[key];
+                }                                
             }
         }
 
