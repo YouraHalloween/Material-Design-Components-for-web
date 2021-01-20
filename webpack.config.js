@@ -2,7 +2,7 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const Env = (function () {
-    const REMOTE_PATH = '../../dispute/backend/assets/external/material-components/';
+    const REMOTE_PATH = '../../yii2-material-design-components/src/assets/';
     const CONTENT_HASH = '[contenthash]';
     // const NAME = '[name]';
     const NAME = 'material-components-web';
@@ -28,11 +28,10 @@ const Env = (function () {
      * @param {string} ext - расширение
      */
     Env.prototype.getFileName = function (ext) {
-        let hashName =
+        const hashName =
             this.useHashName && this.isProd() ? `.${CONTENT_HASH}` : '';
-        let fileName = this.isProd()
-            ? `${NAME}.min${hashName}.${ext}`
-            : `${NAME}${hashName}.${ext}`;
+        const min = this.remote ? '.min' : ''; 
+        const fileName = `${NAME}${min}${hashName}.${ext}`;
         return this.remote ? REMOTE_PATH + fileName : fileName;
     };
 
