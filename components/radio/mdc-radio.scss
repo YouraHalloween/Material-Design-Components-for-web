@@ -6,4 +6,8 @@
             color: theme-color.prop-value(text-disabled-on-background);
         }
     }
+    + label {
+        line-height: 0;
+        cursor: pointer;
+    }
 }

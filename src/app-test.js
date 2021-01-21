@@ -16,6 +16,7 @@ import { MDCTextFieldSyg } from "../components/textfield/component";
 // import { MDCIconButtonToggle} from '@material/icon-button';
 import { MDCList } from './../components/list/component';
 // import { MDCDrawer } from '@material/drawer';
+import { MDCDataTable } from '@material/data-table';
 import { CollectionControl } from './../components/collection-control/component';
 
 let cmp = new CollectionControl();
@@ -33,9 +34,9 @@ function init(classCss, classComponent, func) {
     cntr = [].map.call(document.querySelectorAll(classCss), function (el1) {
         let control = new classComponent(el1);
         // control.keys = [12,54,78];
-        control.trailingIcon.click(function() {
-            console.log(this);
-        }, control.trailingIcon);
+        // control.trailingIcon.click(function() {
+        //     console.log(this);
+        // }, control.trailingIcon);
         // control.key = 45;
         // control.required = true;
         // control.helperMessage.error = 'error';
@@ -45,15 +46,16 @@ function init(classCss, classComponent, func) {
         // control.trailingIcon.clear = true;
         // control.trailingIcon.replaceIcon = 'phone';        
 
-        console.log(control);
+        console.log(control);        
         return control;
     });
 }
 
+// init('.mdc-data-table', MDCDataTable);
 // init('.mdc-drawer', MDCDrawer);
 // init('.mdc-radio', MDCRadio);
 // init('.mdc-circular-progress', MDCCircularProgress);
-// init('.mdc-list', MDCList);
+init('.mdc-list', MDCList);
 // init('.mdc-icon-button', MDCIconButtonToggle);
 // init('.mdc-menu', MDCMenu);
 // init('.mdc-linear-progress', MDCLinearProgress);
@@ -64,8 +66,9 @@ function init(classCss, classComponent, func) {
 // init('.mdc-snackbar', MDCSnackbar);
 
 $('#button').click(function () {
-    // console.log(cntr[0].key);
-    cmp1.open = true;
+    console.log(cntr[1].getSelectedRowIds());
+    cntr[3].showProgress();
+    // cmp1.open = true;
     // cntr[0].key = 12;
     // cntr[0].focusedItemIndex = 0;
     // setTabindexAtIndex

@@ -4,6 +4,7 @@
 
 @use '@material/button/mdc-button';
 @use '@material/checkbox/mdc-checkbox';
+@use "@material/data-table/mdc-data-table";
 @use '@material/elevation/mdc-elevation';
 @use '@material/fab/mdc-fab';
 @use '@material/floating-label/mdc-floating-label';
@@ -18,6 +19,7 @@
 @use "@material/menu/mdc-menu";
 @use "@material/radio/mdc-radio";
 @use '@material/ripple/mdc-ripple';
+@use '@material/select/mdc-select';
 @use '@material/snackbar/mdc-snackbar';
 @use '@material/textfield/mdc-text-field';
 @use '@material/theme/mdc-theme';

@@ -100,12 +100,3 @@ $text-field-padding: 14px;
 .mdc-text-field__affix--suffix {
     padding-left: 4px;
 }
-
-/* CHECKBOX */
-
-.mdc-checkbox {
-    + label {
-        line-height: 0;
-        cursor: pointer;
-    }
-}
