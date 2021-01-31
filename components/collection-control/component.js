@@ -11,7 +11,8 @@ import { MDCMenu } from './../menu/component';
 import { MDCRadio } from '@material/radio';
 import { TSpinnerSyg } from './../spinner/component';
 import { TLeftAppBarSyg } from './../left-app-bar/component';
-import { MDCDrawerSyg } from './../drawer/component'
+import { MDCDrawerSyg } from './../drawer/component';
+import { MDCSelect } from '@material/select';
 
 const _classes = {
     checkbox: MDCCheckbox,
@@ -26,7 +27,8 @@ const _classes = {
     radio: MDCRadio,
     spinner: TSpinnerSyg,
     drawer: MDCDrawerSyg,
-    leftAppBar: TLeftAppBarSyg
+    leftAppBar: TLeftAppBarSyg,
+    select: MDCSelect
 };
 
 const CollectionControl = (function () {

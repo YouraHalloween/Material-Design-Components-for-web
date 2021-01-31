@@ -5,16 +5,16 @@ import { TStringUnAr } from './../_types';
 declare module '@material/menu/component' {
     interface MDCMenu {
         list: MDCList;
-        key: TStringUnAr;
-        keys: string[],
+        value: TStringUnAr;
+        values: string[],
         text: TStringUnAr;
-        setEnabledByValue: (key: string, enabled: boolean) => void;
+        setEnabledByValue: (value: string, enabled: boolean) => void;
     }
 }
 
-Object.defineProperty(MDCMenu.prototype, 'keys', {
+Object.defineProperty(MDCMenu.prototype, 'values', {
     set(value: string[]) {
-        return (this.list.keys = value);
+        return (this.list.values = value);
     },
     enumerable: true,
     configurable: true,
@@ -32,16 +32,16 @@ Object.defineProperty(MDCMenu.prototype, "list", {
 });
 
 /**
- * Свойство key
- * get - возвращает текущий key
+ * Свойство value
+ * get - возвращает текущий value
  * set - делает item - selected
  */
-Object.defineProperty(MDCMenu.prototype, 'key', {
+Object.defineProperty(MDCMenu.prototype, 'value', {
     get: function (): TStringUnAr {
-        return this.list.key;
+        return this.list.value;
     },
     set: function (value: TStringUnAr) {
-        this.list.key = value;
+        this.list.value = value;
     },
     enumerable: true,
     configurable: true,
@@ -56,14 +56,14 @@ Object.defineProperty(MDCMenu.prototype, 'text', {
 });
 
 /**
- * @param {string} key
+ * @param {string} value
  * @param {boolean} enabled
  */
 MDCMenu.prototype.setEnabledByValue = function (
-    key: string,
+    value: string,
     enabled: boolean = true
 ): void {
-    this.list.setEnabledByValue(key, enabled);
+    this.list.setEnabledByValue(value, enabled);
 };
 
 export { MDCMenu };

@@ -1,4 +1,3 @@
-
 import { MDCTextFieldSyg } from './../component';
 import { TStringUn, Types } from './../../_types';
 
@@ -57,6 +56,7 @@ class HelperMessage {
     constructor(parent: MDCTextFieldSyg) {
         this.parent = parent;
         this._info = (this.parent.helperText.root as HTMLElement).innerText;
+        this._bufferCurrentMessage = this._info;
 
         /**
          * Выводить сообщения при событии Blur
@@ -190,7 +190,15 @@ class HelperMessage {
         }
         if (text !== this._bufferCurrentMessage) {
             this._bufferCurrentMessage = text;
-            this.parent.helperTextContent = Types.defValue(text, '');
+            this.parent.helperText.root.classList.add(
+                'mdc-text-field-helper-text--animation'
+            );
+            setTimeout(() => {
+                this.parent.helperText.root.classList.remove(
+                    'mdc-text-field-helper-text--animation'
+                );
+                this.parent.helperTextContent = Types.defValue(text, '');
+            }, 130);
         }
     }
 }

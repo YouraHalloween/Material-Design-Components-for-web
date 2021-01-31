@@ -4,10 +4,10 @@ import { TStringUnAr } from './../_types';
 declare module '@material/menu/component' {
     interface MDCMenu {
         list: MDCList;
-        key: TStringUnAr;
-        keys: string[];
+        value: TStringUnAr;
+        values: string[];
         text: TStringUnAr;
-        setEnabledByValue: (key: string, enabled: boolean) => void;
+        setEnabledByValue: (value: string, enabled: boolean) => void;
     }
 }
 export { MDCMenu };

@@ -5,45 +5,46 @@ import { TStringUnAr } from './../_types';
 declare module '@material/list/component' {
     interface MDCList {
         // private
-        _keys: string[];
-        _getKeyList: <Keys>(fromKeys: Array<Keys>) => TStringUnAr;
+        _values: string[];
+        _getValueList: <Values>(fromValues: Array<Values>) => TStringUnAr;
         // public
-        keys: string[];
-        key: TStringUnAr;
+        values: string[];
+        value: TStringUnAr;
         text: TStringUnAr;
         focusedItemIndex: number;
-        setEnabledByValue: (key: string, enabled: boolean) => void;
+        setEnabledByValue: (value: string, enabled: boolean) => void;
         setIndex: (index: number) => void;
     }
 }
 
-MDCList.prototype._getKeyList = function <Keys>(
-    fromKeys: Array<Keys>
+MDCList.prototype._getValueList = function <Values>(
+    fromValues: Array<Values>
 ): TStringUnAr {
     const getVal = (index: number): string => {
-        if (fromKeys[index] instanceof Element) {
-            return ((fromKeys[index] as unknown) as HTMLElement).innerText;
+        if (fromValues[index] instanceof Element) {
+            return ((fromValues[index] as unknown) as HTMLElement).innerText;
         }
-        return (fromKeys[index] as unknown) as string;
+        return (fromValues[index] as unknown) as string;
     };
+    if (fromValues) {
+        const selectedIndex: MDCListIndex =
+            this.selectedIndex != -1 ? this.selectedIndex : this.focusedItemIndex;
 
-    const selectedIndex: MDCListIndex =
-        this.selectedIndex != -1 ? this.selectedIndex : this.focusedItemIndex;
-
-    if (selectedIndex != -1) {
-        if (typeof selectedIndex === 'number') {
-            if (selectedIndex >= 0 && fromKeys.length > selectedIndex) {
-                return getVal(selectedIndex as number);
-            }
-            return undefined;
-        } else {
-            const result: string[] = [];
-            selectedIndex.forEach((index) => {
-                if (fromKeys.length > index) {
-                    result.push(getVal(index));
+        if (selectedIndex != -1) {
+            if (typeof selectedIndex === 'number') {
+                if (selectedIndex >= 0 && fromValues.length > selectedIndex) {
+                    return getVal(selectedIndex as number);
                 }
-            });
-            return result;
+                return undefined;
+            } else {
+                const result: string[] = [];
+                selectedIndex.forEach((index) => {
+                    if (fromValues.length > index) {
+                        result.push(getVal(index));
+                    }
+                });
+                return result;
+            }
         }
     }
     return undefined;
@@ -57,38 +58,38 @@ Object.defineProperty(MDCList.prototype, 'focusedItemIndex', {
     configurable: true,
 });
 
-Object.defineProperty(MDCList.prototype, 'keys', {
+Object.defineProperty(MDCList.prototype, 'values', {
     set(value: string[]) {
-        return (this._keys = value);
+        return (this._values = value);
     },
     enumerable: true,
     configurable: true,
 });
 
 /**
- * Свойство key
- * get - возвращает текущий key
+ * Свойство value
+ * get - возвращает текущий value
  * set - делает item - selected
  */
-Object.defineProperty(MDCList.prototype, 'key', {
+Object.defineProperty(MDCList.prototype, 'value', {
     get(): TStringUnAr {
-        return this._getKeyList(this._keys);
+        return this._getValueList(this._values);
     },
     set(value: TStringUnAr) {
-        if (this.key !== value) {
+        if (this.value && this.value !== value) {
             let itemIndex: number[] = [];
-            if (this._keys && typeof value !== 'undefined') {
+            if (this._values && typeof value !== 'undefined') {
                 if (Array.isArray(value)) {
                     for (let i = 0; i < value.length; i++) {
-                        for (let j = 0; j < this._keys.length; j++) {
-                            if (value[i] === this._keys[j]) {
+                        for (let j = 0; j < this._values.length; j++) {
+                            if (value[i] === this._values[j]) {
                                 itemIndex.push(j);
                                 break;
                             }
                         }
                     }
                 } else {
-                    const index: number = this._keys.indexOf(value);
+                    const index: number = this._values.indexOf(value);
                     if (index > -1) {
                         itemIndex = [index];
                     }
@@ -107,21 +108,21 @@ Object.defineProperty(MDCList.prototype, 'key', {
  */
 Object.defineProperty(MDCList.prototype, 'text', {
     get(): TStringUnAr {        
-        return this._getKeyList(this.listElements);
+        return this._getValueList(this.listElements);
     },
     enumerable: true,
     configurable: true,
 });
 
 /**
- * @param {string} key
+ * @param {string} value
  * @param {bool} enabled
  */
 MDCList.prototype.setEnabledByValue = function (
-    key: string,
+    value: string,
     enabled: boolean = true
 ): void {
-    const itemIndex: number = this._keys.indexOf(key);
+    const itemIndex: number = this._values.indexOf(value);
     if (itemIndex > -1) {
         this.setEnabled(itemIndex, enabled);
     }

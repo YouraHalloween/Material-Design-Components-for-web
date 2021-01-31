@@ -5,6 +5,7 @@
 
 $text-field-height: 52px;
 $text-field-padding: 14px;
+$text-field-padding-outline: 16px;
 
 .mdc-text-field {
     @include textfield.fill-color(theme.$background);
@@ -14,6 +15,13 @@ $text-field-padding: 14px;
         justify-content: left;
         padding: 0 $text-field-padding;
         // margin-top: -1px;
+        .mdc-text-field-helper-text {
+            opacity: 1;
+            transition: opacity 130ms;
+            &.mdc-text-field-helper-text--animation {
+                opacity: 0;
+            }
+        }        
     }
     .mdc-icon-button {
         @include icon-button.density(-2);
@@ -48,6 +56,14 @@ $text-field-padding: 14px;
     }
     .mdc-floating-label--float-above {
         transform: translateY(-106%) scale(0.8);
+    }
+}
+
+.mdc-text-field--outlined {
+    .mdc-notched-outline {
+        .mdc-notched-outline__leading {
+            width: $text-field-padding-outline;
+        }
     }
 }
 

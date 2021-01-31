@@ -220,6 +220,7 @@ Object.defineProperty(MDCTextFieldIcon.prototype, 'clear', {
         if (this._clear === false && value === true) {
             this.click(() => {
                 this.parent.value = '';
+                this.parent.key = undefined;
                 if (this.parent.helperMessage) {
                     this.parent.helperMessage.render();
                 }
