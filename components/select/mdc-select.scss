@@ -1,5 +1,6 @@
 @use '@material/select';
+@use '@material/theme';
 
-// .mdc-select {
-//   @include select.outlined-density(-2);
-// }
+.mdc-select {
+    @include select.container-fill-color(theme.$background);
+}

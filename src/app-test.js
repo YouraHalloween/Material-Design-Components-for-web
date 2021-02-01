@@ -73,7 +73,7 @@ function init(classCss, classComponent, func) {
 }
 
 // init('.mdc-floating-label', MDCFloatingLabel);
-// init('.mdc-select', MDCSelect);
+init('.mdc-select', MDCSelect);
 // init('.mdc-select-helper-text', MDCSelectHelperText);
 // init('.mdc-data-table', MDCDataTable);
 // init('.mdc-drawer', MDCDrawer);
@@ -84,7 +84,7 @@ function init(classCss, classComponent, func) {
 // init('.mdc-menu', MDCMenu);
 // init('.mdc-linear-progress', MDCLinearProgress);
 // init(".mdc-text-field", MDCTextField);
-init(".mdc-text-field", MDCTextFieldSyg);
+// init(".mdc-text-field", MDCTextFieldSyg);
 // init('.mdc-segmented-button', MDCSegmentedButton);
 // init('.mdc-snackbar', MDCSnackbar);
 
