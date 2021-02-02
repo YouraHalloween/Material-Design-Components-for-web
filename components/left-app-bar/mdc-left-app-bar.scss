@@ -42,7 +42,7 @@ $left-app-bar-icon-size: typography.pxToRem(28px);
                     &:after {
                         border-radius: 0 2px 2px 0;
                         left: -1px;
-                        content: "";
+                        content: '';
                         background: var(--mdc-theme-text-primary-on-dark);
                         position: absolute;
                         width: 5px;

@@ -73,9 +73,9 @@ function init(classCss, classComponent, func) {
 }
 
 // init('.mdc-floating-label', MDCFloatingLabel);
-init('.mdc-select', MDCSelect);
+// init('.mdc-select', MDCSelect);
 // init('.mdc-select-helper-text', MDCSelectHelperText);
-// init('.mdc-data-table', MDCDataTable);
+init('.mdc-data-table', MDCDataTable);
 // init('.mdc-drawer', MDCDrawer);
 // init('.mdc-radio', MDCRadio);
 // init('.mdc-circular-progress', MDCCircularProgress);

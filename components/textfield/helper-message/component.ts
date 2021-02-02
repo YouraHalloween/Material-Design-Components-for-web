@@ -198,7 +198,7 @@ class HelperMessage {
                     'mdc-text-field-helper-text--animation'
                 );
                 this.parent.helperTextContent = Types.defValue(text, '');
-            }, 130);
+            }, 115);
         }
     }
 }
