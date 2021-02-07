@@ -20,13 +20,14 @@ import { MDCSelect } from '@material/select';
 import { MDCDataTable } from '@material/data-table';
 import { MDCFloatingLabel } from '@material/floating-label';
 import { MDCSelectHelperText } from '@material/select/helper-text';
+import { ChunkGraph } from "webpack";
 
 // import { CollectionControl } from './../components/collection-control/component';
 
 // let cmp = new CollectionControl();
 
 // let cmp1 = cmp.add('locale-menu', 'menu', { "keys": ["en-EN"] });
-// // let cmp1 = cmp.add('textfield-sample', 'textField', {'trailingIcon.parent.trailingIcon.replaceIcon': 'phone'});
+// let cmp1 = cmp.add('textfield-sample', 'textField', {'trailingIcon.parent.trailingIcon.replaceIcon': 'phone'});
 // cmp1.root.addEventListener('MDCMenu:selected', (event) => {
 //     console.log(cmp1.key)
 // });
@@ -36,37 +37,7 @@ var cntr = [];
 
 function init(classCss, classComponent, func) {
     cntr = [].map.call(document.querySelectorAll(classCss), function (el1) {
-        let control = new classComponent(el1);
-        control.required = true;
-        // control.helperText.foundation.setValidationMsgPersistent(false);
-        // control.helperText.foundation.setContent('error');                
-        // control.helperText.foundation.setValidation(true);
-        // control.helperText_.foundation.setValidity(true);
-        // control.required = true;
-        // control.leadingIconAriaLabel = 'clear';
-        // control.leadingIconContent = 'clear';
-        // control.foundation.leadingIcon = 'clear';
-        // control.listen('MDCSelect:change', (event) => {
-        //     console.log(event);
-        //     // control.value = 23;
-        // });
-        // control.open = true;
-        // control.listen('MDCSelect:change', () => {
-        //     alert(`Selected option at index ${control.selectedIndex} with value "${control.value}"`);
-        // });
-        // control.keys = [12,54,78];
-        // control.trailingIcon.click(function() {
-        //     console.log(this);
-        // }, control.trailingIcon);
-        // control.key = 45;
-        // control.required = true;
-        // control.helperMessage.error = 'error';
-        // control.helperMessage.info = 'info';        
-        // control.helperMessage.ex.tooLong = 'valueMissing';
-
-        // control.trailingIcon.clear = true;
-        // control.trailingIcon.replaceIcon = 'phone';        
-
+        let control = new classComponent(el1);     
         console.log(control);        
         return control;
     });
@@ -89,11 +60,5 @@ init('.mdc-data-table', MDCDataTable);
 // init('.mdc-snackbar', MDCSnackbar);
 
 $('#button').click(function () {
-    cntr[0].helperMessage.error = 'qwe';
-})
-
-// $('#add-to-favorites-dop').click(function() {
-//     cntr[0].labelText = 'asdasdsdfjsldjflskdjflks jlk jlksjlk jsdlkjsdlkj h kh kjh kjh kjhj hkj hk  kh kh kj hkj hk jhk h kj';
-//     // cntr[0].close('dismiss');
-// })
-
+    // console.log(cntr[0].foundation.getSelectedRowIds());
+});

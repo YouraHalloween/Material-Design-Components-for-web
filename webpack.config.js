@@ -49,7 +49,11 @@ const Env = (function () {
 const DefaultConfig = {
     resolve(extensions) {
         return {
-            modules: [Env.path('src'), Env.path('components'), 'node_modules'],
+            modules: [
+                Env.path('src'), 
+                Env.path('components'), 
+                'node_modules'
+            ],            
             extensions
         }
     },

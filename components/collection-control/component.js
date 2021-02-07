@@ -1,6 +1,7 @@
 
 import { TButtonSyg } from './../button/component';
 import { MDCCheckbox } from '@material/checkbox';
+import { MDCDataTable } from '@material/data-table';
 import { MDCLinearProgress } from '@material/linear-progress'
 import { MDCRipple } from '@material/ripple';
 import { MDCSnackbar } from '@material/snackbar';
@@ -28,7 +29,8 @@ const _classes = {
     spinner: TSpinnerSyg,
     drawer: MDCDrawerSyg,
     leftAppBar: TLeftAppBarSyg,
-    select: MDCSelect
+    select: MDCSelect,
+    dataTable: MDCDataTable
 };
 
 const CollectionControl = (function () {
