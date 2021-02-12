@@ -2,14 +2,16 @@
 @use '@material/icon-button';
 @use '@material/theme';
 @use '@material/ripple/ripple-theme';
+@use './../variabless';
 
-$text-field-height: 52px;
+$text-field-height: 48px;
 $text-field-padding: 14px;
 $text-field-padding-outline: 16px;
 
 .mdc-text-field {
     @include textfield.fill-color(theme.$background);
-    @include textfield.height($text-field-height);
+    // @include textfield.height($text-field-height);
+    @include textfield.density(variabless.$density);
     padding: 0 $text-field-padding;
     + .mdc-text-field-helper-line {
         justify-content: left;

@@ -14,6 +14,7 @@ import { TSpinnerSyg } from './../spinner/component';
 import { TLeftAppBarSyg } from './../left-app-bar/component';
 import { MDCDrawerSyg } from './../drawer/component';
 import { MDCSelect } from '@material/select';
+import {TIconButtonSyg} from './../icon-button/component';
 
 const _classes = {
     checkbox: MDCCheckbox,
@@ -30,7 +31,8 @@ const _classes = {
     drawer: MDCDrawerSyg,
     leftAppBar: TLeftAppBarSyg,
     select: MDCSelect,
-    dataTable: MDCDataTable
+    dataTable: MDCDataTable,
+    iconButton: TIconButtonSyg
 };
 
 const CollectionControl = (function () {

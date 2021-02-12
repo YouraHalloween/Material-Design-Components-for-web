@@ -1,10 +1,8 @@
 
-
-
 // import { MDCButton_Syg } from "./../components/button/component";
 import { MDCTextField } from "@material/textfield";
 import { MDCTextFieldSyg } from "../components/textfield/component";
-// import { MDCRipple } from '@material/ripple';
+import { MDCRipple } from '@material/ripple';
 // import { MDCSegmentedButton } from '@material/segmented-button';
 // import { MDCSnackbar } from '@material/snackbar';
 // import { MDCLinearProgress } from '@material/linear-progress';
@@ -20,7 +18,8 @@ import { MDCSelect } from '@material/select';
 import { MDCDataTable } from '@material/data-table';
 import { MDCFloatingLabel } from '@material/floating-label';
 import { MDCSelectHelperText } from '@material/select/helper-text';
-import { ChunkGraph } from "webpack";
+import { MDCIconButtonToggle } from '@material/icon-button';
+import { TIconButtonSyg } from './../components/icon-button/component';
 
 // import { CollectionControl } from './../components/collection-control/component';
 
@@ -38,20 +37,23 @@ var cntr = [];
 function init(classCss, classComponent, func) {
     cntr = [].map.call(document.querySelectorAll(classCss), function (el1) {
         let control = new classComponent(el1);     
+        // control.unbounded = true;
+        // control.disabled = true;
         console.log(control);        
         return control;
     });
 }
 
+// init('.mdc-icon-button', MDCRipple);
 // init('.mdc-floating-label', MDCFloatingLabel);
-// init('.mdc-select', MDCSelect);
+init('.mdc-select', MDCSelect);
 // init('.mdc-select-helper-text', MDCSelectHelperText);
 init('.mdc-data-table', MDCDataTable);
 // init('.mdc-drawer', MDCDrawer);
 // init('.mdc-radio', MDCRadio);
 // init('.mdc-circular-progress', MDCCircularProgress);
 // init('.mdc-list', MDCList);
-// init('.mdc-icon-button', MDCIconButtonToggle);
+init('.mdc-icon-button', TIconButtonSyg);
 // init('.mdc-menu', MDCMenu);
 // init('.mdc-linear-progress', MDCLinearProgress);
 // init(".mdc-text-field", MDCTextField);
@@ -60,5 +62,5 @@ init('.mdc-data-table', MDCDataTable);
 // init('.mdc-snackbar', MDCSnackbar);
 
 $('#button').click(function () {
-    // console.log(cntr[0].foundation.getSelectedRowIds());
+    console.log(cntr[0].foundation.getSelectedRowIds());
 });

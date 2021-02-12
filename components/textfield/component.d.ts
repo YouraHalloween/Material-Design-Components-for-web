@@ -44,7 +44,6 @@ declare module '@material/textfield/icon/component' {
     interface MDCTextFieldIcon {
         _parent: MDCTextFieldSyg;
         _clear: boolean;
-        _replaceIcon: string;
         _enabledRenderBlur: boolean;
         _disabledRenderDeactivateFocus: EventListener;
         _enabledRenderDeactivateFocus: EventListener;

@@ -140,7 +140,7 @@ const SCSSConfig = (env) => {
 
 const JSConfig = (env) => {
 
-    let entry = env.isProd() || env.remote ? 'app.js' : ['app-test.js', 'app-test.ts'];
+    let entry = env.isProd() || env.remote ? 'app.js' : ['app-test.js'];
 
     let output = {
         path: Env.path('dist'),

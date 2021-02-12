@@ -114,8 +114,7 @@ declare module '@material/textfield/icon/component' {
     interface MDCTextFieldIcon {
         // private
         _parent: MDCTextFieldSyg;
-        _clear: boolean;
-        _replaceIcon: string;
+        _clear: boolean;        
         _enabledRenderBlur: boolean;
         _disabledRenderDeactivateFocus: EventListener;
         _enabledRenderDeactivateFocus: EventListener;
@@ -140,8 +139,7 @@ const initialize = MDCTextFieldIcon.prototype.initialize;
 MDCTextFieldIcon.prototype.initialize = function (..._args: unknown[]) {
     initialize(..._args);
     this._clear = false;
-    this._enabledRenderBlur = false;
-    this._replaceIcon = '';
+    this._enabledRenderBlur = false;    
     this._handleDisabledRenderDeactivateFocus = this._disabledRenderDeactivateFocus.bind(
         this
     );
@@ -228,28 +226,6 @@ Object.defineProperty(MDCTextFieldIcon.prototype, 'clear', {
             });
         }
         this._clear = value;
-    },
-    enumerable: true,
-    configurable: true,
-});
-
-/**
- * Заменит иконку из aria-replace или replaceIcon
- */
-Object.defineProperty(MDCTextFieldIcon.prototype, 'replaceIcon', {
-    get(): string {
-        return this._replaceIcon;
-    },
-    set(value: string) {
-        this._replaceIcon = value;
-        if (value.trim() !== '') {
-            this.click(() => {
-                const newIcon: string = this._replaceIcon;
-                this._replaceIcon = this.root.innerText;
-                this.root.innerText = newIcon;
-            });
-        }
-        this._replaceIcon = value;
     },
     enumerable: true,
     configurable: true,

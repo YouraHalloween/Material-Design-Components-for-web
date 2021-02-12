@@ -1,6 +1,14 @@
 @use '@material/select';
 @use '@material/theme';
+@use './../variabless';
 
 .mdc-select {
-    @include select.container-fill-color(theme.$background);
+    @include select.container-fill-color(theme.$background);    
+    &.mdc-data-table__pagination-rows-per-page-select {
+        @include select.outlined-height(36px);
+    }
+    &:not(.mdc-data-table__pagination-rows-per-page-select) {
+        @include select.filled-density(variabless.$density);
+        @include select.outlined-density(variabless.$density);
+    }    
 }
