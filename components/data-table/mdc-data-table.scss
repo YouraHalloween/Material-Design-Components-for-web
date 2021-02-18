@@ -1,7 +1,42 @@
+@use '@material/button';
+@use '@material/icon-button';
+@use '@material/typography';
+
 .mdc-data-table {
     width: 100%;
     border-radius: 0;
     border-top: 0;
     border-left: 0;
     border-right: 0;
+    .mdc-data-table__cell-serial {
+        width: 1px;
+        white-space: nowrap;
+        font-size: 0.8em;
+        padding: 0 8px;
+    }
+}
+
+.mdc-data-table__pagination {
+    .mdc-data-table__pagination-rows-per-page-select {
+        .mdc-select__selected-text {
+            font-size: typography.pxToRem(14px);
+        }
+    }
+    .mdc-data-table__pagination-total {
+        line-height: initial;
+    }
+    .mdc-data-table__pagination-navigation {
+        .mdc-icon-button {
+            @include icon-button.density(-2);
+        }
+        .mdc-button {
+            min-width: 30px;
+            line-height: initial;
+        }
+        button {
+            a {
+                color: var(--mdc-theme-text-primary-on-background);
+            }
+        }
+    }
 }
