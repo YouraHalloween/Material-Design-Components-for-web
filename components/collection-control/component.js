@@ -4,7 +4,7 @@ import { MDCCheckbox } from '@material/checkbox';
 import { MDCDataTable } from '@material/data-table';
 import { MDCLinearProgress } from '@material/linear-progress'
 import { MDCRipple } from '@material/ripple';
-import { MDCSnackbar } from '@material/snackbar';
+import { MDCSnackbarSyg } from '../snackbar/component';
 import { MDCTextFieldSyg } from '../textfield/component';
 import { MDCTopAppBar } from '@material/top-app-bar';
 import { MDCList } from '../list/component';
@@ -19,7 +19,7 @@ import {TIconButtonSyg} from './../icon-button/component';
 const _classes = {
     checkbox: MDCCheckbox,
     ripple: MDCRipple,
-    snackbar: MDCSnackbar,
+    snackbar: MDCSnackbarSyg,
     textField: MDCTextFieldSyg,
     topAppBar: MDCTopAppBar,
     button: TButtonSyg,

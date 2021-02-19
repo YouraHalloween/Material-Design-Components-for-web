@@ -28,12 +28,12 @@ $left-app-bar-icon-size: typography.pxToRem(28px);
     width: $left-app-bar-width;
     .mdc-left-app-bar-item {
         position: relative;
-        &.mdc-left-app-bar-item__custom {
+        &.mdc-left-app-bar-item__all {
             .mdc-left-app-bar-item__label {
                 height: $left-app-bar-icon-height / 2;
             }
         }
-        &:not(.mdc-left-app-bar-item__custom) {
+        &:not(.mdc-left-app-bar-item__all) {
             .mdc-left-app-bar-item__label {
                 .mdc-left-app-bar-item__icon {
                     font-size: $left-app-bar-icon-size;
