@@ -29,10 +29,10 @@ class TLeftAppBarSyg {
                         if (itemActive !== null) {
                             itemActive.classList.remove('active');
                         }
-                        itemActive = item;
-                        if (this._eventlick && menuIndex) {
-                            this._eventlick(menuIndex, event);
-                        }
+                        itemActive = item;                        
+                    }
+                    if (this._eventlick && menuIndex) {
+                        this._eventlick(menuIndex, event);
                     }
                 });
             }

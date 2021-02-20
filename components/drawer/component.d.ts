@@ -1,5 +1,6 @@
 import { MDCDrawer } from '@material/drawer';
 declare class MDCDrawerSyg extends MDCDrawer {
+    menuIndexActive: string;
     groupActive?: NodeListOf<Element> | null;
     constructor(root: Element, ...args: any[]);
     /**
