@@ -38,21 +38,10 @@ var cntr = [];
 function init(classCss, classComponent, func) {
     cntr = [].map.call(document.querySelectorAll(classCss), function (el1) {
         let control = new classComponent(el1);    
-        control.open();
-        // var qwe = control.surfaceEl.getElementsByClassName('mdc-snackbar__dismiss');
-        // control.stacked = true;
-        control.actionBaseline = true;
-        control.trailing = true;
-        control.size('300px');
-        control.add('qcontrol. surfaceEl. getElementsByClassName ("mdc - snackbar__dismiss")e');
-        control.add("control. surfaceEl. getElementsByClassName ('mdc-snackbar__dismiss')");
-        control.closeClick(function() {
-            alert();
-        });
-        control.showMessage();
-        // control.unbounded = true;
-        // control.disabled = true;
-        console.log(control);        
+        // control.showProgress();
+        console.log(control);
+        // console.log(control.foundation.adapter.getRowCount());        
+        // console.log(control.foundation.getRows());        
         return control;
     });
 }
@@ -61,7 +50,7 @@ function init(classCss, classComponent, func) {
 // init('.mdc-floating-label', MDCFloatingLabel);
 // init('.mdc-select', MDCSelect);
 // init('.mdc-select-helper-text', MDCSelectHelperText);
-// init('.mdc-data-table', MDCDataTable);
+init('.mdc-data-table', MDCDataTable);
 // init('.mdc-drawer', MDCDrawer);
 // init('.mdc-radio', MDCRadio);
 // init('.mdc-circular-progress', MDCCircularProgress);
@@ -72,7 +61,7 @@ function init(classCss, classComponent, func) {
 // init(".mdc-text-field", MDCTextField);
 // init(".mdc-text-field", MDCTextFieldSyg);
 // init('.mdc-segmented-button', MDCSegmentedButton);
-init('.mdc-snackbar', MDCSnackbarSyg);
+// init('.mdc-snackbar', MDCSnackbarSyg);
 
 $('#button').click(function () {
     console.log(cntr[0].foundation.getSelectedRowIds());

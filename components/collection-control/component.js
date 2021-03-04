@@ -86,7 +86,7 @@ const CollectionControl = (function () {
             }
         }
 
-        this.addControl(cntr, className, groupName, id);
+        this.addObject(cntr, className, groupName, id);
 
         return cntr;
     };
@@ -96,7 +96,7 @@ const CollectionControl = (function () {
      * @param {object} control
      * @param {string} className
      */
-    CollectionControl.prototype.addControl = function (control, className, groupName, id) {
+    CollectionControl.prototype.addObject = function (control, className, groupName, id) {
         id = typeof id == 'undefined' ? control.id : id;
 
         setItemProp(id, 'item', control);

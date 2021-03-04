@@ -1,8 +1,8 @@
 const path = require('path');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const Env = (function () {
-    const REMOTE_PATH = '../../yii2-material-design-components/src/assets/';
+    const REMOTE_PATH = '../../yii2-material-design-components/src/assets/mdc/';
     const CONTENT_HASH = '[contenthash]';
     // const NAME = '[name]';
     const NAME = 'material-components-web';
@@ -133,8 +133,8 @@ const SCSSConfig = (env) => {
                     use: loaders,
                 },
             ],
-        },
-        plugins: [new CleanWebpackPlugin()],
+        }
+        // plugins: [new CleanWebpackPlugin()],
     });
 }
 
@@ -145,6 +145,7 @@ const JSConfig = (env) => {
     let output = {
         path: Env.path('dist'),
         filename: env.getFileName('js'),
+        clean: true
     };
 
     if (env.isProd() || env.remote) {
