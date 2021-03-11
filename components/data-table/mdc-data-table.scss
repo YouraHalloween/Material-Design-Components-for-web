@@ -1,5 +1,6 @@
 @use '@material/button';
 @use '@material/icon-button';
+@use '@material/select';
 @use '@material/typography';
 
 .mdc-data-table {
@@ -14,12 +15,22 @@
         font-size: 0.8em;
         padding: 0 8px;
     }
+    .mdc-data-table__content {
+        opacity: 1;
+        transition: opacity linear 150ms;
+        &.mdc-data-table__content-reload {
+            opacity: 0;
+        }
+    }
 }
 
 .mdc-data-table__pagination {
-    .mdc-data-table__pagination-rows-per-page-select {
-        .mdc-select__selected-text {
-            font-size: typography.pxToRem(14px);
+    .mdc-data-table__pagination-rows-per-page {
+        .mdc-select {
+            @include select.outlined-height(36px);
+            .mdc-select__selected-text {
+                font-size: typography.pxToRem(14px);
+            }
         }
     }
     .mdc-data-table__pagination-total {
@@ -27,13 +38,19 @@
     }
     .mdc-data-table__pagination-navigation {
         .mdc-icon-button {
-            @include icon-button.density(-2);
+            @include icon-button.density(-3);
+            line-height: inherit;
+            font-size: typography.pxToRem(15px);
+            &.mdc-data-table__pagination-button {
+                font-size: typography.pxToRem(19px);
+            }
         }
-        .mdc-button {
-            min-width: 30px;
-            line-height: initial;
+        .mdc-icon-button:disabled {
+            a {
+                color: inherit;
+            }
         }
-        button {
+        .mdc-icon-button:not([disabled]) {
             a {
                 color: var(--mdc-theme-text-primary-on-background);
             }

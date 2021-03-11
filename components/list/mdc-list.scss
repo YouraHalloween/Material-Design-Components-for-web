@@ -17,3 +17,7 @@ $list-group-label: typography.pxToRem(13.3px);
         color: theme-color.prop-value(text-secondary-on-background);
     }
 }
+
+.mdc-list-item__text {
+    line-height: initial;
+}

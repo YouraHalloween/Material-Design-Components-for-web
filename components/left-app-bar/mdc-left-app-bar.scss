@@ -53,8 +53,9 @@ $left-app-bar-icon-size: typography.pxToRem(28px);
                 }
             }
         }
-        .mdc-left-app-bar-item__label {
+        .mdc-left-app-bar-item__label {            
             color: var(--mdc-theme-text-icon-on-dark);
+            cursor: pointer;
             display: -webkit-box;
             display: -ms-flexbox;
             display: flex;

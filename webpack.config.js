@@ -145,7 +145,7 @@ const JSConfig = (env) => {
     let output = {
         path: Env.path('dist'),
         filename: env.getFileName('js'),
-        clean: true
+        // clean: true
     };
 
     if (env.isProd() || env.remote) {
