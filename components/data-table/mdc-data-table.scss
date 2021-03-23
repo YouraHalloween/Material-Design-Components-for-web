@@ -57,3 +57,28 @@
         }
     }
 }
+
+.mdc-data-table__header-cell {
+    // display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    a {
+        // font-weight: 600;
+        color: inherit;
+    }
+}
+
+.mdc-data-table__header-cell-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    .mdc-data-table__sort-icon-button {
+        font-size: typography.pxToRem(15px);
+        opacity: 1;
+        color: var(--mdc-theme-text-disabled-on-background);
+    }
+}
+
+.mdc-data-table__header-cell:hover .mdc-data-table__sort-icon-button, .mdc-data-table__header-cell--sorted .mdc-data-table__sort-icon-button {
+    color: inherit;
+}
