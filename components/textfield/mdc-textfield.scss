@@ -23,26 +23,16 @@ $text-field-padding-outline: 16px;
             &.mdc-text-field-helper-text--animation {
                 opacity: 0;
             }
-        }        
+        }
     }
     .mdc-icon-button {
         @include icon-button.density(-2);
     }
     //Сделать цвет hover = focus
     &.mdc-text-field--filled {
-        // @include ripple.states-opacities(
-        //         (hover: .3, focus: .3, press: .3),
-        //         $has-nested-focusable-element: false,
-        //         $ripple-target: textfield.$ripple-target
-        //     );
-        @include ripple-theme.states-hover-opacity(
-            ripple-theme.states-opacity(textfield.$ink-color, hover),
-            $ripple-target: textfield.$ripple-target
-        );
-        @include ripple-theme.states-focus-opacity(
-            ripple-theme.states-opacity(textfield.$ink-color, hover),
-            $ripple-target: textfield.$ripple-target
-        );
+        --mdc-ripple-hover-opacity: #{variabless.$ripple-hover-opacity};
+        --mdc-ripple-press-opacity: #{variabless.$ripple-press-opacity};
+        --mdc-ripple-focus-opacity: #{variabless.$ripple-focus-opacity};
     }
 }
 

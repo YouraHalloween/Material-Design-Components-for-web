@@ -1,0 +1,10 @@
+// @use '@material/typography';
+// @use '@material/list';
+
+.mdc-collapse {
+    &.mdc-collapse-search {
+        .mdc-collapse__header {
+            color: var(--mdc-theme-text-secondary-on-background);
+        }
+    }
+}

@@ -14,7 +14,8 @@ import { TSpinnerSyg } from './../spinner/component';
 import { TLeftAppBarSyg } from './../left-app-bar/component';
 import { MDCDrawerSyg } from './../drawer/component';
 import { MDCSelect } from '@material/select';
-import {TIconButtonSyg} from './../icon-button/component';
+import { TIconButtonSyg } from './../icon-button/component';
+import { TCollapse } from './../collapse/component';
 
 const _classes = {
     checkbox: MDCCheckbox,
@@ -32,14 +33,15 @@ const _classes = {
     leftAppBar: TLeftAppBarSyg,
     select: MDCSelect,
     dataTable: MDCDataTable,
-    iconButton: TIconButtonSyg
+    iconButton: TIconButtonSyg,
+    collapse: TCollapse
 };
 
 const CollectionControl = (function () {
     let _items;
-    let _cacheGroup= {id: '', items: {}};
+    let _cacheGroup = { id: '', items: {} };
     function CollectionControl() {
-        _items = {};        
+        _items = {};
     }
 
     function setItemProp(id, property, value) {
@@ -64,7 +66,7 @@ const CollectionControl = (function () {
             node = node.parentNode;
         }
 
-        let cntr = new _classes[className](node);        
+        let cntr = new _classes[className](node);
 
         if (property) {
             for (const key in property) {
@@ -74,15 +76,15 @@ const CollectionControl = (function () {
                     const props = key.split('.');
                     let pr = cntr[props[0]];
                     for (let index = 1; index < props.length; index++) {
-                        if (index === (props.length - 1)) {                            
-                            pr[props[index]] = property[key]; 
+                        if (index === (props.length - 1)) {
+                            pr[props[index]] = property[key];
                         } else {
                             pr = pr[props[index]];
-                        }                        
-                    }                    
+                        }
+                    }
                 } else {
                     cntr[key] = property[key];
-                }                                
+                }
             }
         }
 
@@ -103,8 +105,8 @@ const CollectionControl = (function () {
         setItemProp(id, 'class', className);
         if (groupName) {
             setItemProp(id, 'group', groupName);
-        } 
-               
+        }
+
         return _items[id];
     };
 
@@ -137,7 +139,7 @@ const CollectionControl = (function () {
             _cacheGroup.id = groupName;
             for (const key in _items) {
                 if (_items.hasOwnProperty(key) && _items[key].group == groupName) {
-                    _cacheGroup.items[key] = _items[key];                    
+                    _cacheGroup.items[key] = _items[key];
                 }
             }
         }

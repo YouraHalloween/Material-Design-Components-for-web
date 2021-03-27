@@ -21,6 +21,7 @@ import { MDCSelectHelperText } from '@material/select/helper-text';
 import { MDCIconButtonToggle } from '@material/icon-button';
 import { TIconButtonSyg } from './../components/icon-button/component';
 import { MDCSnackbarSyg } from "../components/snackbar/component";
+import { TCollapse } from './../components/collapse/component';
 
 // import { CollectionControl } from './../components/collection-control/component';
 
@@ -37,7 +38,9 @@ var cntr = [];
 
 function init(classCss, classComponent, func) {
     cntr = [].map.call(document.querySelectorAll(classCss), function (el1) {
-        let control = new classComponent(el1);    
+        let control = new classComponent(el1);
+        // control.singleSelection = true;
+        // let ripple = new MDCRipple(control);
         // control.showProgress();
         console.log(control);
         // console.log(control.foundation.adapter.getRowCount());        
@@ -46,20 +49,21 @@ function init(classCss, classComponent, func) {
     });
 }
 
-// init('.mdc-icon-button', MDCRipple);
+init('.mdc-collapse', TCollapse);
 // init('.mdc-floating-label', MDCFloatingLabel);
-// init('.mdc-select', MDCSelect);
+init('.mdc-select', MDCSelect);
 // init('.mdc-select-helper-text', MDCSelectHelperText);
-init('.mdc-data-table', MDCDataTable);
+// init('.mdc-data-table', MDCDataTable);
 // init('.mdc-drawer', MDCDrawer);
 // init('.mdc-radio', MDCRadio);
 // init('.mdc-circular-progress', MDCCircularProgress);
-// init('.mdc-list', MDCList);
+init('.mdc-list', MDCList);
+// init('.mdc-list', MDCRipple);
 // init('.mdc-icon-button', TIconButtonSyg);
 // init('.mdc-menu', MDCMenu);
 // init('.mdc-linear-progress', MDCLinearProgress);
 // init(".mdc-text-field", MDCTextField);
-// init(".mdc-text-field", MDCTextFieldSyg);
+init(".mdc-text-field", MDCTextFieldSyg);
 // init('.mdc-segmented-button', MDCSegmentedButton);
 // init('.mdc-snackbar', MDCSnackbarSyg);
 

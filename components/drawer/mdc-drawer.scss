@@ -3,7 +3,8 @@
 @use './../variabless';
 
 .mdc-drawer {
-    @include drawer.item-shape-radius(0 medium medium 0);
+    // @include drawer.item-shape-radius(0 medium medium 0);
+    @include drawer.item-shape-radius(0);
     border: 0;
     .mdc-drawer__header {
         height: 60px;

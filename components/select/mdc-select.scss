@@ -12,3 +12,9 @@
         @include select.outlined-density(variabless.$density);
     }    
 }
+
+.mdc-select__anchor {
+    --mdc-ripple-hover-opacity: #{variabless.$ripple-hover-opacity};
+    --mdc-ripple-press-opacity: #{variabless.$ripple-press-opacity};
+    --mdc-ripple-focus-opacity: #{variabless.$ripple-focus-opacity};
+}

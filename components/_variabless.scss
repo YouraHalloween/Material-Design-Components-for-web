@@ -2,7 +2,12 @@
 
 $box-shadow-index: 1;
 
+$list-item-height: 38px;
 $list-item-icon-font-size: typography.pxToRem(21px);
 $list-item-text: typography.pxToRem(13.3px);
 
 $density: -2;
+
+$ripple-hover-opacity: 0.04;
+$ripple-press-opacity: 0.04;
+$ripple-focus-opacity: 0.04;

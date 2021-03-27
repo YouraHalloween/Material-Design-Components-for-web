@@ -1,11 +1,14 @@
 @use "@material/list";
 @use '@material/theme/theme-color';
 @use '@material/typography';
+@use './../variabless';
 
 $list-group-label: typography.pxToRem(13.3px);
 
 .mdc-list-group {
-    @include list.group-subheader-ink-color(theme-color.prop-value(text-secondary-on-background));
+    @include list.group-subheader-ink-color(
+        theme-color.prop-value(text-secondary-on-background)
+    );
     .mdc-list-group__subheader {
         font-size: $list-group-label;
         line-height: 1.3rem;
@@ -20,4 +23,10 @@ $list-group-label: typography.pxToRem(13.3px);
 
 .mdc-list-item__text {
     line-height: initial;
+}
+
+.mdc-list-item {
+    --mdc-ripple-hover-opacity: #{variabless.$ripple-hover-opacity};
+    --mdc-ripple-press-opacity: #{variabless.$ripple-press-opacity};
+    --mdc-ripple-focus-opacity: #{variabless.$ripple-focus-opacity};
 }

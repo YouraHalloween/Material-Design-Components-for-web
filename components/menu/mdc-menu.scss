@@ -1,4 +1,5 @@
 @use '@material/elevation';
+@use '@material/list';
 @use '@material/typography';
 @use './../variabless';
 
@@ -8,7 +9,7 @@
         font-size: variabless.$list-item-text;
         padding: 6px 0;
         .mdc-list-item {
-            height: 38px;
+            @include list.list-item-height(variabless.$list-item-height);
             padding: 0 20px;
             .mdc-list-item__graphic {
                 color: var(--mdc-theme-text-secondary-on-background);
