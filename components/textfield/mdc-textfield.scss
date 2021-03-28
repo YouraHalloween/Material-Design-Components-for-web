@@ -9,17 +9,17 @@ $text-field-padding-outline: 16px;
 
 .mdc-text-field {
     @include textfield.fill-color(theme.$background); 
-    &.mdc-size__extra-small {
+    &.mdc-cmp-height__extra-small {
         @include textfield.height(variabless.$height-extra-small);
     }
-    &.mdc-size__small {
+    &.mdc-cmp-height__small {
         @include textfield.height(variabless.$height-small);
     }
-    &.mdc-size__medium {
+    &.mdc-cmp-height__medium {
         @include textfield.height(variabless.$height-medium);
         // @include textfield.density(-4);
     }
-    &.mdc-size__large {
+    &.mdc-cmp-height__large {
         @include textfield.height(variabless.$height-large);
         // @include textfield.density(-2);
     }

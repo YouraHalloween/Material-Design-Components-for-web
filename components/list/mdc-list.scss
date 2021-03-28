@@ -10,7 +10,7 @@ $list-group-label: typography.pxToRem(13.3px);
         theme-color.prop-value(text-secondary-on-background)
     );
     .mdc-list-group__subheader {
-        font-size: $list-group-label;
+        font-cmp-height: $list-group-label;
         line-height: 1.3rem;
     }
 }
@@ -26,16 +26,16 @@ $list-group-label: typography.pxToRem(13.3px);
 }
 
 .mdc-list-item {
-    .mdc-size__extra-small & {
+    .mdc-cmp-height__extra-small & {
         @include list.list-item-height(variabless.$height-extra-small);
     }
-    .mdc-size__small & {
+    .mdc-cmp-height__small & {
         @include list.list-item-height(variabless.$height-small);
     }
-    .mdc-size__medium & {
+    .mdc-cmp-height__medium & {
         @include list.list-item-height(variabless.$height-medium);        
     }
-    .mdc-size__large & {
+    .mdc-cmp-height__large & {
         @include list.list-item-height(variabless.$height-large);        
     }
     // @include list.list-item-height(variabless.$list-item-height);
