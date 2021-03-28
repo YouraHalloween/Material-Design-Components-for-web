@@ -1,5 +1,4 @@
 const path = require('path');
-// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const Env = (function () {
     const REMOTE_PATH = '../../yii2-material-design-components/src/assets/mdc/';
@@ -133,8 +132,7 @@ const SCSSConfig = (env) => {
                     use: loaders,
                 },
             ],
-        }
-        // plugins: [new CleanWebpackPlugin()],
+        }        
     });
 }
 

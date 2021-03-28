@@ -3,8 +3,7 @@
 @use './../variabless';
 
 .mdc-collapse {
-    .mdc-collapse__header {
-        @include list.list-item-height(variabless.$list-item-height);
+    .mdc-collapse__header {        
         font-size: variabless.$list-item-text;
         .mdc-list-item__text {
             width: 100%;

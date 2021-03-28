@@ -4,14 +4,25 @@
 @use '@material/ripple/ripple-theme';
 @use './../variabless';
 
-$text-field-height: 48px;
 $text-field-padding: 14px;
 $text-field-padding-outline: 16px;
 
 .mdc-text-field {
-    @include textfield.fill-color(theme.$background);
-    // @include textfield.height($text-field-height);
-    @include textfield.density(variabless.$density);
+    @include textfield.fill-color(theme.$background); 
+    &.mdc-size__extra-small {
+        @include textfield.height(variabless.$height-extra-small);
+    }
+    &.mdc-size__small {
+        @include textfield.height(variabless.$height-small);
+    }
+    &.mdc-size__medium {
+        @include textfield.height(variabless.$height-medium);
+        // @include textfield.density(-4);
+    }
+    &.mdc-size__large {
+        @include textfield.height(variabless.$height-large);
+        // @include textfield.density(-2);
+    }
     padding: 0 $text-field-padding;
     + .mdc-text-field-helper-line {
         justify-content: left;

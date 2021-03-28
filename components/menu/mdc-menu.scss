@@ -8,8 +8,7 @@
     .mdc-list {
         font-size: variabless.$list-item-text;
         padding: 6px 0;
-        .mdc-list-item {
-            @include list.list-item-height(variabless.$list-item-height);
+        .mdc-list-item {            
             padding: 0 20px;
             .mdc-list-item__graphic {
                 color: var(--mdc-theme-text-secondary-on-background);

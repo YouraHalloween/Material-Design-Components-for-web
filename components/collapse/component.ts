@@ -1,5 +1,3 @@
-// type TEventClickFn = (index: string, event: Event) => {};
-
 import { MDCList } from '@material/list/component';
 
 class TCollapse extends MDCList {
@@ -21,7 +19,7 @@ class TCollapse extends MDCList {
                             cls1 = 'mdc-collapse__content-activated';
                             cls2 = 'mdc-collapse__content-open';
                         }                                                
-                        this.removeClassByTimeout(content, cls2);
+                        this.setClassByTimeout(content, cls2);
                         content.classList.toggle(cls1);
                     }
                 }
@@ -29,7 +27,7 @@ class TCollapse extends MDCList {
         });
     }
 
-    private removeClassByTimeout(
+    private setClassByTimeout(
         element: Element,
         cssClassName: string        
     ): void {
