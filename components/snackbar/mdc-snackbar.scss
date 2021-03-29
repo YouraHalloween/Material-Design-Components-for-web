@@ -19,18 +19,17 @@ $snackbar-label-font-size: typography.pxToRem(13.5px);
             margin-top: 6px;
         }
     }
-    .mdc-snackbar__surface {
-        .mdc-snackbar__label {
-            font-size: $snackbar-label-font-size;
-            div {
-                margin: 5px 0;
-                &:first-child {
-                    margin-top: 0;
-                }
-                &:last-child {
-                    margin-bottom: 0;
-                }
-            }
+}
+
+.mdc-snackbar__label {
+    font-size: $snackbar-label-font-size;
+    div {
+        margin: 5px 0;
+        &:first-child {
+            margin-top: 0;
+        }
+        &:last-child {
+            margin-bottom: 0;
         }
     }
 }

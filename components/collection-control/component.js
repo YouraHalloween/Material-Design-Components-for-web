@@ -15,7 +15,7 @@ import { TLeftAppBarSyg } from './../left-app-bar/component';
 import { MDCDrawerSyg } from './../drawer/component';
 import { MDCSelect } from '@material/select';
 import { TIconButtonSyg } from './../icon-button/component';
-import { TCollapse } from './../collapse/component';
+import { TCollapseSyg } from './../collapse/component';
 
 const _classes = {
     checkbox: MDCCheckbox,
@@ -34,7 +34,7 @@ const _classes = {
     select: MDCSelect,
     dataTable: MDCDataTable,
     iconButton: TIconButtonSyg,
-    collapse: TCollapse
+    collapse: TCollapseSyg
 };
 
 const CollectionControl = (function () {

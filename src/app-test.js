@@ -1,5 +1,5 @@
 
-// import { MDCButton_Syg } from "./../components/button/component";
+import { TButtonSyg } from "./../components/button/component";
 import { MDCTextField } from "@material/textfield";
 import { MDCTextFieldSyg } from "../components/textfield/component";
 import { MDCRipple } from '@material/ripple';
@@ -21,7 +21,7 @@ import { MDCSelectHelperText } from '@material/select/helper-text';
 import { MDCIconButtonToggle } from '@material/icon-button';
 import { TIconButtonSyg } from './../components/icon-button/component';
 import { MDCSnackbarSyg } from "../components/snackbar/component";
-import { TCollapse } from './../components/collapse/component';
+import { TCollapseSyg } from './../components/collapse/component';
 
 // import { CollectionControl } from './../components/collection-control/component';
 
@@ -39,6 +39,8 @@ var cntr = [];
 function init(classCss, classComponent, func) {
     cntr = [].map.call(document.querySelectorAll(classCss), function (el1) {
         let control = new classComponent(el1);
+        // control.open = true;
+        // control.open();
         // control.singleSelection = true;
         // let ripple = new MDCRipple(control);
         // control.showProgress();
@@ -49,23 +51,24 @@ function init(classCss, classComponent, func) {
     });
 }
 
-init('.mdc-collapse', TCollapse);
+init('.mdc-collapse', TCollapseSyg);
 // init('.mdc-floating-label', MDCFloatingLabel);
-init('.mdc-select', MDCSelect);
+// init('.mdc-select', MDCSelect);
 // init('.mdc-select-helper-text', MDCSelectHelperText);
 // init('.mdc-data-table', MDCDataTable);
 // init('.mdc-drawer', MDCDrawer);
 // init('.mdc-radio', MDCRadio);
 // init('.mdc-circular-progress', MDCCircularProgress);
-init('.mdc-list', MDCList);
+// init('.mdc-list', MDCList);
 // init('.mdc-list', MDCRipple);
 // init('.mdc-icon-button', TIconButtonSyg);
 // init('.mdc-menu', MDCMenu);
 // init('.mdc-linear-progress', MDCLinearProgress);
 // init(".mdc-text-field", MDCTextField);
-init(".mdc-text-field", MDCTextFieldSyg);
+// init(".mdc-text-field", MDCTextFieldSyg);
 // init('.mdc-segmented-button', MDCSegmentedButton);
-// init('.mdc-snackbar', MDCSnackbarSyg);
+init('.mdc-snackbar', MDCSnackbarSyg);
+// init('.mdc-button', TButtonSyg);
 
 $('#button').click(function () {
     console.log(cntr[0].foundation.getSelectedRowIds());

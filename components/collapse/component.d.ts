@@ -1,7 +1,8 @@
 import { MDCList } from '@material/list/component';
-declare class TCollapse extends MDCList {
+declare class TCollapseSyg extends MDCList {
+    private icons;
     constructor(root: Element, ...args: any[]);
     private setClassByTimeout;
     isOpen(element: Element): boolean;
 }
-export { TCollapse };
+export { TCollapseSyg };

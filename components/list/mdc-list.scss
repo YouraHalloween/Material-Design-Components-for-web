@@ -5,20 +5,12 @@
 
 $list-group-label: typography.pxToRem(13.3px);
 
-.mdc-list-group {
-    @include list.group-subheader-ink-color(
-        theme-color.prop-value(text-secondary-on-background)
-    );
-    .mdc-list-group__subheader {
-        font-cmp-height: $list-group-label;
-        line-height: 1.3rem;
-    }
-}
-
-.mdc-list-item__meta {
-    .material-icons {
-        color: theme-color.prop-value(text-secondary-on-background);
-    }
+.mdc-list-group__subheader {
+    font-size: $list-group-label;
+    line-height: 1.3rem;
+    --mdc-theme-text-primary-on-background: #{theme-color.prop-value(
+            text-secondary-on-background
+        )};
 }
 
 .mdc-list-item__text {
@@ -33,10 +25,10 @@ $list-group-label: typography.pxToRem(13.3px);
         @include list.list-item-height(variabless.$height-small);
     }
     .mdc-cmp-height__medium & {
-        @include list.list-item-height(variabless.$height-medium);        
+        @include list.list-item-height(variabless.$height-medium);
     }
     .mdc-cmp-height__large & {
-        @include list.list-item-height(variabless.$height-large);        
+        @include list.list-item-height(variabless.$height-large);
     }
     // @include list.list-item-height(variabless.$list-item-height);
     --mdc-ripple-hover-opacity: #{variabless.$ripple-hover-opacity};
