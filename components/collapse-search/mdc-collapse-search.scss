@@ -6,3 +6,10 @@
         color: var(--mdc-theme-text-secondary-on-background);
     }
 }
+
+.mdc-collapse-search__item {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    align-items: center;
+}

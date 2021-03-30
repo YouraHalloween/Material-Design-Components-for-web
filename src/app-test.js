@@ -65,7 +65,7 @@ init('.mdc-collapse', TCollapseSyg);
 // init('.mdc-menu', MDCMenu);
 // init('.mdc-linear-progress', MDCLinearProgress);
 // init(".mdc-text-field", MDCTextField);
-// init(".mdc-text-field", MDCTextFieldSyg);
+init(".mdc-text-field", MDCTextFieldSyg);
 // init('.mdc-segmented-button', MDCSegmentedButton);
 init('.mdc-snackbar', MDCSnackbarSyg);
 // init('.mdc-button', TButtonSyg);

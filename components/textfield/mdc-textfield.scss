@@ -2,6 +2,7 @@
 @use '@material/icon-button';
 @use '@material/theme';
 @use '@material/ripple/ripple-theme';
+@use '@material/typography';
 @use './../variabless';
 
 $text-field-padding: 14px;
@@ -49,6 +50,16 @@ $text-field-padding-outline: 16px;
 
 .mdc-outer-label {
     padding: 0 $text-field-padding;
+}
+
+.mdc-outer-label__gor {
+    --mdc-typography-body2-font-size: #{typography.pxToRem(13.3px)};
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 40%;
+    text-align: right;    
+    margin-right: $text-field-padding;
 }
 
 /* TEXTFIELD LABEL */

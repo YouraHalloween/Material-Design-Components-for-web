@@ -129,7 +129,7 @@
 
     <div class="mdc-collapse mdc-collapse-search mdc-list-group" style="width: 350px;">
         <h3 class="mdc-list-group__subheader">Параметры поиска</h3>
-        <ul id="collapse1" class="mdc-list mdc-cmp-height__small">
+        <ul id="collapse1" class="mdc-list mdc-cmp-height__extra-small">
             <li id="collapse1-h1" class="mdc-list-item mdc-collapse__header" role="tab" aria-controls="collapse1-h1_c"
                 aria-selected="false" aria-expanded="false" tabindex="0">
                 <span class="mdc-list-item__graphic material-icons" aria-hidden="true">
@@ -139,26 +139,30 @@
                 <span class="mdc-list-item__text">Данные должника</span>
             </li>
             <hr class="mdc-list-divider">
-            <li id="collapse1-h1_c" role="tabpanel" aria-hidden="true" class="mdc-collapse__content">
-                <label class="mdc-text-field mdc-size__small mdc-text-field--outlined mdc-text-field--no-label">
-                    <span class="mdc-notched-outline">
-                        <span class="mdc-notched-outline__leading"></span>
-
-                        <span class="mdc-notched-outline__trailing"></span>
-                    </span>
-                    <input type="text" class="mdc-text-field__input">
-                </label>
-
-                <label class="mdc-text-field mdc-size__small mdc-text-field--outlined mdc-text-field--no-label">
-                    <span class="mdc-notched-outline">
-                        <span class="mdc-notched-outline__leading"></span>
-                        <span class="mdc-notched-outline__notch">
-                            <span class="mdc-floating-label" id="my-label-id1">Your Name</span>
+            <li id="collapse1-h1_c" role="tabpanel" aria-hidden="true" class="mdc-collapse__content mdc-collapse__content-open mdc-collapse__content-activated">
+                <div class="mdc-collapse-search__item">
+                    <label class="mdc-outer-label__gor mdc-typography--body2" for="cmp-id1">Введите логин:</label>
+                    <label
+                        class="mdc-text-field mdc-cmp-height__extra-small mdc-text-field--outlined mdc-text-field--no-label">
+                        <span class="mdc-notched-outline">
+                            <span class="mdc-notched-outline__leading"></span>
+                            <span class="mdc-notched-outline__trailing"></span>
                         </span>
-                        <span class="mdc-notched-outline__trailing"></span>
-                    </span>
-                    <input type="text" class="mdc-text-field__input" aria-labelledby="my-label-id1">
-                </label>
+                        <input type="text" class="mdc-text-field__input" id="cmp-id1">
+                    </label>
+                </div>
+
+                <div class="mdc-collapse-search__item">
+                    <label class="mdc-outer-label__gor mdc-typography--body2" for="cmp-id2">Введите пароль:</label>
+                    <label
+                        class="mdc-text-field mdc-cmp-height__extra-small mdc-text-field--outlined mdc-text-field--no-label">
+                        <span class="mdc-notched-outline">
+                            <span class="mdc-notched-outline__leading"></span>                            
+                            <span class="mdc-notched-outline__trailing"></span>
+                        </span>
+                        <input type="text" class="mdc-text-field__input" if="cmp-id2">
+                    </label>
+                </div>
 
             </li>
             <li class="mdc-list-item mdc-collapse__header">
