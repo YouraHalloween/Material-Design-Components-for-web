@@ -4,22 +4,24 @@
 
 .mdc-select {
     @include select.container-fill-color(theme.$background);
-    &.mdc-cmp-height__extra-small {
-        @include select.outlined-height(variabless.$height-extra-small);
-        @include select.filled-height(variabless.$height-extra-small);
-    }
-    &.mdc-cmp-height__small {
-        @include select.outlined-height(variabless.$height-small);
-        @include select.filled-height(variabless.$height-small);
-    }
-    &.mdc-cmp-height__medium {
-        @include select.outlined-height(variabless.$height-medium);
-        @include select.filled-height(variabless.$height-medium);
-    }
-    &.mdc-cmp-height__large {
-        @include select.outlined-height(variabless.$height-large);
-        @include select.filled-height(variabless.$height-large);
-    }
+    // &.mdc-h__es {
+    //     @include select.outlined-height(variabless.$height-extra-small);
+    //     @include select.filled-height(variabless.$height-extra-small);
+    // }
+    // &.mdc-h__s {
+    //     @include select.outlined-height(variabless.$height-small);
+    //     @include select.filled-height(variabless.$height-small);
+    // }
+    // &.mdc-h__m {
+    //     @include select.outlined-height(variabless.$height-medium);
+    //     @include select.filled-height(variabless.$height-medium);
+    // }
+    // &.mdc-h__l {
+    //     @include select.outlined-height(variabless.$height-large);
+    //     @include select.filled-height(variabless.$height-large);
+    // }
+
+    
     // &.mdc-data-table__pagination-rows-per-page-select {
     //     @include select.outlined-height(36px);
     // }

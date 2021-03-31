@@ -4,26 +4,13 @@
 @use '@material/ripple/ripple-theme';
 @use '@material/typography';
 @use './../variabless';
+@use './../helper';
 
 $text-field-padding: 14px;
 $text-field-padding-outline: 16px;
 
 .mdc-text-field {
-    @include textfield.fill-color(theme.$background); 
-    &.mdc-cmp-height__extra-small {
-        @include textfield.height(variabless.$height-extra-small);
-    }
-    &.mdc-cmp-height__small {
-        @include textfield.height(variabless.$height-small);
-    }
-    &.mdc-cmp-height__medium {
-        @include textfield.height(variabless.$height-medium);
-        // @include textfield.density(-4);
-    }
-    &.mdc-cmp-height__large {
-        @include textfield.height(variabless.$height-large);
-        // @include textfield.density(-2);
-    }
+    @include textfield.fill-color(theme.$background);     
     padding: 0 $text-field-padding;
     + .mdc-text-field-helper-line {
         justify-content: left;
@@ -53,7 +40,7 @@ $text-field-padding-outline: 16px;
 }
 
 .mdc-outer-label__gor {
-    --mdc-typography-body2-font-size: #{typography.pxToRem(13.3px)};
+    // --mdc-typography-body2-font-size: #{typography.pxToRem(13.3px)};
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;

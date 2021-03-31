@@ -1,22 +1,71 @@
 @use 'sass:map';
 @use '@material/theme/theme-color';
 
+@use './../components/helper' with (
+    $fontSizeBase: 14px
+);
+
+@use './../components/variabless';
+
 $alt-theme-color: (
-    primary:#1770c7,
-    secondary: #1770c7, //#1976d2
+    primary: #1770c7,
+    secondary: #1770c7,
+    //#1976d2
     background: #fff,
     background-secondary: #1c2132,
     text-logo: #be147a,
-    primary-border-color: #e5e5e5
+    primary-border-color: #e5e5e5,
 );
 
 //Так нельзя добавить дополнительный цвет, поэтому через страдания
 // @use '@material/theme' with ()
 //Только так ->
-theme-color.$property-values: map.merge(theme-color.$property-values, $alt-theme-color);
+theme-color.$property-values: map.merge(
+    theme-color.$property-values,
+    $alt-theme-color
+);
 
 @use '@material/typography' with (
     $font-family: unquote("Nunito, Roboto, sans-serif"),
+    $styles-headline1: (
+        font-size: helper.pxToRem(60px)
+    ),
+    $styles-headline2: (
+        font-size: helper.pxToRem(48px)
+    ),
+    $styles-headline3: (
+        font-size: helper.pxToRem(34px)
+    ),
+    $styles-headline4: (
+        font-size: helper.pxToRem(24px)
+    ),
+    $styles-headline5: (
+        font-size: helper.pxToRem(20px)
+    ),
+    $styles-headline6: (
+        font-size: variabless.$font-size-large
+    ),  
+    $styles-subtitle1: (    
+        font-size: variabless.$font-size-medium
+    ),
+    $styles-subtitle2: (    
+        font-size: variabless.$font-size-small
+    ),
+    $styles-body1: (    
+        font-size: variabless.$font-size-medium
+    ),
+    $styles-body2: (    
+        font-size: variabless.$font-size-small
+    ),    
+    $styles-button: (    
+        font-size: variabless.$font-size-medium
+    ),
+    $styles-caption: (    
+        font-size: variabless.$font-size-extra-small
+    ),
+    $styles-overline: (    
+        font-size: variabless.$font-size-small
+    ),
 );
 
 @use '@material/top-app-bar' with (

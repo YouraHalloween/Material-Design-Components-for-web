@@ -1,0 +1,17 @@
+@use './../variabless';
+
+@mixin size($type, $mode, $property, $size) {
+    .mdc-#{$type}__#{$mode} {
+        #{$property}: $size;
+    }
+}
+
+@include size('h', 'exsmall', 'height', variabless.$height-extra-small);
+@include size('h', 'small', 'height', variabless.$height-small);
+@include size('h', 'medium', 'height', variabless.$height-medium);
+@include size('h', 'large', 'height', variabless.$height-large);
+
+@include size('fs', 'exsmall', 'font-size', variabless.$font-size-extra-small);
+@include size('fs', 'small', 'font-size', variabless.$font-size-small);
+@include size('fs', 'medium', 'font-size', variabless.$font-size-medium);
+@include size('fs', 'large', 'font-size', variabless.$font-size-large);

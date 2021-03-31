@@ -1,15 +1,21 @@
-@use '@material/typography';
+// @use '@material/typography';
+@use './helper';
 
 $box-shadow-index: 1;
 
 $list-item-height: 38px;
-$list-item-icon-font-size: typography.pxToRem(21px);
-$list-item-text-font-size: typography.pxToRem(13.3px);
+$list-item-icon-font-size: helper.pxToRem(21px);
+$list-item-text-font-size: helper.pxToRem(13.3px);
 
 $height-extra-small: 36px;
 $height-small: 38px;
 $height-medium: 40px;
 $height-large: 44px;
+
+$font-size-extra-small: helper.pxToRem(12px);
+$font-size-small: helper.pxToRem(13.3px);
+$font-size-medium: helper.pxToRem(14px);
+$font-size-large: helper.pxToRem(16px);
 
 $ripple-hover-opacity: 0.04;
 $ripple-press-opacity: 0.04;
