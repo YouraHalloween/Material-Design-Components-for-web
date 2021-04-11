@@ -1,0 +1,6 @@
+@use './../variabless';
+
+.mdc-switch__label {    
+    cursor: pointer;
+    font-size: var(--mdc-typography-subtitle1-font-size, #{variabless.$font-size-medium});    
+}

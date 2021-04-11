@@ -22,6 +22,7 @@ import { MDCIconButtonToggle } from '@material/icon-button';
 import { TIconButtonSyg } from './../components/icon-button/component';
 import { MDCSnackbarSyg } from "../components/snackbar/component";
 import { TCollapseSyg } from './../components/collapse/component';
+import { MDCCheckbox } from '@material/checkbox';
 
 // import { CollectionControl } from './../components/collection-control/component';
 
@@ -39,6 +40,8 @@ var cntr = [];
 function init(classCss, classComponent, func) {
     cntr = [].map.call(document.querySelectorAll(classCss), function (el1) {
         let control = new classComponent(el1);
+        // if (control.singleSelection)
+            // control.singleSelection = false;
         // control.open = true;
         // control.open();
         // control.singleSelection = true;
@@ -51,6 +54,7 @@ function init(classCss, classComponent, func) {
     });
 }
 
+// init('.mdc-checkbox', MDCCheckbox);
 init('.mdc-collapse', TCollapseSyg);
 // init('.mdc-floating-label', MDCFloatingLabel);
 // init('.mdc-select', MDCSelect);
@@ -65,9 +69,9 @@ init('.mdc-collapse', TCollapseSyg);
 // init('.mdc-menu', MDCMenu);
 // init('.mdc-linear-progress', MDCLinearProgress);
 // init(".mdc-text-field", MDCTextField);
-init(".mdc-text-field", MDCTextFieldSyg);
+// init(".mdc-text-field", MDCTextFieldSyg);
 // init('.mdc-segmented-button', MDCSegmentedButton);
-init('.mdc-snackbar', MDCSnackbarSyg);
+// init('.mdc-snackbar', MDCSnackbarSyg);
 // init('.mdc-button', TButtonSyg);
 
 $('#button').click(function () {

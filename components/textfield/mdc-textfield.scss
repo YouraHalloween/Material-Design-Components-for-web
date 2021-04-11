@@ -40,13 +40,12 @@ $text-field-padding-outline: 16px;
 }
 
 .mdc-outer-label__gor {
-    // --mdc-typography-body2-font-size: #{typography.pxToRem(13.3px)};
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    width: 40%;
+    // width: 40%;
     text-align: right;    
-    margin-right: $text-field-padding;
+    padding-right: $text-field-padding;
 }
 
 /* TEXTFIELD LABEL */

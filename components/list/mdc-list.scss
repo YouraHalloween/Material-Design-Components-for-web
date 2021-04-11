@@ -29,7 +29,7 @@ $list-group-label: typography.pxToRem(13.3px);
     // }
     // .mdc-h__l & {
     //     @include list.list-item-height(variabless.$height-large);
-    // }    
+    // }        
     --mdc-ripple-hover-opacity: #{variabless.$ripple-hover-opacity};
     --mdc-ripple-press-opacity: #{variabless.$ripple-press-opacity};
     --mdc-ripple-focus-opacity: #{variabless.$ripple-focus-opacity};

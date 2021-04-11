@@ -23,6 +23,9 @@
     <link rel="icon" type="image/png" sizes="16x16"
         href="https://cdn.glitch.com/9c389208-b279-4e96-bcbc-e5f8712d8706%2Ffavicon-16x16.png?1553712190383">
     <style>
+        html {
+            font-size: 14px;
+        }
         .text-field-container {
             margin: 10px 0;
         }
@@ -39,21 +42,21 @@
 
 <body>
 
-    <label class="mdc-text-field mdc-size__large mdc-text-field--filled">
+    <label class="mdc-text-field mdc-h__small mdc-fs__small mdc-text-field--filled mdc-text-field--no-label">
         <span class="mdc-text-field__ripple"></span>
-        <span class="mdc-floating-label" id="my-label-id">Hint text</span>
+        <!-- <span class="mdc-floating-label" id="my-label-id">Hint text</span> -->
         <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id">
         <span class="mdc-line-ripple"></span>
     </label>
 
     <hr>
 
-    <label class="mdc-text-field mdc-text-field--outlined">
+    <label class="mdc-text-field mdc-text-field--outlined mdc-h__exsmall mdc-text-field--no-label">
         <span class="mdc-notched-outline">
             <span class="mdc-notched-outline__leading"></span>
-            <span class="mdc-notched-outline__notch">
+            <!-- <span class="mdc-notched-outline__notch">
                 <span class="mdc-floating-label" id="my-label-id1">Your Name</span>
-            </span>
+            </span> -->
             <span class="mdc-notched-outline__trailing"></span>
         </span>
         <input type="text" class="mdc-text-field__input" aria-labelledby="my-label-id1">
@@ -61,11 +64,11 @@
 
     <hr>
 
-    <div class="mdc-select mdc-size__extra-small mdc-select--filled demo-width-class">
+    <div class="mdc-select mdc-select--filled mdc-h__small mdc-select--no-label">
         <div class="mdc-select__anchor" role="button" aria-haspopup="listbox" aria-expanded="false"
             aria-labelledby="demo-label demo-selected-text">
             <span class="mdc-select__ripple"></span>
-            <span id="demo-label" class="mdc-floating-label">Pick a Food Group</span>
+            <!-- <span id="demo-label" class="mdc-floating-label">Pick a Food Group</span> -->
             <span class="mdc-select__selected-text-container">
                 <span id="demo-selected-text" class="mdc-select__selected-text"></span>
             </span>
@@ -127,9 +130,41 @@
 
     <hr>
 
+    <div class="mdc-form-field mdc-form-field--align-end">
+        <div class="mdc-checkbox">
+            <input type="checkbox" class="mdc-checkbox__native-control" id="checkbox-1" />
+            <div class="mdc-checkbox__background">
+                <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                    <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                </svg>
+                <div class="mdc-checkbox__mixedmark"></div>
+            </div>
+            <div class="mdc-checkbox__ripple"></div>
+        </div>
+        <label for="checkbox-1">Checkbox 1</label>
+    </div>
+
+    <hr>
+
+    <div class="mdc-form-field mdc-form-field--nowrap">
+        <div class="mdc-checkbox">
+            <input type="checkbox" id="my-checkbox" class="mdc-checkbox__native-control" />
+            <div class="mdc-checkbox__background">
+                <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                    <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                </svg>
+                <div class="mdc-checkbox__mixedmark"></div>
+            </div>
+            <div class="mdc-checkbox__ripple"></div>
+        </div>
+        <label for="my-checkbox">This some really really really long text</label>
+    </div>
+
+    <hr>
+
     <div class="mdc-collapse mdc-collapse-search mdc-list-group" style="width: 350px;">
         <h3 class="mdc-list-group__subheader">Параметры поиска</h3>
-        <ul id="collapse1" class="mdc-list mdc-h__es">
+        <ul id="collapse1" class="mdc-list mdc-h__small">
             <li id="collapse1-h1" class="mdc-list-item mdc-collapse__header" role="tab" aria-controls="collapse1-h1_c"
                 aria-selected="false" aria-expanded="false" tabindex="0">
                 <span class="mdc-list-item__graphic material-icons" aria-hidden="true">
@@ -139,11 +174,11 @@
                 <span class="mdc-list-item__text">Данные должника</span>
             </li>
             <hr class="mdc-list-divider">
-            <li id="collapse1-h1_c" role="tabpanel" aria-hidden="true" class="mdc-collapse__content mdc-collapse__content-open mdc-collapse__content-activated">
-                <div class="mdc-collapse-search__item">
-                    <label class="mdc-outer-label__gor mdc-typography--body2" for="cmp-id1">Введите логин:</label>
+            <li id="collapse1-h1_c" role="tabpanel" aria-hidden="true" class="mdc-collapse__content ">
+                <div class="mdc-collapse-search__item">                    
+                    <label class="mdc-collapse-search__label mdc-outer-label__gor mdc-typography--body2" for="cmp-id1">Введите логин:</label>
                     <label
-                        class="mdc-text-field mdc-h__es mdc-text-field--outlined mdc-text-field--no-label">
+                        class="mdc-collapse-search__component mdc-text-field mdc-h__exsmall mdc-text-field--outlined mdc-text-field--no-label">
                         <span class="mdc-notched-outline">
                             <span class="mdc-notched-outline__leading"></span>
                             <span class="mdc-notched-outline__trailing"></span>
@@ -153,15 +188,82 @@
                 </div>
 
                 <div class="mdc-collapse-search__item">
-                    <label class="mdc-outer-label__gor mdc-typography--body2" for="cmp-id2">Введите пароль:</label>
+                    <label class="mdc-collapse-search__label mdc-outer-label__gor mdc-typography--body2" for="cmp-id2">Введите пароль:</label>
                     <label
-                        class="mdc-text-field mdc-h__es mdc-text-field--outlined mdc-text-field--no-label">
+                        class="mdc-collapse-search__component mdc-text-field mdc-h__exsmall mdc-text-field--outlined mdc-text-field--no-label">
                         <span class="mdc-notched-outline">
                             <span class="mdc-notched-outline__leading"></span>                            
                             <span class="mdc-notched-outline__trailing"></span>
                         </span>
                         <input type="text" class="mdc-text-field__input" if="cmp-id2">
                     </label>
+                </div>
+
+                <div class="mdc-collapse-search__item">
+                    <label class="mdc-collapse-search__label mdc-outer-label__gor mdc-typography--body2" for="checkbox-10">Запомнить меня:</label>
+
+                    <div class="mdc-collapse-search__component mdc-checkbox">
+                        <input type="checkbox" class="mdc-checkbox__native-control" id="checkbox-10" />
+                        <div class="mdc-checkbox__background">
+                            <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                                <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                            </svg>
+                            <div class="mdc-checkbox__mixedmark"></div>
+                        </div>
+                        <div class="mdc-checkbox__ripple"></div>
+                    </div>
+                </div>
+
+                <div class="mdc-collapse-search__item">
+                    <label class="mdc-collapse-search__label mdc-outer-label__gor mdc-typography--body2" for="cmp-id1">Введите логин:</label>                    
+                    <div class="mdc-collapse-search__component mdc-select mdc-select--outlined mdc-h__exsmall mdc-select--no-label demo-width-class">
+                        <div class="mdc-select__anchor">
+                            <span class="mdc-notched-outline">
+                                <span class="mdc-notched-outline__leading"></span>
+                                <span class="mdc-notched-outline__trailing"></span>
+                            </span>
+                            <span class="mdc-select__selected-text-container">
+                                <span class="mdc-select__selected-text"></span>
+                            </span>
+                            <span class="mdc-select__dropdown-icon">
+                                <svg class="mdc-select__dropdown-icon-graphic" viewBox="7 10 10 5" focusable="false">
+                                    <polygon class="mdc-select__dropdown-icon-inactive" stroke="none" fill-rule="evenodd"
+                                        points="7 10 12 15 17 10">
+                                    </polygon>
+                                    <polygon class="mdc-select__dropdown-icon-active" stroke="none" fill-rule="evenodd"
+                                        points="7 15 12 10 17 15">
+                                    </polygon>
+                                </svg>
+                            </span>
+                        </div>
+                    
+                        <div class="mdc-select__menu mdc-menu mdc-menu-surface mdc-menu-surface--fullwidth">
+                            <ul class="mdc-list" role="listbox" aria-label="Food picker listbox">
+                                <li class="mdc-list-item mdc-list-item--selected" aria-selected="true" data-value="" role="option">
+                                    <span class="mdc-list-item__ripple"></span>
+                                </li>
+                                <li class="mdc-list-item" aria-selected="false" data-value="grains" role="option">
+                                    <span class="mdc-list-item__ripple"></span>
+                                    <span class="mdc-list-item__text">
+                                        Bread, Cereal, Rice, and Pasta
+                                    </span>
+                                </li>
+                                <li class="mdc-list-item mdc-list-item--disabled" aria-selected="false" data-value="vegetables"
+                                    aria-disabled="true" role="option">
+                                    <span class="mdc-list-item__ripple"></span>
+                                    <span class="mdc-list-item__text">
+                                        Vegetables
+                                    </span>
+                                </li>
+                                <li class="mdc-list-item" aria-selected="false" data-value="fruit" role="option">
+                                    <span class="mdc-list-item__ripple"></span>
+                                    <span class="mdc-list-item__text">
+                                        Fruit
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
 
             </li>
@@ -196,7 +298,7 @@
 
     <div class="mdc-list-group">
         <h3 class="mdc-list-group__subheader">List 1</h3>
-        <ul class="mdc-list">
+        <ul class="mdc-list mdc-h__small">
             <li class="mdc-list-item mdc-ripple-upgraded" tabindex="-1">
 
                 <span class="mdc-list-item__graphic material-icons" aria-hidden="true">

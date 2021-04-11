@@ -4,7 +4,7 @@
 
 // .mdc-collapse {
 .mdc-collapse__header {
-    font-size: variabless.$list-item-text-font-size;
+    --mdc-typography-subtitle1-font-size: #{variabless.$font-size-small};    
     .mdc-list-item__text {
         width: 100%;
         text-align: right;

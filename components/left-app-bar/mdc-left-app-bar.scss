@@ -1,8 +1,7 @@
-@use '@material/typography';
+@use './../helper';
 
 $left-app-bar-width: 62px;
-$left-app-bar-icon-height: 80px;
-$left-app-bar-icon-size: typography.pxToRem(28px);
+$left-app-bar-icon-height: 74px;
 
 .mdc-left-app-bar {
     display: flex;
@@ -12,12 +11,13 @@ $left-app-bar-icon-size: typography.pxToRem(28px);
     bottom: 0;
     position: fixed;
     height: 100vh;
-    .mdc-left-app-bar-content {
-        background: var(--mdc-theme-background-secondary);
-        overflow: hidden !important;
-        overflow-anchor: none;
-        touch-action: auto;
-    }
+}
+
+.mdc-left-app-bar-content {
+    background: var(--mdc-theme-background-secondary);
+    overflow: hidden !important;
+    overflow-anchor: none;
+    touch-action: auto;
 }
 
 .mdc-left-app-bar-list {
@@ -26,48 +26,51 @@ $left-app-bar-icon-size: typography.pxToRem(28px);
     margin: 0;
     padding: 5px 0 0 0;
     width: $left-app-bar-width;
-    .mdc-left-app-bar-item {
-        position: relative;
-        &.mdc-left-app-bar-item__all {
-            .mdc-left-app-bar-item__label {
-                height: $left-app-bar-icon-height / 2;
-            }
+}
+
+.mdc-left-app-bar-item {
+    position: relative;
+    &.mdc-left-app-bar-item__all {
+        .mdc-left-app-bar-item__label {
+            height: $left-app-bar-icon-height / 2;
         }
-        &:not(.mdc-left-app-bar-item__all) {
-            .mdc-left-app-bar-item__label {
-                .mdc-left-app-bar-item__icon {
-                    font-size: $left-app-bar-icon-size;
-                }
-                &.active {
-                    &:after {
-                        border-radius: 0 2px 2px 0;
-                        left: -1px;
-                        content: '';
-                        background: var(--mdc-theme-text-primary-on-dark);
-                        position: absolute;
-                        width: 5px;
-                        height: 90%;
-                        top: 50%;
-                        transform: translateY(-50%);
-                    }
-                }
+    }
+    &:not(.mdc-left-app-bar-item__all) {
+        .mdc-left-app-bar-item__label {
+            .mdc-left-app-bar-item__icon {
+                font-size: var(
+                    --mdc-typography-headline4-font-size,
+                    helper.pxToRem(26px)
+                );
             }
-        }
-        .mdc-left-app-bar-item__label {            
-            color: var(--mdc-theme-text-icon-on-dark);
-            cursor: pointer;
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: $left-app-bar-icon-height;
             &.active {
-                color: var(--mdc-theme-text-primary-on-dark);
-            }
-            &:hover {
-                color: var(--mdc-theme-text-primary-on-dark);
+                &:after {
+                    border-radius: 0 2px 2px 0;
+                    left: -1px;
+                    content: '';
+                    background: var(--mdc-theme-text-primary-on-dark);
+                    position: absolute;
+                    width: 5px;
+                    height: 90%;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
             }
         }
+    }
+}
+
+.mdc-left-app-bar-item__label {
+    color: var(--mdc-theme-text-icon-on-dark);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: $left-app-bar-icon-height;
+    &.active {
+        color: var(--mdc-theme-text-primary-on-dark);
+    }
+    &:hover {
+        color: var(--mdc-theme-text-primary-on-dark);
     }
 }

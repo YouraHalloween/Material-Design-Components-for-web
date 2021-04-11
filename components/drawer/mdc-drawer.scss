@@ -2,29 +2,17 @@
 @use '@material/theme/theme-color';
 @use '@material/typography';
 @use './../variabless';
+@use './../helper';
+
+$drawer-icon-font-size: helper.pxToRem(21px);
+$drawer-title-icon-font-size: helper.pxToRem(28px);
 
 .mdc-drawer {
     // @include drawer.item-shape-radius(0 medium medium 0);
     @include drawer.item-shape-radius(0);
     border: 0;
     .mdc-drawer__title {
-        font-size: typography.pxToRem(16.4px);
-        @include typography.overflow-ellipsis();
         color: var(--mdc-theme-text-logo, #be147a);
-        &.mdc-drawer__title-with-icon {
-            display: flex;
-            align-items: center;
-            height: 100%;
-            .mdc-drawer__title-name {
-                text-overflow: ellipsis;
-                white-space: nowrap;
-                overflow: hidden;
-            }
-            .mdc-drawer__title-icon {
-                font-size: typography.pxToRem(28px);
-                margin: -1px 5px 0 0;
-            }
-        }
     }
     .mdc-list {
         > div {
@@ -39,19 +27,28 @@
             padding: 0 26px;
             height: 44px;
             .mdc-list-item__graphic {
-                font-size: variabless.$list-item-icon-font-size;
+                font-size: $drawer-icon-font-size;
                 margin-right: 12px;
             }
         }
         .mdc-list-group__subheader {
             color: theme-color.prop-value(text-secondary-on-background);
-            font-size: variabless.$list-item-text-font-size;
             margin-bottom: 8px;
         }
     }
 }
 
-.mdc-drawer__header {
-    height: 60px;
-    padding-bottom: 0;
+.mdc-drawer__title {    
+    &.mdc-drawer__title-with-icon {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        .mdc-drawer__title-name {
+            @include typography.overflow-ellipsis();
+        }
+        .mdc-drawer__title-icon {
+            font-size: $drawer-title-icon-font-size;
+            margin: -1px 5px 0 0;
+        }
+    }
 }

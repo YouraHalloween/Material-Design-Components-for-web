@@ -6,8 +6,7 @@
 
 .mdc-menu {
     .mdc-list-item__graphic {
-        color: var(--mdc-theme-text-secondary-on-background);
-        font-size: variabless.$list-item-icon-font-size;
+        color: var(--mdc-theme-text-secondary-on-background);        
         margin-right: 12px;
     }
 }
@@ -15,7 +14,6 @@
 .mdc-menu {
     @include elevation.elevation(variabless.$box-shadow-index);
     .mdc-list {
-        font-size: variabless.$list-item-text-font-size;
         padding: 6px 0;
     }
     .mdc-list-item {

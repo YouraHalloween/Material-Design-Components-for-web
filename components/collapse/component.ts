@@ -12,6 +12,7 @@ class TCollapseSyg extends MDCList {
 
     constructor(root: Element, ...args: any[]) {
         super(root, ...args);
+        this.singleSelection = false;
         this.listElements.forEach((element: Element) => {
             element.addEventListener('click', () => {
                 let id: string | null = element.getAttribute('id');
