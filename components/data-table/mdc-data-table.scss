@@ -25,14 +25,14 @@
 }
 
 .mdc-data-table__pagination {
-    .mdc-data-table__pagination-rows-per-page {
-        .mdc-select {
-            @include select.outlined-height(36px);
-            .mdc-select__selected-text {
-                font-size: typography.pxToRem(14px);
-            }
-        }
-    }
+    // .mdc-data-table__pagination-rows-per-page {
+    //     .mdc-select {
+    //         @include select.outlined-height(36px);
+    //         .mdc-select__selected-text {
+    //             font-size: typography.pxToRem(14px);
+    //         }
+    //     }
+    // }
     .mdc-data-table__pagination-total {
         line-height: initial;
     }
