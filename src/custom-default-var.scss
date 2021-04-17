@@ -1,5 +1,6 @@
 @use 'sass:map';
 @use '@material/theme/theme-color';
+@use '@material/theme/custom-properties';
 
 @use './../components/helper' with (
     $fontSizeBase: 14px

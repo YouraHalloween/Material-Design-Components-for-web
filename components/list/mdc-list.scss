@@ -1,12 +1,10 @@
 @use "@material/list";
 @use '@material/theme/theme-color';
-@use '@material/typography';
 @use './../variabless';
 
-$list-group-label: typography.pxToRem(13.3px);
-
 .mdc-list-group__subheader {
-    font-size: $list-group-label;
+    --mdc-typography-subtitle1-font-size: #{variabless.$font-size-small};
+    // font-size: variabless.$font-size-small;
     line-height: 1.3rem;
     --mdc-theme-text-primary-on-background: #{theme-color.prop-value(
             text-secondary-on-background
@@ -17,19 +15,7 @@ $list-group-label: typography.pxToRem(13.3px);
     line-height: initial;
 }
 
-.mdc-list-item {
-    // .mdc-h__es & {
-    //     @include list.list-item-height(variabless.$height-extra-small);
-    // }
-    // .mdc-h__s & {
-    //     @include list.list-item-height(variabless.$height-small);
-    // }
-    // .mdc-h__m & {
-    //     @include list.list-item-height(variabless.$height-medium);
-    // }
-    // .mdc-h__l & {
-    //     @include list.list-item-height(variabless.$height-large);
-    // }        
+.mdc-list-item {      
     --mdc-ripple-hover-opacity: #{variabless.$ripple-hover-opacity};
     --mdc-ripple-press-opacity: #{variabless.$ripple-press-opacity};
     --mdc-ripple-focus-opacity: #{variabless.$ripple-focus-opacity};

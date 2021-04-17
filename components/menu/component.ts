@@ -14,7 +14,7 @@ declare module '@material/menu/component' {
 
 Object.defineProperty(MDCMenu.prototype, 'values', {
     set(value: string[]) {
-        return (this.list.values = value);
+        this.list.values = value;
     },
     enumerable: true,
     configurable: true,

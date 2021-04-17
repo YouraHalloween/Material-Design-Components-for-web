@@ -1,7 +1,7 @@
 @use '@material/button';
 @use '@material/icon-button';
 @use '@material/select';
-@use '@material/typography';
+@use './../helper';
 
 .mdc-data-table {
     width: 100%;
@@ -25,14 +25,7 @@
 }
 
 .mdc-data-table__pagination {
-    // .mdc-data-table__pagination-rows-per-page {
-    //     .mdc-select {
-    //         @include select.outlined-height(36px);
-    //         .mdc-select__selected-text {
-    //             font-size: typography.pxToRem(14px);
-    //         }
-    //     }
-    // }
+    // .mdc-data-table__pagination-rows-per-page 
     .mdc-data-table__pagination-total {
         line-height: initial;
     }
@@ -40,9 +33,9 @@
         .mdc-icon-button {
             @include icon-button.density(-3);
             line-height: inherit;
-            font-size: typography.pxToRem(15px);
+            font-size: helper.pxToRem(15px);
             &.mdc-data-table__pagination-button {
-                font-size: typography.pxToRem(19px);
+                font-size: helper.pxToRem(19px);
             }
         }
         .mdc-icon-button:disabled {
@@ -73,7 +66,7 @@
     justify-content: space-between;
     width: 100%;
     .mdc-data-table__sort-icon-button {
-        font-size: typography.pxToRem(15px);
+        font-size: helper.pxToRem(15px);
         opacity: 1;
         color: var(--mdc-theme-text-disabled-on-background);
     }

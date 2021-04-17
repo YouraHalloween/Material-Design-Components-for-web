@@ -3,7 +3,7 @@ import { TStringUnAr } from './../_types';
 declare module '@material/list/component' {
     interface MDCList {
         _values: string[];
-        _getValueList: <Values>(fromValues: Array<Values>) => TStringUnAr;
+        _getValueList: <Values>(fromValues: Values[]) => TStringUnAr;
         values: string[];
         value: TStringUnAr;
         text: TStringUnAr;

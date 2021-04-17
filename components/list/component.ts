@@ -6,7 +6,7 @@ declare module '@material/list/component' {
     interface MDCList {
         // private
         _values: string[];
-        _getValueList: <Values>(fromValues: Array<Values>) => TStringUnAr;
+        _getValueList: <Values>(fromValues: Values[]) => TStringUnAr;
         // public
         values: string[];
         value: TStringUnAr;
@@ -18,7 +18,7 @@ declare module '@material/list/component' {
 }
 
 MDCList.prototype._getValueList = function <Values>(
-    fromValues: Array<Values>
+    fromValues: Values[]
 ): TStringUnAr {
     const getVal = (index: number): string => {
         if (fromValues[index] instanceof Element) {
@@ -28,9 +28,11 @@ MDCList.prototype._getValueList = function <Values>(
     };
     if (fromValues) {
         const selectedIndex: MDCListIndex =
-            this.selectedIndex != -1 ? this.selectedIndex : this.focusedItemIndex;
+            this.selectedIndex !== -1
+                ? this.selectedIndex
+                : this.focusedItemIndex;
 
-        if (selectedIndex != -1) {
+        if (selectedIndex !== -1) {
             if (typeof selectedIndex === 'number') {
                 if (selectedIndex >= 0 && fromValues.length > selectedIndex) {
                     return getVal(selectedIndex as number);
@@ -60,7 +62,7 @@ Object.defineProperty(MDCList.prototype, 'focusedItemIndex', {
 
 Object.defineProperty(MDCList.prototype, 'values', {
     set(value: string[]) {
-        return (this._values = value);
+        this._values = value;
     },
     enumerable: true,
     configurable: true,
@@ -80,6 +82,7 @@ Object.defineProperty(MDCList.prototype, 'value', {
             let itemIndex: number[] = [];
             if (this._values && typeof value !== 'undefined') {
                 if (Array.isArray(value)) {
+                    // tslint:disable-next-line: prefer-for-of
                     for (let i = 0; i < value.length; i++) {
                         for (let j = 0; j < this._values.length; j++) {
                             if (value[i] === this._values[j]) {
@@ -107,7 +110,7 @@ Object.defineProperty(MDCList.prototype, 'value', {
  * get - возвращает текст выделенного меню
  */
 Object.defineProperty(MDCList.prototype, 'text', {
-    get(): TStringUnAr {        
+    get(): TStringUnAr {
         return this._getValueList(this.listElements);
     },
     enumerable: true,
