@@ -23,6 +23,7 @@ import { TIconButtonSyg } from './../components/icon-button/component';
 import { MDCSnackbarSyg } from "../components/snackbar/component";
 import { TCollapseSyg } from './../components/collapse/component';
 import { MDCCheckbox } from '@material/checkbox';
+import { TSpinnerSyg } from "../components/spinner/component";
 
 // import { CollectionControl } from './../components/collection-control/component';
 
@@ -54,8 +55,9 @@ function init(classCss, classComponent, func) {
     });
 }
 
+// init('.mdc-spinner', TSpinnerSyg);
 // init('.mdc-checkbox', MDCCheckbox);
-init('.mdc-collapse', TCollapseSyg);
+// init('.mdc-collapse', TCollapseSyg);
 // init('.mdc-floating-label', MDCFloatingLabel);
 // init('.mdc-select', MDCSelect);
 // init('.mdc-select-helper-text', MDCSelectHelperText);
@@ -72,8 +74,20 @@ init('.mdc-collapse', TCollapseSyg);
 // init(".mdc-text-field", MDCTextFieldSyg);
 // init('.mdc-segmented-button', MDCSegmentedButton);
 // init('.mdc-snackbar', MDCSnackbarSyg);
-// init('.mdc-button', TButtonSyg);
+init('.mdc-button', TButtonSyg);
 
 $('#button').click(function () {
-    console.log(cntr[0].foundation.getSelectedRowIds());
+    // $('#animate').toggleClass('my-element--animating');
+    cntr[1].toggle();
+});
+
+
+$('#loginform').click(function () {
+    // cntr[0].spinnerToggle();
+    cntr[0].disabled = true;
+    // $('#loginform').attr('disabled', 'disabled');
+    setTimeout(() => {
+        // cntr[0].spinnerToggle();
+        cntr[0].disabled = false;
+    },3000);
 });

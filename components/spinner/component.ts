@@ -13,8 +13,8 @@ class TSpinnerSyg {
         medium: 'mdc-spinner-medium',
         large: 'mdc-spinner-large',
     };
-    private _delayVisible: number = 20;
-    private _delayHidden: number = 150;
+    private _delayVisible: number = 50;
+    private _delayHidden: number = 170;
 
     public root: Element;
 
@@ -76,17 +76,17 @@ class TSpinnerSyg {
     /**
      * is show spinner
      */
-    isOpen(): boolean {
-        return this.root.classList.contains('mdc-spinner--open');
+    isShow(): boolean {
+        return this.root.classList.contains('mdc-spinner--show');
     }
 
     /**
      * show spinner
      */
-    open(): void {
-        this.root.classList.add('mdc-spinner--open');
+    show(): void {
+        this.root.classList.add('mdc-spinner--show');
         setTimeout(() => {
-            this.root.classList.add('animate');
+            this.root.classList.add('mdc-spinner--show__visible');
         }, this._delayVisible);
     }
 
@@ -94,9 +94,9 @@ class TSpinnerSyg {
      * unvis spinner
      */
     close() {
-        this.root.classList.remove('animate');
+        this.root.classList.remove('mdc-spinner--show__visible');
         setTimeout(() => {
-            this.root.classList.remove('mdc-spinner--open');
+            this.root.classList.remove('mdc-spinner--show');
         }, this._delayHidden);
     }
 
@@ -104,10 +104,10 @@ class TSpinnerSyg {
      * show < - > unvis spinner
      */
     toggle() {
-        if (this.isOpen()) {
+        if (this.isShow()) {
             this.close();
         } else {
-            this.open();
+            this.show();
         }
     }
 }

@@ -1,13 +1,13 @@
 @use '@material/button';
 @use '@material/elevation';
 @use '@material/theme/theme-color';
+@use "@material/animation";
 
 $button-gray-fill: rgba(theme-color.prop-value(on-surface), 0.06);
 $button-gray-color: theme-color.prop-value(text-primary-on-light);
 $button-gray-color-disabled: rgba(theme-color.prop-value(on-surface), 0.3);
 $button-gray-fill-disabled: rgba(theme-color.prop-value(on-surface), 0.03);
 $button-shadow: (0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.2));
-
 .mdc-button--raised {
     &.mdc-button--gray {
         // --mdc-theme-primary: #{rgba(theme-color.prop-value(on-surface), 0.06)};
@@ -16,8 +16,8 @@ $button-shadow: (0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.2));
         @include button.ink-color($button-gray-color);
     }
     @include elevation.shadow(none);
-    transition: box-shadow 100ms, 0.17s ease-out width;
-
+    transition: animation.enter(box-shadow, 100ms),
+        animation.exit-permanent(width, 170ms);
     &:hover,
     &:focus {
         @include elevation.shadow($button-shadow);
@@ -33,7 +33,18 @@ $button-shadow: (0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.2));
         color: $button-gray-color-disabled;
     }
     .mdc-spinner {
-        margin-left: 8px;
-        transition-timing-function: ease-in-out;
+        border-width: 0px;
+        margin-left: 0px;        
+        &.mdc-spinner-medium {
+            width: 0px;
+        }
+        &.mdc-spinner--show {
+            &.mdc-spinner--show__visible {
+                opacity: 1;
+                border-width: 1.6px;
+                margin-left: 8px;
+                width: 20px;
+            }
+        }
     }
 }

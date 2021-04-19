@@ -1,4 +1,5 @@
 @use '@material/theme/theme-color';
+@use "@material/animation";
 
 $spinner-arc-color: theme-color.prop-value(secondary);
 $spinner-circle-color: rgba(theme-color.prop-value(secondary), 0.25);
@@ -22,10 +23,10 @@ $spinner-size-large: 28px;
     animation-timing-function: cubic-bezier(0.53, 0.21, 0.29, 0.67);
     vertical-align: middle;
     opacity: 0;
-    transition: ease-out opacity 0.3s;
-    &.mdc-spinner--open {        
+    transition: 170ms animation.$standard-curve-timing-function;    
+    &.mdc-spinner--show {        
         display: inline-flex;
-        &.animate {
+        &.mdc-spinner--show__visible {
             opacity: 1;
         }             
     }
