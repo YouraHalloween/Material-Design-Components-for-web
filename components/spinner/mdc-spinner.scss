@@ -23,10 +23,11 @@ $spinner-size-large: 28px;
     animation-timing-function: cubic-bezier(0.53, 0.21, 0.29, 0.67);
     vertical-align: middle;
     opacity: 0;
-    transition: 170ms animation.$standard-curve-timing-function;    
+    transition: opacity 170ms animation.$sharp-curve-timing-function;
     &.mdc-spinner--show {        
         display: inline-flex;
         &.mdc-spinner--show__visible {
+            transition: 170ms animation.$standard-curve-timing-function;
             opacity: 1;
         }             
     }

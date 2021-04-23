@@ -34,11 +34,11 @@ declare class TSpinnerSyg {
     /**
      * is show spinner
      */
-    isOpen(): boolean;
+    isShow(): boolean;
     /**
      * show spinner
      */
-    open(): void;
+    show(): void;
     /**
      * unvis spinner
      */

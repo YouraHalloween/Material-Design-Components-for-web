@@ -9,6 +9,7 @@ class TButtonSyg {
     public ripple: MDCRipple;
     public root: HTMLElement;
     public spinner?: TSpinnerSyg | null = null;
+    public icon: HTMLElement | null;
 
     static attachTo(root: HTMLElement) {
         return new TButtonSyg(root);
@@ -17,7 +18,8 @@ class TButtonSyg {
     constructor(root: HTMLElement) {
         this.ripple = new MDCRipple(root);
         this.root = root;
-        const sp: HTMLElement | null = root.querySelector('.mdc-spinner');
+        this.icon = root.querySelector('.mdc-button__icon');
+        const sp: HTMLElement | null = root.querySelector('.mdc-spinner');        
         if (sp !== null) {
             this.spinner = new TSpinnerSyg(sp);
             this.root.addEventListener(
@@ -78,14 +80,16 @@ class TButtonSyg {
         if (label) {
             const btnWidth: number = this.root.offsetWidth;
             const labelWidth: number = (label as HTMLElement).offsetWidth;
+            // 4 = marginRight - marginLeft
+            const iconWidth: number = (this.icon) ? this.icon.offsetWidth + 4 : 0;
             const padding: number = parseInt(
                 window
                     .getComputedStyle(this.root, null)
                     .getPropertyValue('padding-left'),
                 0
             );
-            if (btnWidth < 2 * padding + labelWidth + this._spinnerSize) {
-                return 2 * padding + labelWidth + this._spinnerSize - btnWidth;
+            if (btnWidth < 2 * padding + labelWidth + iconWidth + this._spinnerSize) {
+                return 2 * padding + labelWidth + iconWidth + this._spinnerSize - btnWidth;
             }
         }
         return 0;

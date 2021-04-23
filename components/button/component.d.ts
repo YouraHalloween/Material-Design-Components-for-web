@@ -3,10 +3,10 @@ import { TSpinnerSyg } from './../spinner/component';
 declare class TButtonSyg {
     private _startWidth;
     private _spinnerSize;
-    private _autoInitSpinner;
     ripple: MDCRipple;
     root: HTMLElement;
     spinner?: TSpinnerSyg | null;
+    icon: HTMLElement | null;
     static attachTo(root: HTMLElement): TButtonSyg;
     constructor(root: HTMLElement);
     /**
@@ -14,7 +14,8 @@ declare class TButtonSyg {
      */
     get disabled(): boolean;
     set disabled(value: boolean);
-    private static _startTransition;
+    private static _spinnerStartTransition;
+    private _getDiffWidth;
     /**
      * @param {TSpinnerSyg} spinner
      */

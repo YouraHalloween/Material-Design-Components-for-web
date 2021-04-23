@@ -2,12 +2,17 @@
 @use './../variabless';
 @use './../helper';
 
-// .mdc-collapse {
-//     .mdc-list-group__subheader {
-//         --mdc-typography-subtitle1-font-size: #{variabless.$font-size-extra-small};    
-//     }
-// }
-.mdc-collapse__header {    
+.mdc-collapse {
+    .mdc-list-group__subheader {
+        --mdc-typography-subtitle1-font-size: #{variabless.$font-size-extra-small};
+    }
+
+    .mdc-list-item {
+        border-radius: 3px;
+    }
+}
+
+.mdc-collapse__header {
     .mdc-list-item__text {
         width: 100%;
         text-align: right;
@@ -20,15 +25,17 @@
         transform: rotate(0deg);
         transition: transform 150ms 0ms ease-out;
     }
-    &.mdc-collapse__header-active {
-        .mdc-list-item__text {
-            font-weight: 500;
-        }
-        .mdc-list-item__graphic {
-            transform: rotate(180deg);
-        }
+}
+
+.mdc-collapse__header-active {
+    .mdc-list-item__text {
+        font-weight: 600;
+    }
+    .mdc-list-item__graphic {
+        transform: rotate(180deg);
     }
 }
+
 .mdc-collapse__content {
     padding: 14px;
     display: none;

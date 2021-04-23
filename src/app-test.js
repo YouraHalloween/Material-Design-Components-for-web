@@ -42,7 +42,7 @@ function init(classCss, classComponent, func) {
     cntr = [].map.call(document.querySelectorAll(classCss), function (el1) {
         let control = new classComponent(el1);
         // if (control.singleSelection)
-            // control.singleSelection = false;
+            // control.singleSelection = true;
         // control.open = true;
         // control.open();
         // control.singleSelection = true;
@@ -57,7 +57,7 @@ function init(classCss, classComponent, func) {
 
 // init('.mdc-spinner', TSpinnerSyg);
 // init('.mdc-checkbox', MDCCheckbox);
-// init('.mdc-collapse', TCollapseSyg);
+init('.mdc-collapse', TCollapseSyg);
 // init('.mdc-floating-label', MDCFloatingLabel);
 // init('.mdc-select', MDCSelect);
 // init('.mdc-select-helper-text', MDCSelectHelperText);

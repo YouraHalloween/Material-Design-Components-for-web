@@ -119,11 +119,10 @@
 
     <hr>
 
-    <button id="loginform" class="mdc-button mdc-button--raised mdc-button--gray mdc-ripple-upgraded"
-        tabindex="4"
-        style="--mdc-ripple-fg-size:52px; --mdc-ripple-fg-scale:2.01363; --mdc-ripple-fg-translate-start:34.3375px, -3.69995px; --mdc-ripple-fg-translate-end:17.8px, -8px;">
+    <button id="loginform" class="mdc-button mdc-button--raised mdc-button--gray mdc-ripple-upgraded">
         <div class="mdc-button__ripple"></div>
-        <span class="mdc-button__label">Войти</span>
+        <i class="material-icons mdc-button__icon" aria-hidden="true">search</i>
+        <span class="mdc-button__label">Поиск</span>
         <span class="mdc-spinner mdc-spinner-medium" show="auto"></span>
     </button>
 
@@ -180,7 +179,7 @@
 
     <hr>
 
-    <div class="mdc-collapse mdc-collapse-search mdc-list-group" style="width: 350px;">
+    <div id="collapse" class="mdc-collapse mdc-collapse-search mdc-list-group" style="width: 350px;">
         <h3 class="mdc-list-group__subheader">Параметры поиска</h3>
         <ul id="collapse1" class="mdc-list mdc-h__small">
             <li id="collapse1-h1" class="mdc-list-item mdc-list-item__collapse mdc-collapse__header" role="tab" aria-controls="collapse1-h1_c"
@@ -194,34 +193,34 @@
             <!-- <hr class="mdc-list-divider"> -->
             <li id="collapse1-h1_c" role="tabpanel" aria-hidden="true" class="mdc-collapse__content ">
                 <div class="mdc-collapse-search__item">  
-                    <label class="mdc-collapse-search__label mdc-outer-label mdc-typography--body2" for="cmp-id1">Введите логин:</label>
-                    <label
+                    <label class="mdc-collapse-search__label mdc-outer-label mdc-typography--body2" for="txt1">Введите логин:</label>
+                    <label 
                         class="mdc-collapse-search__component mdc-text-field mdc-h__exsmall mdc-text-field--outlined mdc-text-field--no-label">
                         <span class="mdc-notched-outline">
                             <span class="mdc-notched-outline__leading"></span>
                             <span class="mdc-notched-outline__trailing"></span>
                         </span>
-                        <input type="text" class="mdc-text-field__input" id="cmp-id1">
+                        <input type="text" class="mdc-text-field__input" id="txt1">
                     </label>
                 </div>
 
                 <div class="mdc-collapse-search__item">
-                    <label class="mdc-collapse-search__label mdc-outer-label__gor mdc-typography--body2" for="cmp-id2">Введите пароль:</label>
+                    <label class="mdc-collapse-search__label mdc-outer-label__gor mdc-typography--body2" for="txt2">Введите пароль:</label>
                     <label
                         class="mdc-collapse-search__component mdc-text-field mdc-h__exsmall mdc-text-field--outlined mdc-text-field--no-label">
                         <span class="mdc-notched-outline">
                             <span class="mdc-notched-outline__leading"></span>                            
                             <span class="mdc-notched-outline__trailing"></span>
                         </span>
-                        <input type="text" class="mdc-text-field__input" if="cmp-id2">
+                        <input type="text" class="mdc-text-field__input" id="txt2">
                     </label>
                 </div>
 
                 <div class="mdc-collapse-search__item">
-                    <label class="mdc-collapse-search__label mdc-outer-label__gor mdc-typography--body2" for="checkbox-10">Запомнить меня:</label>
+                    <label class="mdc-collapse-search__label mdc-outer-label__gor mdc-typography--body2" for="ch1">Запомнить меня:</label>
 
-                    <div class="mdc-collapse-search__component mdc-checkbox">
-                        <input type="checkbox" class="mdc-checkbox__native-control" id="checkbox-10" />
+                    <div  class="mdc-collapse-search__component mdc-checkbox">
+                        <input type="checkbox" class="mdc-checkbox__native-control" id="ch1" />
                         <div class="mdc-checkbox__background">
                             <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
                                 <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
@@ -233,7 +232,7 @@
                 </div>
 
                 <div class="mdc-collapse-search__item">
-                    <label class="mdc-collapse-search__label mdc-outer-label__gor mdc-typography--body2" for="cmp-id1">Введите логин:</label>                    
+                    <label class="mdc-collapse-search__label mdc-outer-label__gor mdc-typography--body2" for="sel1">Введите логин:</label>                    
                     <div class="mdc-collapse-search__component mdc-select mdc-select--outlined mdc-h__exsmall mdc-select--no-label demo-width-class">
                         <div class="mdc-select__anchor">
                             <span class="mdc-notched-outline">
@@ -241,7 +240,7 @@
                                 <span class="mdc-notched-outline__trailing"></span>
                             </span>
                             <span class="mdc-select__selected-text-container">
-                                <span class="mdc-select__selected-text"></span>
+                                <span id="sel1" class="mdc-select__selected-text"></span>
                             </span>
                             <span class="mdc-select__dropdown-icon">
                                 <svg class="mdc-select__dropdown-icon-graphic" viewBox="7 10 10 5" focusable="false">

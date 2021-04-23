@@ -29,11 +29,10 @@ class TCollapseSyg extends MDCList {
 
     expand(index: number): void {
         const element: Element = this.listElements[index];
-        let id: string | null = element.getAttribute('id');
-        if (id) {
-            id += '_c';
+        const idContent: string | null = element.getAttribute('aria-controls');
+        if (idContent) {
             const content: Element | null = (element.parentElement as HTMLElement).querySelector(
-                `#${id}`
+                `#${idContent}`
             );
             if (content) {
                 element.classList.toggle('mdc-collapse__header-active');
@@ -44,6 +43,11 @@ class TCollapseSyg extends MDCList {
                 if (open) {
                     cls1 = 'mdc-collapse__content-activated';
                     cls2 = 'mdc-collapse__content-open';
+                    element.setAttribute('aria-selected', 'false');
+                    element.setAttribute('aria-expanded', 'false');
+                } else {
+                    element.setAttribute('aria-selected', 'true');
+                    element.setAttribute('aria-expanded', 'true');
                 }
                 this.setClassByTimeout(content, cls2);
                 content.classList.toggle(cls1);
