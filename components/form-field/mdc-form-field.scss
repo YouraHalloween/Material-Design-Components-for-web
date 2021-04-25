@@ -1,5 +1,55 @@
-// @use './../components/variabless';
+@use '@material/typography';
+@use './../textfield/mdc-textfield';
 
-// .mdc-form-field {
-//     --mdc-typography-body2-font-size: #{variabless.$font-size-medium};
-// }
+$label-outer-left-width: 40%;
+$input-width: 100% - $label-outer-left-width;
+
+.mdc-form-field__i {
+    margin-bottom: 15px;
+}
+
+.mdc-form-field__label--top, .mdc-form-field__label--inner {
+    width: 100%;
+    .mdc-text-field,
+    .mdc-select {
+        width: 100%;
+    }
+}
+
+.mdc-form-field__label--top {
+    .mdc-outer-label {
+        @include typography.overflow-ellipsis();
+        display: block;
+        box-sizing: border-box;
+        width: 100%;
+        padding: 0 mdc-textfield.$text-field-padding;
+    }
+}
+
+.mdc-form-field__label--left {
+    width: 100%;
+    .mdc-outer-label {
+        @include typography.overflow-ellipsis();
+        box-sizing: border-box;
+        padding-right: mdc-textfield.$text-field-padding;
+        text-align: end;
+        width: $label-outer-left-width;
+    }
+    .mdc-text-field,
+    .mdc-select {
+        width: $input-width;
+    }
+    .mdc-text-field-helper-line {
+        display: flex;
+        justify-content: flex-end;
+        .mdc-text-field-helper-text {
+            width: $input-width;
+        }
+    }
+}
+
+.mdc-form-field__with-label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

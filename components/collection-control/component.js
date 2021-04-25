@@ -16,6 +16,7 @@ import { MDCDrawerSyg } from './../drawer/component';
 import { MDCSelect } from '@material/select';
 import { TIconButtonSyg } from './../icon-button/component';
 import { TCollapseSyg } from './../collapse/component';
+import { TCollapseSearchSyg } from './../collapse-search/component';
 
 const _classes = {
     checkbox: MDCCheckbox,
@@ -34,7 +35,8 @@ const _classes = {
     select: MDCSelect,
     dataTable: MDCDataTable,
     iconButton: TIconButtonSyg,
-    collapse: TCollapseSyg
+    collapse: TCollapseSyg,
+    collapseSearch: TCollapseSearchSyg
 };
 
 const CollectionControl = (function () {

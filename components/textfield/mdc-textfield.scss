@@ -10,20 +10,8 @@ $text-field-padding: 14px;
 $text-field-padding-outline: 16px;
 
 .mdc-text-field {
-    @include textfield.fill-color(theme.$background);     
+    @include textfield.fill-color(theme.$background);
     padding: 0 $text-field-padding;
-    + .mdc-text-field-helper-line {
-        justify-content: left;
-        padding: 0 $text-field-padding;
-        // margin-top: -1px;
-        .mdc-text-field-helper-text {
-            opacity: 1;
-            transition: opacity 115ms;
-            &.mdc-text-field-helper-text--animation {
-                opacity: 0;
-            }
-        }
-    }
     .mdc-icon-button {
         @include icon-button.density(-2);
     }
@@ -33,19 +21,22 @@ $text-field-padding-outline: 16px;
         --mdc-ripple-press-opacity: #{variabless.$ripple-press-opacity};
         --mdc-ripple-focus-opacity: #{variabless.$ripple-focus-opacity};
     }
+    + .mdc-text-field-helper-line {
+        justify-content: left;
+        padding: 0;
+    }
 }
 
-.mdc-outer-label {
-    padding: 0 $text-field-padding;
-}
-
-.mdc-outer-label__gor {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    // width: 40%;
-    text-align: right;    
-    padding-right: $text-field-padding;
+.mdc-text-field-helper-line {
+    .mdc-text-field-helper-text {
+        box-sizing: border-box;
+        padding: 0 $text-field-padding;
+        opacity: 1;
+        transition: opacity 115ms;
+        &.mdc-text-field-helper-text--animation {
+            opacity: 0;
+        }
+    }
 }
 
 /* TEXTFIELD LABEL */
