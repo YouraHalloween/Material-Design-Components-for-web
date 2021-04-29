@@ -1,4 +1,3 @@
-
 import { TStringUn } from './../_types';
 import { MDCTextField } from './crutch';
 import { HelperMessage } from './helper-message/component';
@@ -15,7 +14,6 @@ import { MDCTextFieldIconFactory } from '@material/textfield/icon/component';
 
 class MDCTextFieldSyg extends MDCTextField {
     private _key?: TStringUn;
-    private _bufDeactivateFocus: any;
     public helperMessage?: HelperMessage;
 
     constructor(root: Element, ...args: any[]) {
@@ -59,25 +57,6 @@ class MDCTextFieldSyg extends MDCTextField {
         this._key = value;
     }
 
-    /**
-     * Ручное управление прорисовкой потери фокуса
-     * Когда нажимаешь iconButton TextField.focus= false, TextField прорисовался как не активный, но
-     * если в той же функции нужно вернуть focus для TextField, он прорисуется еще раз как активный
-     * Для этого нужно отключить прорисовку
-     */
-    disabledRenderDeactivateFocus() {
-        this._bufDeactivateFocus = this.foundation.deactivateFocus;
-        // tslint:disable-next-line: no-empty
-        this.foundation.deactivateFocus = (): void => {};
-    }
-
-    enabledRenderDeactivateFocus() {
-        if (this._bufDeactivateFocus !== null) {
-            this.foundation.deactivateFocus = this._bufDeactivateFocus;
-            this._bufDeactivateFocus = null;
-        }
-    }
-
     initialize(
         rippleFactory?: MDCRippleFactory,
         lineRippleFactory?: MDCLineRippleFactory,
@@ -104,6 +83,11 @@ class MDCTextFieldSyg extends MDCTextField {
             this.trailingIcon.parent = this;
         }
     }
+
+    clear(): void {
+        this.value = '';
+        this.key = undefined;
+    }
 }
 
 import { MDCTextFieldIcon } from '@material/textfield/icon/component';
@@ -114,12 +98,13 @@ declare module '@material/textfield/icon/component' {
     interface MDCTextFieldIcon {
         // private
         _parent: MDCTextFieldSyg;
-        _clear: boolean;        
-        _enabledRenderBlur: boolean;
-        _disabledRenderDeactivateFocus: EventListener;
-        _enabledRenderDeactivateFocus: EventListener;
-        _handleDisabledRenderDeactivateFocus: EventListener;
-        _handleEnabledRenderDeactivateFocus: EventListener;
+        _clear: boolean;
+        _stopParentBlurEvent: boolean;
+        _eventMouseDown: EventListener;
+        _eventParentBlur: EventListener;
+        _handleEventMouseDown: EventListener;
+        _handleEventParentBlur: EventListener;
+        _tmpFocusButton: boolean;
         _addEvent: (
             nameEvent: string,
             fn: EventListener,
@@ -127,7 +112,7 @@ declare module '@material/textfield/icon/component' {
         ) => void;
         // public
         clear: boolean;
-        enabledRenderBlur: boolean;
+        stopParentBlurEvent: boolean;
         parent: MDCTextFieldSyg;
         click: TSetEvent;
         mousedown: TSetEvent;
@@ -136,28 +121,25 @@ declare module '@material/textfield/icon/component' {
 }
 
 const initialize = MDCTextFieldIcon.prototype.initialize;
+
 MDCTextFieldIcon.prototype.initialize = function (..._args: unknown[]) {
     initialize(..._args);
     this._clear = false;
-    this._enabledRenderBlur = false;    
-    this._handleDisabledRenderDeactivateFocus = this._disabledRenderDeactivateFocus.bind(
-        this
-    );
-    this._handleEnabledRenderDeactivateFocus = this._enabledRenderDeactivateFocus.bind(
-        this
-    );
+    this._stopParentBlurEvent = false;
+    this._handleEventMouseDown = this._eventMouseDown.bind(this);
+    this._handleEventParentBlur = this._eventParentBlur.bind(this);
 };
 
-/**
- * Ткая конструкция необходима, чтобы потом можно было выполнить removeEventListener
- * И при этом был доступен MDCTextFieldIcon.this
- */
-MDCTextFieldIcon.prototype._disabledRenderDeactivateFocus = function () {
-    this.parent.disabledRenderDeactivateFocus();
+MDCTextFieldIcon.prototype._eventMouseDown = function () {
+    this._tmpFocusButton = true;
 };
 
-MDCTextFieldIcon.prototype._enabledRenderDeactivateFocus = function () {
-    this.parent.enabledRenderDeactivateFocus();
+MDCTextFieldIcon.prototype._eventParentBlur = function (evt: Event) {
+    if (this._tmpFocusButton) {
+        this._tmpFocusButton = false;
+        evt.stopImmediatePropagation();
+        this.parent.input.focus();
+    }
 };
 
 MDCTextFieldIcon.prototype._addEvent = function (
@@ -169,14 +151,11 @@ MDCTextFieldIcon.prototype._addEvent = function (
         fn = fn.bind(context);
     }
     this.root.addEventListener(nameEvent, fn.bind(this));
-    this.enabledRenderBlur = true;
 };
 
-MDCTextFieldIcon.prototype.click = function (
-    fn: EventListener,
-    context?: any
-) {    
+MDCTextFieldIcon.prototype.click = function (fn: EventListener, context?: any) {
     this._addEvent('click', fn, context);
+    this.stopParentBlurEvent = true;
 };
 
 MDCTextFieldIcon.prototype.mousedown = function (
@@ -217,13 +196,16 @@ Object.defineProperty(MDCTextFieldIcon.prototype, 'clear', {
     set(value: boolean) {
         if (this._clear === false && value === true) {
             this.click(() => {
-                this.parent.value = '';
-                this.parent.key = undefined;
+                this.parent.clear();
                 if (this.parent.helperMessage) {
                     this.parent.helperMessage.render();
                 }
+
                 this.parent.focus();
             });
+        }
+        if (!value) {
+            this.stopParentBlurEvent = false;
         }
         this._clear = value;
     },
@@ -234,24 +216,29 @@ Object.defineProperty(MDCTextFieldIcon.prototype, 'clear', {
 /**
  * Описание свойства в disableRenderDeactivateFocus
  */
-Object.defineProperty(MDCTextFieldIcon.prototype, 'enabledRenderBlur', {
+Object.defineProperty(MDCTextFieldIcon.prototype, 'stopParentBlurEvent', {
     get(): boolean {
-        return this._enabledRenderBlur;
+        return this._stopParentBlurEvent;
     },
     set(value: boolean) {
-        if (this._enabledRenderBlur !== value) {
-            this._enabledRenderBlur = value;
+        if (this._stopParentBlurEvent !== value) {
+            this._stopParentBlurEvent = value;
             if (value === true) {
-                this.mousedown(this._handleDisabledRenderDeactivateFocus);
-                this.mouseup(this._handleEnabledRenderDeactivateFocus);
+                this.mousedown(this._handleEventMouseDown);
+                this.parent.input.addEventListener(
+                    'blur',
+                    this._handleEventParentBlur,
+                    { capture: true }
+                );
             } else {
                 this.root.removeEventListener(
                     'mousedown',
-                    this._handleDisabledRenderDeactivateFocus
+                    this._handleEventMouseDown
                 );
-                this.root.removeEventListener(
-                    'mouseup',
-                    this._handleEnabledRenderDeactivateFocus
+                this.parent.input.removeEventListener(
+                    'blur',
+                    this._handleEventParentBlur,
+                    { capture: true }
                 );
             }
         }
@@ -261,5 +248,3 @@ Object.defineProperty(MDCTextFieldIcon.prototype, 'enabledRenderBlur', {
 });
 
 export { MDCTextFieldSyg, MDCTextFieldIcon };
-
-

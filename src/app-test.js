@@ -41,6 +41,9 @@ var cntr = [];
 function init(classCss, classComponent, func) {
     cntr = [].map.call(document.querySelectorAll(classCss), function (el1) {
         let control = new classComponent(el1);
+        // console.log(getEventListeners(control));
+        if (control.trailingIcon)
+            control.trailingIcon.clear = true;
         // if (control.singleSelection)
             // control.singleSelection = true;
         // control.open = true;
@@ -57,7 +60,7 @@ function init(classCss, classComponent, func) {
 
 // init('.mdc-spinner', TSpinnerSyg);
 // init('.mdc-checkbox', MDCCheckbox);
-init('.mdc-collapse', TCollapseSyg);
+// init('.mdc-collapse', TCollapseSyg);
 // init('.mdc-floating-label', MDCFloatingLabel);
 // init('.mdc-select', MDCSelect);
 // init('.mdc-select-helper-text', MDCSelectHelperText);
@@ -67,27 +70,27 @@ init('.mdc-collapse', TCollapseSyg);
 // init('.mdc-circular-progress', MDCCircularProgress);
 // init('.mdc-list', MDCList);
 // init('.mdc-list', MDCRipple);
-// init('.mdc-icon-button', TIconButtonSyg);
+init('.mdc-icon-button', TIconButtonSyg);
 // init('.mdc-menu', MDCMenu);
 // init('.mdc-linear-progress', MDCLinearProgress);
 // init(".mdc-text-field", MDCTextField);
-// init(".mdc-text-field", MDCTextFieldSyg);
+init(".mdc-text-field", MDCTextFieldSyg);
 // init('.mdc-segmented-button', MDCSegmentedButton);
 // init('.mdc-snackbar', MDCSnackbarSyg);
-init('.mdc-button', TButtonSyg);
+// init('.mdc-button', TButtonSyg);
 
 $('#button').click(function () {
     // $('#animate').toggleClass('my-element--animating');
-    cntr[1].toggle();
+    cntr[0].trailingIcon.clear = !cntr[0].trailingIcon.clear;
 });
 
 
 $('#loginform').click(function () {
     // cntr[0].spinnerToggle();
-    cntr[0].disabled = true;
+    cntr[0].trailingIcon.clear = false;
     // $('#loginform').attr('disabled', 'disabled');
-    setTimeout(() => {
-        // cntr[0].spinnerToggle();
-        cntr[0].disabled = false;
-    },3000);
+    // setTimeout(() => {
+    //     // cntr[0].spinnerToggle();
+    //     cntr[0].disabled = false;
+    // },3000);
 });

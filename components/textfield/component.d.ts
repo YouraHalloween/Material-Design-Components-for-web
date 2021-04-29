@@ -10,7 +10,6 @@ import { MDCTextFieldHelperTextFactory } from '@material/textfield/helper-text/c
 import { MDCTextFieldIconFactory } from '@material/textfield/icon/component';
 declare class MDCTextFieldSyg extends MDCTextField {
     private _key?;
-    private _bufDeactivateFocus;
     helperMessage?: HelperMessage;
     constructor(root: Element, ...args: any[]);
     /**
@@ -28,15 +27,8 @@ declare class MDCTextFieldSyg extends MDCTextField {
      */
     get key(): TStringUn;
     set key(value: TStringUn);
-    /**
-     * Ручное управление прорисовкой потери фокуса
-     * Когда нажимаешь iconButton TextField.focus= false, TextField прорисовался как не активный, но
-     * если в той же функции нужно вернуть focus для TextField, он прорисуется еще раз как активный
-     * Для этого нужно отключить прорисовку
-     */
-    disabledRenderDeactivateFocus(): void;
-    enabledRenderDeactivateFocus(): void;
     initialize(rippleFactory?: MDCRippleFactory, lineRippleFactory?: MDCLineRippleFactory, helperTextFactory?: MDCTextFieldHelperTextFactory, characterCounterFactory?: MDCTextFieldCharacterCounterFactory, iconFactory?: MDCTextFieldIconFactory, labelFactory?: MDCFloatingLabelFactory, outlineFactory?: MDCNotchedOutlineFactory): void;
+    clear(): void;
 }
 import { MDCTextFieldIcon } from '@material/textfield/icon/component';
 declare type TSetEvent = (fn: EventListener, context?: any) => void;
@@ -44,14 +36,15 @@ declare module '@material/textfield/icon/component' {
     interface MDCTextFieldIcon {
         _parent: MDCTextFieldSyg;
         _clear: boolean;
-        _enabledRenderBlur: boolean;
-        _disabledRenderDeactivateFocus: EventListener;
-        _enabledRenderDeactivateFocus: EventListener;
-        _handleDisabledRenderDeactivateFocus: EventListener;
-        _handleEnabledRenderDeactivateFocus: EventListener;
+        _stopParentBlurEvent: boolean;
+        _eventMouseDown: EventListener;
+        _eventParentBlur: EventListener;
+        _handleEventMouseDown: EventListener;
+        _handleEventParentBlur: EventListener;
+        _tmpFocusButton: boolean;
         _addEvent: (nameEvent: string, fn: EventListener, context?: any) => void;
         clear: boolean;
-        enabledRenderBlur: boolean;
+        stopParentBlurEvent: boolean;
         parent: MDCTextFieldSyg;
         click: TSetEvent;
         mousedown: TSetEvent;
