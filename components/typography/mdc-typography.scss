@@ -1,15 +1,5 @@
 @use './../variabless';
 
-@mixin height($mode, $size) {
-    .mdc-text-field.mdc-h__#{$mode},
-    .mdc-select.mdc-h__#{$mode} .mdc-select__anchor,
-    .mdc-select.mdc-h__#{$mode} .mdc-list-item,
-    .mdc-list.mdc-h__#{$mode} .mdc-list-item
-     {
-        height: $size;
-    }
-}
-
 @mixin fs($mode, $size) {
     .mdc-text-field.mdc-fs__#{$mode} .mdc-text-field__input,
     .mdc-select.mdc-fs__#{$mode} .mdc-select__selected-text,
@@ -18,11 +8,6 @@
         --mdc-typography-subtitle1-font-size: #{$size};
     }    
 }
-
-@include height('exsmall', variabless.$height-extra-small);
-@include height('small', variabless.$height-small);
-@include height('medium', variabless.$height-medium);
-@include height('large', variabless.$height-large);
 
 @include fs('exsmall', variabless.$font-size-extra-small);
 @include fs('small', variabless.$font-size-small);

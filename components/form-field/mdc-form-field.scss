@@ -1,14 +1,30 @@
 @use '@material/typography';
-@use './../textfield/mdc-textfield';
+@use './../variabless';
 
-$label-outer-left-width: 40%;
-$input-width: 100% - $label-outer-left-width;
+$input-width: 100% - variabless.$collapse-label-outer-left-width;
 
-.mdc-form-field__i {
-    margin-bottom: 15px;
+@mixin height($mode, $size) {
+    .mdc-text-field.mdc-h__#{$mode},
+    .mdc-select.mdc-h__#{$mode} .mdc-select__anchor,
+    .mdc-select.mdc-h__#{$mode} .mdc-list-item,
+    .mdc-list.mdc-h__#{$mode} .mdc-list-item,
+    .mdc-form-field.mdc-h__#{$mode}
+     {
+        height: $size;
+    }
 }
 
-.mdc-form-field__label--top, .mdc-form-field__label--inner {
+@include height('exsmall', variabless.$height-extra-small);
+@include height('small', variabless.$height-small);
+@include height('medium', variabless.$height-medium);
+@include height('large', variabless.$height-large);
+
+.mdc-form-field__i {
+    margin-bottom: 14px;
+}
+
+.mdc-form-field__label--top,
+.mdc-form-field__label--inner {
     width: 100%;
     .mdc-text-field,
     .mdc-select {
@@ -22,18 +38,20 @@ $input-width: 100% - $label-outer-left-width;
         display: block;
         box-sizing: border-box;
         width: 100%;
-        padding: 0 mdc-textfield.$text-field-padding;
+        padding: 0 variabless.$text-field-padding;
     }
 }
 
 .mdc-form-field__label--left {
     width: 100%;
     .mdc-outer-label {
-        @include typography.overflow-ellipsis();
+        text-overflow: ellipsis;
+        overflow: hidden;
+        line-height: 1.1rem;
         box-sizing: border-box;
-        padding-right: mdc-textfield.$text-field-padding;
+        padding-right: variabless.$text-field-padding;
         text-align: end;
-        width: $label-outer-left-width;
+        width: variabless.$collapse-label-outer-left-width;
     }
     .mdc-text-field,
     .mdc-select {

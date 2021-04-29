@@ -6,12 +6,11 @@
 @use './../variabless';
 @use './../helper';
 
-$text-field-padding: 14px;
 $text-field-padding-outline: 16px;
 
 .mdc-text-field {
     @include textfield.fill-color(theme.$background);
-    padding: 0 $text-field-padding;
+    padding: 0 variabless.$text-field-padding;
     .mdc-icon-button {
         @include icon-button.density(-2);
     }
@@ -30,7 +29,7 @@ $text-field-padding-outline: 16px;
 .mdc-text-field-helper-line {
     .mdc-text-field-helper-text {
         box-sizing: border-box;
-        padding: 0 $text-field-padding;
+        padding: 0 variabless.$text-field-padding;
         opacity: 1;
         transition: opacity 115ms;
         &.mdc-text-field-helper-text--animation {
@@ -43,7 +42,7 @@ $text-field-padding-outline: 16px;
 
 .mdc-text-field--filled {
     .mdc-floating-label {
-        left: $text-field-padding;
+        left: variabless.$text-field-padding;
     }
     .mdc-floating-label--float-above {
         transform: translateY(-106%) scale(0.8);
@@ -70,12 +69,12 @@ $text-field-padding-outline: 16px;
 }
 
 .mdc-text-field--with-trailing-icon {
-    padding-left: $text-field-padding;
+    padding-left: variabless.$text-field-padding;
     padding-right: 0;
 }
 
 .mdc-text-field--with-leading-icon {
-    padding-right: $text-field-padding;
+    padding-right: variabless.$text-field-padding;
     padding-left: 0;
     &.mdc-text-field--filled {
         // GOTO here you have to calc

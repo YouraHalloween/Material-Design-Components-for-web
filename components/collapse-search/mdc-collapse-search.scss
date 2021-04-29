@@ -1,8 +1,4 @@
-// @use '@material/typography';
-// @use '@material/list';
 @use './../variabless';
-
-$item-margin-bottom: 10px;
 
 .mdc-collapse-search {
     .mdc-collapse__header {
@@ -10,24 +6,31 @@ $item-margin-bottom: 10px;
     }
 }
 
-.mdc-collapse-search__item {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: $item-margin-bottom;
-    align-items: center;
+.mdc-collapse__content {
+    .mdc-form-field__i {
+        margin-bottom: variabless.$collpase-content-padding;
+        &.mdc-form-field__label--top, &.mdc-collapse-search__i--switch {
+            margin-bottom: 3px;
+        }
+    }
+    .mdc-form-field__label--top {
+        .mdc-outer-label {
+            padding: 0;
+        }
+    }
+    .mdc-form-field--align-end {
+        width: 100%;
+        > label {
+            margin-left: 0;
+            padding-right: variabless.$text-field-padding;            
+            text-align: right;
+            width: variabless.$collapse-label-outer-left-width;
+        }
+    }
 }
 
-// .mdc-collapse-search__label {
-//     box-sizing: border-box;
-//     text-align: right;
-//     width: 40%;
-// }
-
-// .mdc-collapse-search__component {
-//     width: 60%;    
-// }
 .mdc-collapse-search__action {
-    margin-bottom: $item-margin-bottom;
+    margin-bottom: variabless.$collpase-content-padding;
 }
 
 .mdc-collapse-search__action-helper {

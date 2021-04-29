@@ -37,7 +37,7 @@
 }
 
 .mdc-collapse__content {
-    padding: 14px;
+    padding: variabless.$collpase-content-padding 16px;
     display: none;
     opacity: 0;
     transition: ease-out opacity 150ms;
