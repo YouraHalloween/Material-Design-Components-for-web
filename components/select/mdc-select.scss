@@ -36,3 +36,9 @@
     --mdc-ripple-press-opacity: #{variabless.$ripple-press-opacity};
     --mdc-ripple-focus-opacity: #{variabless.$ripple-focus-opacity};
 }
+
+.mdc-select__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

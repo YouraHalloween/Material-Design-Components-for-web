@@ -1,23 +1,53 @@
 @use '@material/typography';
 @use './../variabless';
+@use 'sass:math';
 
 $input-width: 100% - variabless.$collapse-label-outer-left-width;
 
-@mixin height($mode, $size) {
+/**
+* Find need padding for icon
+*/
+// @function iconPadding($width, $initPadding) {
+//     @for $iPadding from $initPadding to 0 {
+//         $newWidth: $width - $iPadding * 2;
+//         $scale: $width / $newWidth * 100000;
+//         $scale: ($scale - ($scale % 1)) / 100000;
+//         @if $scale * $newWidth == $width {
+//             @return $iPadding;
+//         }
+//     }
+//     @return 0;
+// }
+
+@mixin height($mode, $size,$iconPadding) {
     .mdc-text-field.mdc-h__#{$mode},
     .mdc-select.mdc-h__#{$mode} .mdc-select__anchor,
     .mdc-select.mdc-h__#{$mode} .mdc-list-item,
     .mdc-list.mdc-h__#{$mode} .mdc-list-item,
-    .mdc-form-field.mdc-h__#{$mode}
-     {
+    .mdc-form-field.mdc-h__#{$mode} {
         height: $size;
+    }
+
+    $iconSize: $size - 6px; 
+
+    .mdc-text-field.mdc-h__#{$mode},
+    .mdc-select.mdc-h__#{$mode} {
+        i {
+            padding: $iconPadding;
+            height: $iconSize;
+            width: $iconSize;
+            min-width: $iconSize;
+            @if $size < variabless.$height-medium {
+                font-size: 20px;
+            }
+        }
     }
 }
 
-@include height('exsmall', variabless.$height-extra-small);
-@include height('small', variabless.$height-small);
-@include height('medium', variabless.$height-medium);
-@include height('large', variabless.$height-large);
+@include height('exsmall', variabless.$height-extra-small, 1px);
+@include height('small', variabless.$height-small, 3px);
+@include height('medium', variabless.$height-medium, 5px);
+@include height('large', variabless.$height-large, 7px);
 
 .mdc-form-field__i {
     margin-bottom: 14px;

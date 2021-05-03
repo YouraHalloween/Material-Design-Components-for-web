@@ -11,9 +11,9 @@ $text-field-padding-outline: 16px;
 .mdc-text-field {
     @include textfield.fill-color(theme.$background);
     padding: 0 variabless.$text-field-padding;
-    .mdc-icon-button {
-        @include icon-button.density(-2);
-    }
+    // .mdc-icon-button {
+    //     @include icon-button.density(-2);
+    // }
     //Сделать цвет hover = focus
     &.mdc-text-field--filled {
         --mdc-ripple-hover-opacity: #{variabless.$ripple-hover-opacity};
@@ -24,6 +24,12 @@ $text-field-padding-outline: 16px;
         justify-content: left;
         padding: 0;
     }
+}
+
+.mdc-text-field__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .mdc-text-field-helper-line {
@@ -77,17 +83,17 @@ $text-field-padding-outline: 16px;
     padding-right: variabless.$text-field-padding;
     padding-left: 0;
     &.mdc-text-field--filled {
-        // GOTO here you have to calc
+        // TODO here you have to calc
         .mdc-floating-label {
             left: 52px;
         }
     }
 }
 
-.mdc-text-field__icon--leading,
-.mdc-text-field__icon--trailing {
-    padding: 8px;
-}
+// .mdc-text-field__icon--leading,
+// .mdc-text-field__icon--trailing {
+//     padding: 8px;
+// }
 
 .mdc-text-field__icon--leading {
     margin: 0 6px;

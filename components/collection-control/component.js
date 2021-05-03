@@ -117,7 +117,15 @@ const CollectionControl = (function () {
      * @param {string} id 
      */
     CollectionControl.prototype.item = function (id) {
-        return _items[id].item;
+        return this.is(id) ? _items[id].item : undefined;
+    };
+
+    /**
+     * Возвращает item
+     * @param {string} id 
+     */
+    CollectionControl.prototype.is = function (id) {
+        return typeof _items[id] !== 'undefined';        
     };
 
     /**
