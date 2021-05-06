@@ -65,15 +65,6 @@ $text-field-padding-outline: 16px;
 
 /* TEXTFIELD ICONS */
 
-.mdc-text-field__group-icon {
-    align-self: center;
-    display: inline-flex;
-    margin: 0 3px;
-    .mdc-text-field__icon {
-        margin: 0 3px;
-    }
-}
-
 .mdc-text-field--with-trailing-icon {
     padding-left: variabless.$text-field-padding;
     padding-right: 0;
