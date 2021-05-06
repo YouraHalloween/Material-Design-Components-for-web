@@ -19,8 +19,7 @@ class TCollapseSyg extends MDCList {
     constructor(root: Element, ...args: any[]) {
         super(root, ...args);
         this.singleSelection = false;
-
-        root.addEventListener('MDCList:action', (({
+        this.listen('MDCList:action', (({
             detail,
         }: MDCListActionEvent) => {
             this.expand(detail.index);

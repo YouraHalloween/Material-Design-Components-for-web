@@ -227,8 +227,7 @@ Object.defineProperty(MDCTextFieldIcon.prototype, 'stopParentBlurEvent', {
                 this.mousedown(this._handleEventMouseDown);
                 this.parent.input.addEventListener(
                     'blur',
-                    this._handleEventParentBlur,
-                    { capture: true }
+                    this._handleEventParentBlur
                 );
             } else {
                 this.root.removeEventListener(
@@ -237,8 +236,7 @@ Object.defineProperty(MDCTextFieldIcon.prototype, 'stopParentBlurEvent', {
                 );
                 this.parent.input.removeEventListener(
                     'blur',
-                    this._handleEventParentBlur,
-                    { capture: true }
+                    this._handleEventParentBlur
                 );
             }
         }

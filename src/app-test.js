@@ -22,6 +22,7 @@ import { MDCIconButtonToggle } from '@material/icon-button';
 import { TIconButtonSyg } from './../components/icon-button/component';
 import { MDCSnackbarSyg } from "../components/snackbar/component";
 import { TCollapseSyg } from './../components/collapse/component';
+import { TCollapseSearchSyg } from './../components/collapse-search/component';
 import { MDCCheckbox } from '@material/checkbox';
 import { TSpinnerSyg } from "../components/spinner/component";
 
@@ -60,6 +61,7 @@ function init(classCss, classComponent, func) {
 
 // init('.mdc-spinner', TSpinnerSyg);
 // init('.mdc-checkbox', MDCCheckbox);
+init('.mdc-collapse-search', TCollapseSearchSyg);
 // init('.mdc-collapse', TCollapseSyg);
 // init('.mdc-floating-label', MDCFloatingLabel);
 init('.mdc-select', MDCSelect);
@@ -74,7 +76,7 @@ init('.mdc-select', MDCSelect);
 // init('.mdc-menu', MDCMenu);
 // init('.mdc-linear-progress', MDCLinearProgress);
 // init(".mdc-text-field", MDCTextField);
-// init(".mdc-text-field", MDCTextFieldSyg);
+init(".mdc-text-field", MDCTextFieldSyg);
 // init('.mdc-segmented-button', MDCSegmentedButton);
 // init('.mdc-snackbar', MDCSnackbarSyg);
 // init('.mdc-button', TButtonSyg);

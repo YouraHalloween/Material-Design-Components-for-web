@@ -9,8 +9,11 @@
 .mdc-collapse__content {
     .mdc-form-field__i {
         margin-bottom: variabless.$collpase-content-padding;
-        &.mdc-form-field__label--top, &.mdc-collapse-search__i--switch {
+        &.mdc-form-field__label--top {
             margin-bottom: 3px;
+        }
+        &.mdc-collapse-search__i--switch {
+            margin-bottom: 0;
         }
     }
     .mdc-form-field__label--top {
