@@ -1,16 +1,14 @@
 import { MDCDrawer } from '@material/drawer';
 
-const MENU_INDEX_VISIBLE_ALL: string = '--visible-all';
-
 class MDCDrawerSyg extends MDCDrawer {
-    public menuIndexActive: string = '';
-    public groupActive?: NodeListOf<Element> | null = null;
+    public groupAll: boolean = false;
+    public group?: NodeListOf<Element> | null = null;
 
     constructor(root: Element, ...args: any[]) {
         super(root, ...args);
 
         if (this.list) {
-            this.groupActive = this.list.root.querySelectorAll('div.active');
+            this.group = this.list.root.querySelectorAll('div.group');
         }
     }
 
@@ -18,47 +16,33 @@ class MDCDrawerSyg extends MDCDrawer {
      * Нарисовать активные списки меню и убрать не активные
      * @param {string} menuIndex
      */
-    renderActiveGroup(menuIndex: string): void {
-        //Убрать не активные меню
-        if (menuIndex !== this.menuIndexActive) {
-            if (menuIndex !== MENU_INDEX_VISIBLE_ALL) {
-                if (this.groupActive != null) {
-                    for (const key in this.groupActive) {
-                        if (this.groupActive.hasOwnProperty(key)) {
-                            if (
-                                this.groupActive[key].getAttribute('menu-index') !==
-                                menuIndex
-                            ) {
-                                this.groupActive[key].classList.remove('active');
-                            }
-                        } else {
-                            break;
-                        }
-                    }
+    renderActive(index: number = -1): void {
+        // Все группы выведены
+        this.groupAll = index === -1;
+
+        this.group?.forEach((item, key) => {
+            if (index === -1 || index === key) {
+                item.classList.add('active');
+            } else {
+                item.classList.remove('active');
+            }
+        });
+    }
+
+    /**
+     * Вернуть активную группу
+     * @returns number
+     */
+    getActiveGroupIndex(): number {
+        if (this.group && !this.groupAll) {
+            for (let index = 0; index < this.group.length; index++) {
+                const element: Element = this.group[index];
+                if (element.classList.contains('active')) {
+                    return index;
                 }
             }
-            //Добавить активные меню
-            if (this.list) {
-                const filtr: string =
-                    menuIndex === MENU_INDEX_VISIBLE_ALL
-                        ? `div`
-                        : `div[menu-index="${menuIndex}"]`;
-                const groups: NodeListOf<Element> = this.list.root.querySelectorAll(
-                    filtr
-                );
-                if (groups.length > 0) {
-                    for (const key in groups) {
-                        if (groups.hasOwnProperty(key)) {
-                            groups[key].classList.add('active');
-                        } else {
-                            break;
-                        }
-                    }
-                }
-                this.groupActive = groups;
-            }
-            this.menuIndexActive = menuIndex;
         }
+        return -1;
     }
 }
 

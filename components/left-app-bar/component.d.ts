@@ -1,9 +1,9 @@
-declare type TEventClickFn = (index: string, event: Event) => {};
-declare class TLeftAppBarSyg {
-    private _eventlick?;
-    root: Element;
+import { MDCList } from '@material/list/component';
+import { MDCDrawerSyg } from '../drawer/component';
+declare class TLeftAppBarSyg extends MDCList {
     static attachTo(root: Element): TLeftAppBarSyg;
-    constructor(root: Element);
-    listen(fn: TEventClickFn): void;
+    constructor(root: Element, ...args: any[]);
+    isAll(index?: number): boolean;
+    attachDrawer(drawer: MDCDrawerSyg): void;
 }
 export { TLeftAppBarSyg };

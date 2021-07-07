@@ -4,7 +4,8 @@
     .mdc-text-field.mdc-fs__#{$mode} .mdc-text-field__input,
     .mdc-select.mdc-fs__#{$mode} .mdc-select__selected-text,
     .mdc-list.mdc-list.mdc-fs__#{$mode},
-    label.mdc-fs__#{$mode} {
+    label.mdc-fs__#{$mode},
+    .mdc-list-group__subheader.mdc-fs__#{$mode} {
         --mdc-typography-subtitle1-font-size: #{$size};
     }    
 }

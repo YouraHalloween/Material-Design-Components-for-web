@@ -53,7 +53,7 @@ const DefaultConfig = {
                 Env.path('components'), 
                 'node_modules'
             ],            
-            extensions
+            extensions: extensions
         }
     },
     config(env, config) {

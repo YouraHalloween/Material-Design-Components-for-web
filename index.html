@@ -46,6 +46,39 @@
 </head>
 
 <body>
+
+    <div id="app-leftbar" class="mdc-left-app-bar">
+        <ul class="mdc-list">
+            <li class="mdc-list-item mdc-left-app-bar-item__all">
+                <span class="mdc-list-item__graphic material-icons" aria-hidden="true">more_horiz</span>
+
+                <!-- <span class="mdc-left-app-bar-item__label active" title="" menu-index="--visible-all">
+                    <i class="material-icons mdc-left-app-bar-item__icon">more_horiz</i>
+                </span> -->
+            </li>
+            <li class="mdc-list-item">
+                <span class="mdc-list-item__ripple"></span>
+                <span class="mdc-list-item__graphic material-icons" aria-hidden="true">group</span>                
+            </li>
+            <li class="mdc-list-item">
+                <span class="mdc-list-item__ripple"></span>
+                <span class="mdc-list-item__graphic material-icons" aria-hidden="true">library_books</span>
+            </li>
+            <li class="mdc-list-item">
+                <span class="mdc-list-item__ripple"></span>
+                <span class="mdc-list-item__graphic material-icons" aria-hidden="true">engineering</span>                
+            </li>
+
+            <!-- <li class="mdc-left-app-bar-item">
+                <span class="mdc-left-app-bar-item__label" title="" menu-index="library_books">
+                    <i class="material-icons mdc-left-app-bar-item__icon">library_books</i>
+                </span>
+            </li> -->
+            
+        </ul>
+    </div>
+
+
     <div class="mdc-select mdc-select--filled mdc-h__small mdc-select--no-label">
         <div class="mdc-select__anchor" role="button" aria-haspopup="listbox" aria-expanded="false"
             aria-labelledby="demo-label demo-selected-text">
@@ -162,7 +195,8 @@
                             style="--mdc-ripple-fg-size:16px; --mdc-ripple-fg-scale:1.75; --mdc-ripple-left:6px; --mdc-ripple-top:6px;">clear</i></label>
                 </div>
                 <div class="mdc-form-field__i mdc-form-field__label--top field-form_usersearch-status-text">
-                    <label class="mdc-typography--subtitle1 mdc-outer-label " for="form_usersearch-status">Статус</label>
+                    <label class="mdc-typography--subtitle1 mdc-outer-label "
+                        for="form_usersearch-status">Статус</label>
                     <div id="form_usersearch-status"
                         class="mdc-select mdc-select--outlined mdc-select--no-label mdc-h__exsmall">
                         <div class="mdc-select__anchor" role="button" aria-haspopup="listbox" aria-expanded="false"
@@ -175,16 +209,18 @@
                                     class="mdc-select__selected-text"></span></span><span
                                 class="mdc-select__dropdown-icon"><svg class="mdc-select__dropdown-icon-graphic"
                                     viewBox="7 10 10 5" focusable="false">
-                                    <polygon class="mdc-select__dropdown-icon-inactive" stroke="none" fill-rule="evenodd"
-                                        points="7 10 12 15 17 10"></polygon>
+                                    <polygon class="mdc-select__dropdown-icon-inactive" stroke="none"
+                                        fill-rule="evenodd" points="7 10 12 15 17 10"></polygon>
                                     <polygon class="mdc-select__dropdown-icon-active" stroke="none" fill-rule="evenodd"
                                         points="7 15 12 10 17 15"></polygon>
-                                </svg></span></div>
+                                </svg></span>
+                        </div>
                         <div class="mdc-select__menu mdc-menu-surface--fullwidth mdc-menu mdc-menu-surface"
                             style="transform-origin: center top; left: 0px; top: 34px; max-height: 258px;">
                             <nav class="mdc-list mdc-h__small mdc-fs__small" role="listbox" aria-hidden="true"
-                                aria-orientation="vertical"><a class="mdc-list-item mdc-list-item--selected" data-value="0"
-                                    tabindex="0" aria-selected="true"><span class="mdc-list-item__ripple"></span><span
+                                aria-orientation="vertical"><a class="mdc-list-item mdc-list-item--selected"
+                                    data-value="0" tabindex="0" aria-selected="true"><span
+                                        class="mdc-list-item__ripple"></span><span
                                         class="mdc-list-item__text"></span></a><a class="mdc-list-item" data-value="1"
                                     tabindex="-1"><span class="mdc-list-item__ripple"></span><span
                                         class="mdc-list-item__text">Активный</span></a><a class="mdc-list-item"
@@ -202,7 +238,8 @@
                             <input type="hidden" name="Form_UserSearch[active]" value="0"><input type="checkbox"
                                 id="form_usersearch-active" class="mdc-checkbox__native-control"
                                 name="Form_UserSearch[active]" value="1" tabindex="-1">
-                            <div class="mdc-checkbox__background"><svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                            <div class="mdc-checkbox__background"><svg class="mdc-checkbox__checkmark"
+                                    viewBox="0 0 24 24">
                                     <path class="mdc-checkbox__checkmark-path" fill="none"
                                         d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
                                 </svg>
@@ -218,13 +255,15 @@
                             <input type="hidden" name="Form_UserSearch[passive]" value="0"><input type="checkbox"
                                 id="form_usersearch-passive" class="mdc-checkbox__native-control"
                                 name="Form_UserSearch[passive]" value="1" tabindex="-1">
-                            <div class="mdc-checkbox__background"><svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                            <div class="mdc-checkbox__background"><svg class="mdc-checkbox__checkmark"
+                                    viewBox="0 0 24 24">
                                     <path class="mdc-checkbox__checkmark-path" fill="none"
                                         d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
                                 </svg>
                                 <div class="mdc-checkbox__mixedmark"></div>
                             </div>
-                        </div><label class="mdc-switch__label " for="form_usersearch-passive">Пассивный пользователь</label>
+                        </div><label class="mdc-switch__label " for="form_usersearch-passive">Пассивный
+                            пользователь</label>
                     </div>
                 </div>
             </li>
@@ -238,11 +277,14 @@
                 aria-hidden="true">
                 <p class="mdc-typography--body1">Равным образом рамки и место обучения кадров влечет за собой процесс
                     внедрения и модернизации системы обучения кадров, соответствует насущным потребностям. Идейные
-                    соображения высшего порядка, а также дальнейшее развитие различных форм деятельности позволяет оценить
+                    соображения высшего порядка, а также дальнейшее развитие различных форм деятельности позволяет
+                    оценить
                     значение новых предложений.</p>
-                <p class="mdc-typography--body1">Разнообразный и богатый опыт консультация с широким активом обеспечивает
+                <p class="mdc-typography--body1">Разнообразный и богатый опыт консультация с широким активом
+                    обеспечивает
                     широкому кругу. С другой стороны укрепление и развитие структуры обеспечивает участие в формировании
-                    систем массового участия. Равным образом рамки и место обучения кадров влечет за собой процесс внедрения
+                    систем массового участия. Равным образом рамки и место обучения кадров влечет за собой процесс
+                    внедрения
                     и модернизации системы обучения кадров, соответствует насущным потребностям.</p>
             </li>
         </ul>

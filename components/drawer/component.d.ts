@@ -1,12 +1,17 @@
 import { MDCDrawer } from '@material/drawer';
 declare class MDCDrawerSyg extends MDCDrawer {
-    menuIndexActive: string;
-    groupActive?: NodeListOf<Element> | null;
+    groupAll: boolean;
+    group?: NodeListOf<Element> | null;
     constructor(root: Element, ...args: any[]);
     /**
      * Нарисовать активные списки меню и убрать не активные
      * @param {string} menuIndex
      */
-    renderActiveGroup(menuIndex: string): void;
+    renderActive(index?: number): void;
+    /**
+     * Вернуть активную группу
+     * @returns number
+     */
+    getActiveGroupIndex(): number;
 }
 export { MDCDrawerSyg };

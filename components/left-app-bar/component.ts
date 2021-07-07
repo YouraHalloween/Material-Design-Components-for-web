@@ -1,46 +1,53 @@
-type TEventClickFn = (index: string, event: Event) => {};
+import { MDCList } from '@material/list/component';
+import { MDCDrawerSyg } from '../drawer/component';
+import { MDCListActionEvent } from '@material/list/types';
 
-class TLeftAppBarSyg {
-    private _eventlick?: TEventClickFn;
-
-    public root: Element;
-
+class TLeftAppBarSyg extends MDCList {
     static attachTo(root: Element): TLeftAppBarSyg {
         return new TLeftAppBarSyg(root);
     }
 
-    constructor(root: Element) {
-        this.root = root;
+    constructor(root: Element, ...args: any[]) {
+        super(root, ...args);
+        this.singleSelection = true;
+    }
 
-        let itemActive: Element | null = this.root.querySelector(
-            '.mdc-left-app-bar-item__label.active'
-        );
-        const items: NodeListOf<Element> = this.root.querySelectorAll(
-            '.mdc-left-app-bar-item__label'
-        );
-
-        for (const key in items) {
-            if (items.hasOwnProperty(key)) {
-                const item: Element = items[key];
-                const menuIndex: string | null = item.getAttribute('menu-index');
-                item.addEventListener('click', (event: Event) => {
-                    if (itemActive !== item) {
-                        item.classList.add('active');
-                        if (itemActive !== null) {
-                            itemActive.classList.remove('active');
-                        }
-                        itemActive = item;                        
-                    }
-                    if (this._eventlick && menuIndex) {
-                        this._eventlick(menuIndex, event);
-                    }
-                });
+    isAll(index: number = -1): boolean {
+        if (index === -1) {
+            for (let index = 0; index < this.listElements.length; index++) {
+                const element: Element = this.listElements[index];
+                if (element.classList.contains('mdc-left-app-bar-item__all')) {
+                    return true;
+                }
             }
+            return false;
+        } else {
+            return this.listElements[index].classList.contains(
+                'mdc-left-app-bar-item__all'
+            );
         }
     }
 
-    listen(fn: TEventClickFn): void {
-        this._eventlick = fn;
+    attachDrawer(drawer: MDCDrawerSyg): void {
+        this.listen('MDCList:action', (event: MDCListActionEvent) => {
+            let index = event.detail.index;
+
+            if (this.isAll(index)) {
+                index = -1;
+            } else {
+                index = this.isAll() ? index - 1 : index;
+            }
+
+            if (index === drawer.getActiveGroupIndex()) {
+                drawer.open = !drawer.open;
+            } else {
+                if (!drawer.open) {
+                    drawer.open = true;
+                }
+            }
+
+            drawer.renderActive(index);
+        });
     }
 }
 

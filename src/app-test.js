@@ -25,6 +25,7 @@ import { TCollapseSyg } from './../components/collapse/component';
 import { TCollapseSearchSyg } from './../components/collapse-search/component';
 import { MDCCheckbox } from '@material/checkbox';
 import { TSpinnerSyg } from "../components/spinner/component";
+import { TLeftAppBarSyg } from "../components/left-app-bar/component";
 
 // import { CollectionControl } from './../components/collection-control/component';
 
@@ -43,10 +44,14 @@ function init(classCss, classComponent, func) {
     cntr = [].map.call(document.querySelectorAll(classCss), function (el1) {
         let control = new classComponent(el1);
         // console.log(getEventListeners(control));
-        if (control.trailingIcon)
+        if (control.trailingIcon) {
             control.trailingIcon.clear = true;
+        }
+
+        // if (control.sin)
+            
         // if (control.singleSelection)
-            // control.singleSelection = true;
+            control.singleSelection = true;
         // control.open = true;
         // control.open();
         // control.singleSelection = true;
@@ -59,12 +64,13 @@ function init(classCss, classComponent, func) {
     });
 }
 
+init('.mdc-left-app-bar', TLeftAppBarSyg);
 // init('.mdc-spinner', TSpinnerSyg);
 // init('.mdc-checkbox', MDCCheckbox);
-init('.mdc-collapse-search', TCollapseSearchSyg);
+// init('.mdc-collapse-search', TCollapseSearchSyg);
 // init('.mdc-collapse', TCollapseSyg);
 // init('.mdc-floating-label', MDCFloatingLabel);
-init('.mdc-select', MDCSelect);
+// init('.mdc-select', MDCSelect);
 // init('.mdc-select-helper-text', MDCSelectHelperText);
 // init('.mdc-data-table', MDCDataTable);
 // init('.mdc-drawer', MDCDrawer);
@@ -76,7 +82,7 @@ init('.mdc-select', MDCSelect);
 // init('.mdc-menu', MDCMenu);
 // init('.mdc-linear-progress', MDCLinearProgress);
 // init(".mdc-text-field", MDCTextField);
-init(".mdc-text-field", MDCTextFieldSyg);
+// init(".mdc-text-field", MDCTextFieldSyg);
 // init('.mdc-segmented-button', MDCSegmentedButton);
 // init('.mdc-snackbar', MDCSnackbarSyg);
 // init('.mdc-button', TButtonSyg);
