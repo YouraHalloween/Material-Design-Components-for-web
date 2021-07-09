@@ -155,7 +155,6 @@ class MDCSnackbarSyg extends MDCSnackbar {
     //     };
     //     this.foundation.handleActionIconClick = fnClose;
     // }
-
     /**
      * Добавить в сообщение html code
      * @param { string } text
@@ -167,10 +166,15 @@ class MDCSnackbarSyg extends MDCSnackbar {
                     return '<div>' + item + '</div>';
                 })
                 .join('');
-            this.labelEl.innerHTML = htmltext;
+            this.labelEl.innerHTML = htmltext;            
+
+            this.actionBaseline = this._message.length > 1;
+
             this._message = [];
-        } else if (label.trim() !== '') {
+        } 
+        else if (label.trim() !== '') {
             this.labelText = label;
+            this.actionBaseline = false;
         }
         this.open();
     }

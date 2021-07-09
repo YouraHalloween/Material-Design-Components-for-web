@@ -19,13 +19,17 @@ class TButtonSyg {
         this.ripple = new MDCRipple(root);
         this.root = root;
         this.icon = root.querySelector('.mdc-button__icon');
-        const sp: HTMLElement | null = root.querySelector('.mdc-spinner');        
+        const sp: HTMLElement | null = root.querySelector('.mdc-spinner');
         if (sp !== null) {
             this.spinner = new TSpinnerSyg(sp);
             this.root.addEventListener(
                 'transitionend',
                 (event: TransitionEvent) => {
-                    if (event.propertyName === 'width' && this.spinner && !this.spinner.isShow()) {
+                    if (
+                        event.propertyName === 'width' &&
+                        this.spinner &&
+                        !this.spinner.isShow()
+                    ) {
                         this.root.style.justifyContent = '';
                     }
                 }
@@ -74,22 +78,30 @@ class TButtonSyg {
     }
 
     private _getDiffWidth(): number {
-        const label: HTMLElement | null = this.root.querySelector(
-            '.mdc-button__label'
-        );
+        const label: HTMLElement | null =
+            this.root.querySelector('.mdc-button__label');
         if (label) {
             const btnWidth: number = this.root.offsetWidth;
             const labelWidth: number = (label as HTMLElement).offsetWidth;
             // 4 = marginRight - marginLeft
-            const iconWidth: number = (this.icon) ? this.icon.offsetWidth + 4 : 0;
+            const iconWidth: number = this.icon ? this.icon.offsetWidth + 4 : 0;
             const padding: number = parseInt(
                 window
                     .getComputedStyle(this.root, null)
                     .getPropertyValue('padding-left'),
                 0
             );
-            if (btnWidth < 2 * padding + labelWidth + iconWidth + this._spinnerSize) {
-                return 2 * padding + labelWidth + iconWidth + this._spinnerSize - btnWidth;
+            if (
+                btnWidth <
+                2 * padding + labelWidth + iconWidth + this._spinnerSize
+            ) {
+                return (
+                    2 * padding +
+                    labelWidth +
+                    iconWidth +
+                    this._spinnerSize -
+                    btnWidth
+                );
             }
         }
         return 0;
@@ -123,9 +135,13 @@ class TButtonSyg {
         }
     }
 
-    // public spinnerShow(show: boolean): void {
-
-    // }
+    public listen(
+        evtType: string,
+        handler: EventListener,
+        options?: AddEventListenerOptions | boolean
+    ) {
+        this.root.addEventListener(evtType, handler, options);
+    }
 }
 
 export { TButtonSyg };

@@ -6,7 +6,10 @@ $snackbar-min-width: 200px;
 
 .mdc-snackbar {
     // @include snackbar.elevation(1);
-    position: absolute;
+    .mdc-snackbar__absolute {
+        position: absolute;
+    }
+        
     @include snackbar.fill-color(theme-color.prop-value(background-secondary));
     @include snackbar.min-width($snackbar-min-width);
     &.mdc-snackbar--trailing {

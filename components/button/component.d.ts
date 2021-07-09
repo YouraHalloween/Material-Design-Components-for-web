@@ -21,5 +21,6 @@ declare class TButtonSyg {
      */
     spinnerIsAuto(spinner: TSpinnerSyg): boolean;
     spinnerToggle(): void;
+    listen(evtType: string, handler: EventListener, options?: AddEventListenerOptions | boolean): void;
 }
 export { TButtonSyg };

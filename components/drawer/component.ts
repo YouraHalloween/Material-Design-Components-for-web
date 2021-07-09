@@ -33,7 +33,7 @@ class MDCDrawerSyg extends MDCDrawer {
      * Вернуть активную группу
      * @returns number
      */
-    getActiveGroupIndex(): number {
+    getActiveGroupIndex(): number {        
         if (this.group && !this.groupAll) {
             for (let index = 0; index < this.group.length; index++) {
                 const element: Element = this.group[index];
