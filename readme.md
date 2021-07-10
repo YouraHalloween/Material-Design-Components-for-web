@@ -1,6 +1,9 @@
 # Material-Design-Components-for-web
 Template for creating a theme Google Material components design for web.
-The components have been improved for use in desktop applications, as well as some components based on MDC have been added.
+The components have been improved for use in desktop applications, as well as some components based on MDC have been added.  
+```
+The project can be supported by money, beer, burger, clothes and your motorcycle. Thank you 😎  
+```
 ## Latest version of Google Material components for web v.10
 
 ## Documentation
