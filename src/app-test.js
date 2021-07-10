@@ -43,23 +43,8 @@ var cntr = [];
 function init(classCss, classComponent, func) {
     cntr = [].map.call(document.querySelectorAll(classCss), function (el1) {
         let control = new classComponent(el1);
-        // console.log(getEventListeners(control));
-        if (control.trailingIcon) {
-            control.trailingIcon.clear = true;
-        }
-
-        // if (control.sin)
-            
-        // if (control.singleSelection)
-            control.singleSelection = true;
-        // control.open = true;
-        // control.open();
-        // control.singleSelection = true;
-        // let ripple = new MDCRipple(control);
-        // control.showProgress();
-        console.log(control);
-        // console.log(control.foundation.adapter.getRowCount());        
-        // console.log(control.foundation.getRows());        
+        
+        console.log(control);       
         return control;
     });
 }
